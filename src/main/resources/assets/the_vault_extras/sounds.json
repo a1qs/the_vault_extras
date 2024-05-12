@@ -1,0 +1,9 @@
+{
+  "hunter": {
+    "category": "sound",
+    "subtitle": "the_vault_extras.hunter_cast",
+    "sounds": [
+      "the_vault_extras:hunter"
+    ]
+  }
+}

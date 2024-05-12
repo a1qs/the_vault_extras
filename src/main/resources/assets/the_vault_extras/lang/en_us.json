@@ -1,0 +1,11 @@
+{
+  "item.the_vault_extras.test_item": "Test Item",
+  "block.the_vault_extras.infusion_altar": "Infusion Altar",
+  "block.the_vault_extras.vault_anvil": "Vault Anvil",
+
+  "curios.identifier.magnet": "Magnet",
+  "curios.identifier.vault_charm": "Vault Charm",
+
+  "itemGroup.vaultExtrasTab": "The Vault Extras"
+}
+

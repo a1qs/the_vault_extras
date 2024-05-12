@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.a1qs.the_vault_extras.mixins",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "the_vault_extras.refmap.json",
+  "mixins": [
+    "AnvilBlockMixin",
+    "HunterAbilityMixin",
+    "PlayerEventsMixin",
+    "VaultMagnetItemMixin"
+  ]
+}

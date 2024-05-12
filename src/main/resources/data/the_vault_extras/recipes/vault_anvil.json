@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    " O ",
+    "OOO"
+  ],
+  "key": {
+    "P": {
+      "item": "the_vault:vault_plating_t3"
+    },
+    "O": {
+      "item": "the_vault:perfect_black_opal"
+    }
+  },
+  "result": {
+    "item": "the_vault_extras:vault_anvil",
+    "count": 1
+  }
+}

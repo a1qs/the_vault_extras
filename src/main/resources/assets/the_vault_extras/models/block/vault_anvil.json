@@ -1,0 +1,6 @@
+{
+  "parent": "the_vault_extras:block/vault_anvil_base",
+  "textures": {
+    "top": "the_vault_extras:block/vault_anvil_top"
+  }
+}
