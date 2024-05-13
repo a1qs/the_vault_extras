@@ -6,6 +6,10 @@
   "curios.identifier.magnet": "Magnet",
   "curios.identifier.vault_charm": "Vault Charm",
 
+  "the_vault_extras.hunter_cast": "Cast Ability Hunter",
+  "key.category.the_vault_extras": "The Vault Extras",
+  "key.the_vault_extras.magnet_toggle": "Toggle Magnet",
+
   "itemGroup.vaultExtrasTab": "The Vault Extras"
 }
 
