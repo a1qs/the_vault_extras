@@ -1,6 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
-import com.a1qs.the_vault_extras.util.ModSoundEvents;
+import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import iskallia.vault.Vault;
 
 import iskallia.vault.skill.ability.config.HunterConfig;

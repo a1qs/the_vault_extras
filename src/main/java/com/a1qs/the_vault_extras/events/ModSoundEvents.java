@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.util;
+package com.a1qs.the_vault_extras.events;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import net.minecraft.util.ResourceLocation;
