@@ -2,13 +2,14 @@ package com.a1qs.the_vault_extras;
 
 import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModItems;
-import com.a1qs.the_vault_extras.util.ModSoundEvents;
+import com.a1qs.the_vault_extras.init.ModKeyBinds;
+import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
+import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -18,8 +19,6 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(VaultExtras.MOD_ID)
@@ -53,11 +52,11 @@ public class VaultExtras
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
+        VaultExtrasNetwork.init();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-
+        ModKeyBinds.register(event);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
