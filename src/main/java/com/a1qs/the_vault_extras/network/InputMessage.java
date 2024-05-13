@@ -1,7 +1,6 @@
 package com.a1qs.the_vault_extras.network;
 
 
-import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import iskallia.vault.init.ModItems;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -12,7 +11,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.fml.network.NetworkEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -51,6 +49,8 @@ public class InputMessage {
             // Check for Omega magnet
             if(CuriosApi.getCuriosHelper().findFirstCurio(inventory.player, ModItems.VAULT_MAGNET_OMEGA).isPresent()) {
                 ItemStack stack = CuriosApi.getCuriosHelper().findFirstCurio(inventory.player, ModItems.VAULT_MAGNET_OMEGA).get().getStack();
+                System.out.println(stack.getDamage());
+                System.out.println(stack.getMaxDamage());
 
                 if(stack.getOrCreateTag().getBoolean("Enabled")) {
                     CompoundNBT tag = stack.getOrCreateTag();
@@ -59,7 +59,8 @@ public class InputMessage {
                     stack.setTag(tag);
                     player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.2F, 0.8F);
                     player.sendStatusMessage(new StringTextComponent("Toggled Magnet: " + TextFormatting.RED + "OFF"), true);
-                } else {
+                } else if (stack.getDamage() < stack.getMaxDamage() -1) {
+
                     CompoundNBT tag = stack.getOrCreateTag();
                     // enable magnet
                     tag.putBoolean("Enabled", true);
@@ -78,7 +79,7 @@ public class InputMessage {
                     stack.setTag(tag);
                     player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.2F, 0.8F);
                     player.sendStatusMessage(new StringTextComponent("Toggled Magnet: " + TextFormatting.RED + "OFF"), true);
-                } else {
+                } else if (stack.getDamage() < stack.getMaxDamage() -1) {
                     CompoundNBT tag = stack.getOrCreateTag();
                     tag.putBoolean("Enabled", true);
                     stack.setTag(tag);
@@ -95,7 +96,7 @@ public class InputMessage {
                     stack.setTag(tag);
                     player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.2F, 0.8F);
                     player.sendStatusMessage(new StringTextComponent("Toggled Magnet: " + TextFormatting.RED + "OFF"), true);
-                } else {
+                } else if (stack.getDamage() < stack.getMaxDamage() -1) {
                     CompoundNBT tag = stack.getOrCreateTag();
                     tag.putBoolean("Enabled", true);
                     stack.setTag(tag);
