@@ -10,6 +10,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.theillusivec4.curios.api.SlotTypeMessage;
+import top.theillusivec4.curios.api.SlotTypePreset;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(VaultExtras.MOD_ID)
@@ -61,8 +64,8 @@ public class VaultExtras
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         //communicate to curios to register a slot
-        //InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
-        //        () -> SlotTypePreset.CURIO.getMessageBuilder().build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
+                () -> SlotTypePreset.CURIO.getMessageBuilder().build());
     }
 
     private void processIMC(final InterModProcessEvent event)
