@@ -8,6 +8,7 @@
   "mixins": [
     "AnvilBlockMixin",
     "HunterAbilityMixin",
+    "MixinItemShardPouch",
     "MixinPlayerInventory",
     "PlayerEventsMixin",
     "VaultMagnetItemMixin"
