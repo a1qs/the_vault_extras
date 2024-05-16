@@ -7,10 +7,11 @@
   "refmap": "the_vault_extras.refmap.json",
   "mixins": [
     "AnvilBlockMixin",
+    "EntityEventsMixin",
     "HunterAbilityMixin",
     "ItemShardPouchMixin",
-    "PlayerInventoryMixin",
     "PlayerEventsMixin",
+    "PlayerInventoryMixin",
     "VaultMagnetItemMixin"
   ]
 }
