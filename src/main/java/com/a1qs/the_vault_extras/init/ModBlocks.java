@@ -4,6 +4,7 @@ import com.a1qs.the_vault_extras.VaultExtras;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -33,6 +34,7 @@ public class ModBlocks {
                     .harvestLevel(2)
                     .harvestTool(ToolType.PICKAXE).setRequiresTool()
                     .hardnessAndResistance(3f)
+                    .sound(SoundType.ANVIL)
                     .notSolid()));
 
     private static <T extends Block>
