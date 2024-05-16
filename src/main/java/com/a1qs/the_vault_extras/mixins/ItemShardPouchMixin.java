@@ -12,7 +12,7 @@ import static iskallia.vault.item.ItemShardPouch.getContainedStack;
 import static iskallia.vault.item.ItemShardPouch.setContainedStack;
 
 @Mixin(value = ItemShardPouch.class, remap = false)
-public class MixinItemShardPouch {
+public class ItemShardPouchMixin {
 
     /**
      * @author iwolfking // a1qs

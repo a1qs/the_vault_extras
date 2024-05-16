@@ -5,9 +5,7 @@ import iskallia.vault.init.ModItems;
 import iskallia.vault.world.data.InventorySnapshotData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.CapabilityItemHandler;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,13 +16,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(value = {PlayerInventory.class}, priority = 9999)
-public abstract class MixinPlayerInventory implements InventorySnapshotData.InventoryAccessor {
+public abstract class PlayerInventoryMixin implements InventorySnapshotData.InventoryAccessor {
 
-    @Shadow
-    @Final
+
     public PlayerEntity player;
 
-    public MixinPlayerInventory() {
+    public PlayerInventoryMixin() {
     }
 
     @Inject(method = {"addItemStackToInventory"}, at = {@At("HEAD")}, cancellable = true)
