@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"particle": "the_vault_extras:block/infusion_altar",
-		"4": "the_vault_extras:block/infusion_altar"
+		"4": "the_vault_extras:block/infusion_altar",
+		"particle": "the_vault_extras:block/infusion_altar"
 	},
 	"elements": [
 		{
@@ -250,7 +250,7 @@
 		},
 		"gui": {
 			"rotation": [30, 135, 0],
-			"translation": [0.5, -0.25, 0],
+			"translation": [0, -0.5, 0],
 			"scale": [0.6, 0.6, 0.6]
 		},
 		"head": {
