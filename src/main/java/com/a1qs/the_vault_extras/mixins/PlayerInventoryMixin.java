@@ -15,17 +15,18 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
-@Mixin(value = {PlayerInventory.class}, priority = 9999)
+@Mixin(value = {PlayerInventory.class})
 public abstract class PlayerInventoryMixin implements InventorySnapshotData.InventoryAccessor {
 
-
+    @Shadow
+    @Final
     public PlayerEntity player;
 
     public PlayerInventoryMixin() {
     }
 
     @Inject(method = {"addItemStackToInventory"}, at = {@At("HEAD")}, cancellable = true)
-    public void interceptItemAddition(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+    public void interceptItemAdditionToInventory(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.getItem() == ModItems.SOUL_SHARD) {
             if (!(this.player.openContainer instanceof ShardPouchContainer)) {
                 ItemStack pouchStack = ItemStack.EMPTY;
@@ -40,7 +41,6 @@ public abstract class PlayerInventoryMixin implements InventorySnapshotData.Inve
                         if (stack.isEmpty()) {
                             cir.setReturnValue(true);
                         }
-
                     });
                 }
             }
