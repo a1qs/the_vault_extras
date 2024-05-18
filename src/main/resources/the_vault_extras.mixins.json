@@ -12,6 +12,7 @@
     "ItemShardPouchMixin",
     "PlayerEventsMixin",
     "PlayerInventoryMixin",
-    "VaultMagnetItemMixin"
+    "VaultMagnetItemMixin",
+    "VaultRoomNamesMixin"
   ]
 }
