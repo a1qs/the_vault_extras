@@ -3,6 +3,7 @@ package com.a1qs.the_vault_extras;
 import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModItems;
 import com.a1qs.the_vault_extras.init.ModKeyBinds;
+import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import net.minecraft.block.Block;
@@ -39,6 +40,7 @@ public class VaultExtras
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         ModSoundEvents.register(eventBus);
+        ModRecipeTypes.register(eventBus);
 
 
         eventBus.addListener(this::setup);
