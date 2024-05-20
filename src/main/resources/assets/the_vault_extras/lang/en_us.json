@@ -1,16 +1,21 @@
 {
   "item.the_vault_extras.test_item": "Test Item",
+  "item.the_vault_extras.vault_annihilator": "Vault Annihilator",
+
   "block.the_vault_extras.infusion_altar": "Infusion Altar",
   "block.the_vault_extras.vault_anvil": "Vault Anvil",
 
-  "curios.identifier.magnet": "Magnet",
-  "curios.identifier.vault_charm": "Vault Charm",
-
+  "tooltip.the_vault_extras.vault_annihilator1": "\u00A7eForged by the Vault Gods\u00A7r",
+  "tooltip.the_vault_extras.vault_annihilator2": "\u00A7eObliterates any block that crosses it's path\u00A7r",
   "the_vault_extras.hunter_cast": "Cast Ability Hunter",
   "key.category.the_vault_extras": "The Vault Extras",
   "key.the_vault_extras.magnet_toggle": "Toggle Magnet",
 
   "itemGroup.vaultExtrasTab": "The Vault Extras",
-  "jei.the_vault_extras.vendor": "Vendor Purchases"
+
+  "jei.the_vault_extras.vendor": "Vendor Purchases",
+
+  "curios.identifier.magnet": "Magnet",
+  "curios.identifier.vault_charm": "Vault Charm"
 }
 
