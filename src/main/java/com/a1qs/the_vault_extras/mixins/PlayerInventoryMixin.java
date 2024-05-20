@@ -15,10 +15,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
-@Mixin(value = {PlayerInventory.class})
+@Mixin(value = {PlayerInventory.class}, remap = false, priority = 100)
 public abstract class PlayerInventoryMixin implements InventorySnapshotData.InventoryAccessor {
 
-    @Shadow
+    //@Shadow
     @Final
     public PlayerEntity player;
 
