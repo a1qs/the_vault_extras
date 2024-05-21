@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.mixins;
 
 import iskallia.vault.container.inventory.ShardPouchContainer;
 import iskallia.vault.init.ModItems;
-import iskallia.vault.world.data.InventorySnapshotData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -15,18 +14,19 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
-@Mixin(value = {PlayerInventory.class}, remap = false, priority = 100)
-public abstract class PlayerInventoryMixin implements InventorySnapshotData.InventoryAccessor {
+@Mixin(value = {PlayerInventory.class})
+public abstract class PlayerInventoryMixin {
 
-    //@Shadow
     @Final
-    public PlayerEntity player;
+    @Shadow
+    private PlayerEntity player;
 
     public PlayerInventoryMixin() {
     }
 
     @Inject(method = {"addItemStackToInventory"}, at = {@At("HEAD")}, cancellable = true)
-    public void interceptItemAdditionToInventory(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+
+    public void interceptItemAddition(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.getItem() == ModItems.SOUL_SHARD) {
             if (!(this.player.openContainer instanceof ShardPouchContainer)) {
                 ItemStack pouchStack = ItemStack.EMPTY;
