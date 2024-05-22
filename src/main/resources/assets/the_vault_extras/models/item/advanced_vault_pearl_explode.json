@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "the_vault_extras:item/advanced_vault_pearl_explode"
+  }
+}
