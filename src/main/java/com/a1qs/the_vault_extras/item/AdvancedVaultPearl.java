@@ -3,13 +3,9 @@ package com.a1qs.the_vault_extras.item;
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.init.ModItems;
 import com.a1qs.the_vault_extras.item.entity.AdvancedVaultPearlEntity;
-import iskallia.vault.item.entity.VaultPearlEntity;
-import net.minecraft.block.TNTBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ThrowableEntity;
 import net.minecraft.item.EnderPearlItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,14 +26,13 @@ public class AdvancedVaultPearl extends EnderPearlItem {
     int maxDamage;
     int cd;
 
-    public AdvancedVaultPearl(Item.Properties builder, float zIn, float velocityIn, float inaccuracyIn, int maxDamageIn, int cdIn) {
+    public AdvancedVaultPearl(Properties builder, float zIn, float velocityIn, float inaccuracyIn, int maxDamageIn, int cdIn) {
         super(builder);
         z = zIn;
         velocity = velocityIn;
         inaccuracy = inaccuracyIn;
         maxDamage = maxDamageIn;
         cd = cdIn;
-
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand handIn) {
@@ -87,11 +82,6 @@ public class AdvancedVaultPearl extends EnderPearlItem {
 
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
-
-
-
-
-
 
     public int getMaxDamage(ItemStack stack) {
         return maxDamage;
