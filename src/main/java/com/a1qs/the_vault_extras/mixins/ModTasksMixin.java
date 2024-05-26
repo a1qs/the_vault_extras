@@ -16,17 +16,10 @@ public class ModTasksMixin {
     @Inject(method = "initTasks", at = @At("HEAD"), cancellable = true)
     private static void addInitTasks (DailyScheduler scheduler, MinecraftServer server, CallbackInfo ci){
 
-        //make soul shard shop reset every 2 hours
-        scheduler.scheduleServer(1, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(5, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(7, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(9, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(11, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(13, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(17, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(19, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(21, () -> SoulShardTraderData.get(server).resetDailyTrades());
-        scheduler.scheduleServer(23, () -> SoulShardTraderData.get(server).resetDailyTrades());
+        int[] scheduleTimes = {1, 5, 7, 9, 11, 13, 17, 19, 21, 23};
+        for (int time : scheduleTimes) {
+            scheduler.scheduleServer(time, () -> SoulShardTraderData.get(server).resetDailyTrades());
+        }
     }
 
 }
