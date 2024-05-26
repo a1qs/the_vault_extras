@@ -10,6 +10,7 @@
     "EntityEventsMixin",
     "HunterAbilityMixin",
     "ItemShardPouchMixin",
+    "MobTrapEffectMixin",
     "ModTasksMixin",
     "PlayerEventsMixin",
     "PlayerInventoryMixin",

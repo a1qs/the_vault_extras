@@ -16,6 +16,9 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> HUNTER_SFX =
             registerSoundEvent("hunter");
 
+    public static final RegistryObject<SoundEvent> MOB_TRAP_SFX =
+            registerSoundEvent("mob_trap");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(VaultExtras.MOD_ID, name)));
     }
