@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OPO",
+    "PTP",
+    "OPO"
+  ],
+  "key": {
+    "O": {
+      "item": "the_vault:perfect_black_opal"
+    },
+    "P": {
+      "item": "the_vault:vault_pearl"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "the_vault_extras:advanced_vault_pearl_explode",
+    "count": 1
+  }
+}
