@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "the_vault:spark"
+    }
+  },
+  "result": {
+    "item": "the_vault_extras:vault_annihilator",
+    "count": 1
+  }
+}
