@@ -21,17 +21,17 @@ public class ModItems {
     public static final RegistryObject<Item> ADVANCED_VAULT_PEARL_SPEED = ITEMS.register("advanced_vault_pearl_speed",
             () -> new AdvancedVaultPearl(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)
-                    .maxStackSize(1), 0.0F,4.5F, 2.5F, 256, 10));
+                    .maxDamage(256), 0.0F,4.5F, 2.5F, 10));
 
     public static final RegistryObject<Item> ADVANCED_VAULT_PEARL_UNBREAKABLE = ITEMS.register("advanced_vault_pearl_unbreakable",
             () -> new AdvancedVaultPearl(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)
-                    .maxStackSize(1), 0.0F,1.5F, 1.0F, -1, 20));
+                    .maxDamage(-1), 0.0F,1.5F, 1.0F, 20));
 
     public static final RegistryObject<Item> ADVANCED_VAULT_PEARL_EXPLODE = ITEMS.register("advanced_vault_pearl_explode",
             () -> new AdvancedVaultPearl(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)
-                    .maxStackSize(1), 0.0F,1.5F, 1.0F, 256, 20));
+                    .maxDamage(256), 0.0F,1.5F, 1.0F, 20));
 
 
 

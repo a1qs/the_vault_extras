@@ -14,6 +14,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -23,21 +24,19 @@ public class AdvancedVaultPearl extends EnderPearlItem {
     float z;
     float velocity;
     float inaccuracy;
-    int maxDamage;
     int cd;
 
-    public AdvancedVaultPearl(Properties builder, float zIn, float velocityIn, float inaccuracyIn, int maxDamageIn, int cdIn) {
+    public AdvancedVaultPearl(Properties builder, float zIn, float velocityIn, float inaccuracyIn, int cdIn) {
         super(builder);
         z = zIn;
         velocity = velocityIn;
         inaccuracy = inaccuracyIn;
-        maxDamage = maxDamageIn;
         cd = cdIn;
     }
 
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand handIn) {
+    public @NotNull ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, @NotNull Hand handIn) {
         ItemStack stack = player.getHeldItem(handIn);
-        world.playSound((PlayerEntity) null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
 
         player.getCooldownTracker().setCooldown(ModItems.ADVANCED_VAULT_PEARL_SPEED.get(), cd);
         player.getCooldownTracker().setCooldown(ModItems.ADVANCED_VAULT_PEARL_UNBREAKABLE.get(), cd);
@@ -58,9 +57,7 @@ public class AdvancedVaultPearl extends EnderPearlItem {
             }
 
             if(stack.getMaxDamage() != -1) {
-                stack.damageItem(1, player, (e) -> {
-                    e.sendBreakAnimation(handIn);
-                });
+                stack.damageItem(1, player, (e) -> e.sendBreakAnimation(handIn));
             }
         }
 
@@ -69,7 +66,7 @@ public class AdvancedVaultPearl extends EnderPearlItem {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(ItemStack stack, @Nullable World worldIn, @NotNull List<ITextComponent> tooltip, @NotNull ITooltipFlag flagIn) {
         Item item = stack.getItem();
         if (item == ModItems.ADVANCED_VAULT_PEARL_UNBREAKABLE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip." + VaultExtras.MOD_ID + ".advanced_vault_pearl_unbreakable"));
@@ -81,10 +78,6 @@ public class AdvancedVaultPearl extends EnderPearlItem {
         }
 
         super.addInformation(stack, worldIn, tooltip, flagIn);
-    }
-
-    public int getMaxDamage(ItemStack stack) {
-        return maxDamage;
     }
 
     public boolean showDurabilityBar(ItemStack stack) {
@@ -106,7 +99,7 @@ public class AdvancedVaultPearl extends EnderPearlItem {
         return (double)stack.getDamage() / (double)this.getMaxDamage(stack);
     }
 
-    public boolean isEnchantable(ItemStack stack) {
+    public boolean isEnchantable(@NotNull ItemStack stack) {
         return false;
     }
 
