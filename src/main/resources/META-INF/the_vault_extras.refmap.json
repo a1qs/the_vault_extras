@@ -1,6 +1,6 @@
 {
   "mappings": {
-    "iskallia/vault/mixin/MixinPlayerInventory": {
+    "com/a1qs/the_vault_extras/mixin/PlayerInventoryMixin": {
       "func_234563_a_": "Lnet/minecraft/entity/player/PlayerInventory;func_234563_a_(Lnet/minecraft/util/DamageSource;F)V",
       "addItemStackToInventory": "Lnet/minecraft/entity/player/PlayerInventory;func_70441_a(Lnet/minecraft/item/ItemStack;)Z",
       "Lnet/minecraft/item/ItemStack;damageItem(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V": "Lnet/minecraft/item/ItemStack;func_222118_a(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V"
@@ -8,7 +8,7 @@
   },
   "data": {
     "searge": {
-      "iskallia/vault/mixin/MixinPlayerInventory": {
+      "com/a1qs/the_vault_extras/mixin/PlayerInventoryMixin": {
         "func_234563_a_": "Lnet/minecraft/entity/player/PlayerInventory;func_234563_a_(Lnet/minecraft/util/DamageSource;F)V",
         "addItemStackToInventory": "Lnet/minecraft/entity/player/PlayerInventory;func_70441_a(Lnet/minecraft/item/ItemStack;)Z",
         "Lnet/minecraft/item/ItemStack;damageItem(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V": "Lnet/minecraft/item/ItemStack;func_222118_a(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V"
