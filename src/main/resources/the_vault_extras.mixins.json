@@ -10,6 +10,7 @@
     "EntityEventsMixin",
     "HunterAbilityMixin",
     "ItemShardPouchMixin",
+    "MixinCakeHuntObjective",
     "MixinNameProviderPublic",
     "MobTrapEffectMixin",
     "ModTasksMixin",
