@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.data.recipes;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
