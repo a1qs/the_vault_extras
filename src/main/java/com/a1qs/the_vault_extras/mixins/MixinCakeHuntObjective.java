@@ -19,13 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = CakeHuntObjective.class, remap = false)
 public class MixinCakeHuntObjective {
 
-
-
-    @Inject(
-            method = "expandVault",
-            at = @At(value="HEAD"),
-            cancellable = true
-    )
+    @Inject(method = "expandVault", at = @At(value="HEAD"), cancellable = true)
     private void addTextToNonModifyingCakes(ServerWorld world, ServerPlayerEntity player, BlockPos cakePos, VaultRaid vault, CallbackInfo ci) {
         ITextComponent c0 = player.getDisplayName().deepCopy().mergeStyle(TextFormatting.LIGHT_PURPLE);
         ITextComponent c1 = (new StringTextComponent(" found a ")).mergeStyle(TextFormatting.GRAY);
@@ -33,11 +27,4 @@ public class MixinCakeHuntObjective {
         ITextComponent ct = (new StringTextComponent("")).appendSibling(c0).appendSibling(c1).appendSibling(c2);
         vault.getPlayers().forEach((vPlayer) -> vPlayer.runIfPresent(world.getServer(), (sPlayer) -> sPlayer.sendMessage(ct, Util.DUMMY_UUID)));
     }
-
-
-
-
-    /*
-
-     */
 }
