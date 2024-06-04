@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(value = {PlayerInventory.class})
-public abstract class PlayerInventoryMixin {
+public class PlayerInventoryMixin {
 
     @Final
     @Shadow
