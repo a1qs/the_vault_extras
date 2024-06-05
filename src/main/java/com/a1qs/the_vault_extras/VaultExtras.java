@@ -8,6 +8,7 @@ import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -89,5 +90,9 @@ public class VaultExtras
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
         }
+    }
+
+    public static ResourceLocation id(String name) {
+        return new ResourceLocation("the_vault_extras", name);
     }
 }
