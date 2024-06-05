@@ -33,6 +33,9 @@ public class ModItems {
                     .group(ModItemGroup.VAULT_EXTRAS)
                     .maxDamage(256), 0.0F,1.5F, 1.0F, 20));
 
+    public static final RegistryObject<Item> CAKE_SEAL = ITEMS.register("cake_seal",
+            () -> new Item(new Item.Properties().maxStackSize(1)));
+
 
 
 
