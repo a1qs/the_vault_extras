@@ -2,6 +2,7 @@ package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.item.AdvancedVaultPearl;
+import com.a1qs.the_vault_extras.item.CakeSeal;
 import com.a1qs.the_vault_extras.item.VaultAnnihilator;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,6 +33,11 @@ public class ModItems {
             () -> new AdvancedVaultPearl(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)
                     .maxDamage(256), 0.0F,1.5F, 1.0F, 20));
+
+    public static final RegistryObject<Item> CAKE_SEAL = ITEMS.register("cake_seal",
+            () -> new CakeSeal(new Item.Properties()
+                    .group(ModItemGroup.VAULT_EXTRAS)
+                    .maxStackSize(1)));
 
 
 

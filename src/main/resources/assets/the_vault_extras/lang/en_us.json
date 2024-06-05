@@ -4,10 +4,13 @@
   "item.the_vault_extras.advanced_vault_pearl_unbreakable": "Advanced Vault Pearl",
   "item.the_vault_extras.advanced_vault_pearl_speed": "\u00A7eAdvanced Vault Pearl",
   "item.the_vault_extras.advanced_vault_pearl_explode": "\u00A7cAdvanced Vault Pearl",
+  "item.the_vault_extras.cake_seal": "Cake: After Dark",
 
   "block.the_vault_extras.infusion_altar": "Infusion Altar",
   "block.the_vault_extras.vault_anvil": "Vault Anvil",
 
+  "tooltip.the_vault_extras.cake_seal1": "\u00A78Seems inedible\u00A7r",
+  "tooltip.the_vault_extras.cake_seal2": "\u00A75Your ticket to a buffet of cakes\u00A7r",
   "tooltip.the_vault_extras.vault_annihilator1": "\u00A7eForged by the Vault Gods\u00A7r",
   "tooltip.the_vault_extras.vault_annihilator2": "\u00A7eObliterates any block that crosses it's path\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_unbreakable": "Enhancement: \u00A7lINDESTRUCTABLE",
