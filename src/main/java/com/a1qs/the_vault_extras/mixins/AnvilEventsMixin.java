@@ -35,7 +35,7 @@ public class AnvilEventsMixin {
             VaultCrystalItem.setRandomSeed(output);
             event.setOutput(output);
             event.setMaterialCost(1);
-            event.setCost(8);
+            event.setCost(1);
         }
     }
 

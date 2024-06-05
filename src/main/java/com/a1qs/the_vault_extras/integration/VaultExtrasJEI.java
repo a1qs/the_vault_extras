@@ -3,8 +3,10 @@ package com.a1qs.the_vault_extras.integration;
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.data.recipes.VendorRecipe;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
+import iskallia.vault.integration.jei.DummyRecipeProvider;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaRecipeCategoryUid;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -35,5 +37,6 @@ public class VaultExtrasJEI implements IModPlugin {
         registration.addRecipes(rm.getRecipesForType(ModRecipeTypes.VENDOR_RECIPE).stream()
                 .filter(r -> r instanceof VendorRecipe).collect(Collectors.toList()),
             VendorRecipeCategory.UID);
+        registration.addRecipes(AnvilRecipeProvider.getAnvilRecipes(registration.getVanillaRecipeFactory()), VanillaRecipeCategoryUid.ANVIL);
     }
 }
