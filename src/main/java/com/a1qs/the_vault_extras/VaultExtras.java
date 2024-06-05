@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras;
 
+import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModItems;
 import com.a1qs.the_vault_extras.init.ModKeyBinds;
@@ -51,8 +52,11 @@ public class VaultExtras
         // Register the doClientStuff method for modloading
         eventBus.addListener(this::clientSetup);
 
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTabListNameFormat);
+        MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTick);
     }
 
     private void setup(final FMLCommonSetupEvent event)
