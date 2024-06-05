@@ -14,6 +14,12 @@
   "tooltip.the_vault_extras.advanced_vault_pearl_speed": "Enhancement: \u00A7e\u00A7lSWIFT\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_explode": "Enhancement: \u00A7c\u00A7lUNSTABLE\u00A7r",
 
+  "command.the_vault_extras.difficulty.set": "The Difficulty has already been set to this value!",
+  "command.the_vault_extras.difficulty.trivial": "Set difficulty to: Trivial",
+  "command.the_vault_extras.difficulty.casual": "Set difficulty to: Casual",
+  "command.the_vault_extras.difficulty.standard": "Set difficulty to: Standard",
+  "command.the_vault_extras.difficulty.hard": "Set difficulty to: Hard",
+  "command.the_vault_extras.difficulty.extreme": "Set difficulty to: Extreme",
 
   "itemGroup.vaultExtrasTab": "The Vault Extras",
   "jei.the_vault_extras.vendor": "Vendor Purchases",
