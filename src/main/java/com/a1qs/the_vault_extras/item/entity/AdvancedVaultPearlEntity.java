@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras.item.entity;
 
 
+import iskallia.vault.init.ModEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.EnderPearlEntity;
@@ -50,10 +51,12 @@ public class AdvancedVaultPearlEntity extends EnderPearlEntity {
                 ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)entity;
                 if(speed) {
                     EffectInstance activeSpeed = serverplayerentity.getActivePotionEffect(Effects.SPEED);
-                    if(activeSpeed != null) {
+                    if(activeSpeed != null && serverplayerentity.getActivePotionEffect(ModEffects.VAULT_POWERUP) == null) {
                         serverplayerentity.addPotionEffect(new EffectInstance(Effects.SPEED, 300, activeSpeed.getAmplifier() + 2));
-                    } else {
+                        serverplayerentity.addPotionEffect(new EffectInstance(ModEffects.VAULT_POWERUP, 300, 0));
+                    } else if (serverplayerentity.getActivePotionEffect(ModEffects.VAULT_POWERUP) == null){
                         serverplayerentity.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1));
+                        serverplayerentity.addPotionEffect(new EffectInstance(ModEffects.VAULT_POWERUP, 300, 0));
                     }
                 }
                 if (serverplayerentity.connection.getNetworkManager().isChannelOpen() && serverplayerentity.world == this.world && !serverplayerentity.isSleeping()) {
