@@ -44,13 +44,18 @@ public class AdvancedVaultPearl extends EnderPearlItem {
         player.getCooldownTracker().setCooldown(iskallia.vault.init.ModItems.VAULT_PEARL, cd);
 
         if (!world.isRemote) {
-            if(stack.getItem() != ModItems.ADVANCED_VAULT_PEARL_EXPLODE.get()) {
-                AdvancedVaultPearlEntity pearlEntity = new AdvancedVaultPearlEntity(world, player, false);
+            if(stack.getItem() == ModItems.ADVANCED_VAULT_PEARL_EXPLODE.get()) {
+                AdvancedVaultPearlEntity pearlEntity = new AdvancedVaultPearlEntity(world, player, true, false);
+                pearlEntity.setItem(stack);
+                pearlEntity.setDirectionAndMovement(player, player.rotationPitch, player.rotationYaw, z, velocity, inaccuracy);
+                world.addEntity(pearlEntity);
+            } else if(stack.getItem() == ModItems.ADVANCED_VAULT_PEARL_SPEED.get()) {
+                AdvancedVaultPearlEntity pearlEntity = new AdvancedVaultPearlEntity(world, player, false, true);
                 pearlEntity.setItem(stack);
                 pearlEntity.setDirectionAndMovement(player, player.rotationPitch, player.rotationYaw, z, velocity, inaccuracy);
                 world.addEntity(pearlEntity);
             } else {
-                AdvancedVaultPearlEntity pearlEntity = new AdvancedVaultPearlEntity(world, player, true);
+                AdvancedVaultPearlEntity pearlEntity = new AdvancedVaultPearlEntity(world, player, false, false);
                 pearlEntity.setItem(stack);
                 pearlEntity.setDirectionAndMovement(player, player.rotationPitch, player.rotationYaw, z, velocity, inaccuracy);
                 world.addEntity(pearlEntity);
