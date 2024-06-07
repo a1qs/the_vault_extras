@@ -6,19 +6,20 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "the_vault_extras.refmap.json",
   "mixins": [
-    "AnvilBlockMixin",
-    "AnvilEventsMixin",
-    "EntityEventsMixin",
-    "HunterAbilityMixin",
-    "ItemShardPouchMixin",
+    "MixinAnvilBlock",
+    "MixinAnvilEvents",
     "MixinCakeHuntObjective",
+    "MixinEntityEvents",
+    "MixinHunterAbility",
+    "MixinItemShardPouch",
+    "MixinMobTrapEffects",
+    "MixinModTasks",
     "MixinNameProviderPublic",
-    "MobTrapEffectMixin",
-    "ModTasksMixin",
-    "PlayerEventsMixin",
-    "PlayerInventoryMixin",
-    "VaultGeneralConfigMixin",
-    "VaultMagnetItemMixin",
-    "VaultRoomNamesMixin"
+    "MixinPartyCommand",
+    "MixinPlayerEvents",
+    "MixinPlayerInventory",
+    "MixinVaultGeneralConfig",
+    "MixinVaultMagnetItem",
+    "MixinVaultRoomNames"
   ]
 }
