@@ -35,7 +35,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.util.*;
 
 @Mixin(value = EntityEvents.class, remap = false)
-public class EntityEventsMixin {
+public class MixinEntityEvents {
 
     private static final Random rand = new Random();
 

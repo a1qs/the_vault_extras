@@ -13,7 +13,7 @@ import iskallia.vault.event.AnvilEvents;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value={AnvilEvents.class}, remap = false)
-public class AnvilEventsMixin {
+public class MixinAnvilEvents {
 
     /**
      * @author JoshWannaPaas

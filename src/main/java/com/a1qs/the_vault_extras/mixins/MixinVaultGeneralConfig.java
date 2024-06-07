@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = VaultGeneralConfig.class, remap = false)
-public class VaultGeneralConfigMixin {
+public class MixinVaultGeneralConfig {
 
 
     @Inject(method = "cancelItemInteraction", at = @At(value="RETURN"), cancellable = true)

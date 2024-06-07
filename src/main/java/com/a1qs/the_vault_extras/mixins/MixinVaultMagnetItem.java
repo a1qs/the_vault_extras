@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(value = VaultMagnetItem.class, remap = false)
-public abstract class VaultMagnetItemMixin {
+public abstract class MixinVaultMagnetItem {
     @Inject(method = "onItemPickup", at = @At(value="HEAD"), cancellable = true)
 
     private static void magnetApplyDurabilityDamageInCurio(PlayerEvent.ItemPickupEvent event, CallbackInfo ci) {

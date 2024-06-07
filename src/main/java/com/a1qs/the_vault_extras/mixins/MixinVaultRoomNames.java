@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import javax.annotation.Nullable;
 
 @Mixin(value = VaultRoomNames.class, remap = false)
-public class VaultRoomNamesMixin {
+public class MixinVaultRoomNames {
 
     @Inject(method = "getName", at = @At(value="HEAD"), cancellable = true)
     @Nullable

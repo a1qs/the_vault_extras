@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(value = PlayerEvents.class, remap = false)
-public class PlayerEventsMixin {
+public class MixinPlayerEvents {
 
     @Inject(method = "hasVaultCharm", at = @At("HEAD"), cancellable = true)
     private static void checkCuriosForVaultCharm(PlayerInventory inventory, CallbackInfoReturnable<Boolean> cir) {

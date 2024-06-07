@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(value = {PlayerInventory.class})
-public class PlayerInventoryMixin {
+public class MixinPlayerInventory {
 
     @Final
     @Shadow
     private PlayerEntity player;
 
-    public PlayerInventoryMixin() {
+    public MixinPlayerInventory() {
     }
 
     @Inject(method = {"addItemStackToInventory"}, at = {@At("HEAD")}, cancellable = true)

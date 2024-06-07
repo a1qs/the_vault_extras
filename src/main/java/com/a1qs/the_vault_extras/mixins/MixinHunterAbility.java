@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = HunterAbility.class, remap = false)
-public abstract class HunterAbilityMixin<C extends HunterConfig> extends AbilityEffect<C> {
+public abstract class MixinHunterAbility<C extends HunterConfig> extends AbilityEffect<C> {
 
     @Inject(method = "onAction(Liskallia/vault/skill/ability/config/HunterConfig;Lnet/minecraft/entity/player/ServerPlayerEntity;Z)Z", at = @At("HEAD"))
     private void hunterSoundEffect(C config, ServerPlayerEntity player, boolean active, CallbackInfoReturnable<Boolean> cir) {
