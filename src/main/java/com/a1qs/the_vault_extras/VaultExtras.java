@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras;
 
+import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModItems;
@@ -11,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -58,6 +60,7 @@ public class VaultExtras
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTabListNameFormat);
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTick);
+        MinecraftForge.EVENT_BUS.addListener(PlayerLogOutEvent::removeFromPartyUponLogout);
     }
 
     private void setup(final FMLCommonSetupEvent event)
