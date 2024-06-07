@@ -16,7 +16,6 @@ public class AnvilRecipeProvider {
     public static List<Object> getAnvilRecipes(IVanillaRecipeFactory factory) {
         ArrayList recipeList = Lists.newArrayList();
 
-        //todo: fix cake one being displayed twice
         //Cake Objective Crystal
         ItemStack cakeCrystal = new ItemStack(ModItems.VAULT_CRYSTAL);
         CrystalData cakeData = VaultCrystalItem.getData(cakeCrystal);
