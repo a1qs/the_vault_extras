@@ -21,6 +21,7 @@
     "MixinPlayerInventory",
     "MixinVaultGeneralConfig",
     "MixinVaultMagnetItem",
+    "MixinVaultPlayer",
     "MixinVaultRoomNames"
   ]
 }
