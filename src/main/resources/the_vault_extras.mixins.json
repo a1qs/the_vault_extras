@@ -16,6 +16,7 @@
     "MixinModTasks",
     "MixinNameProviderPublic",
     "MixinPartyCommand",
+    "MixinPlayerEntity",
     "MixinPlayerEvents",
     "MixinPlayerInventory",
     "MixinVaultGeneralConfig",
