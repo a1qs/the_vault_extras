@@ -1,0 +1,17 @@
+{
+  "type": "the_vault_extras:vendor",
+  "range": "18 - 64",
+  "ingredients": [
+    {
+      "item": "the_vault:vault_platinum"
+    },
+    {
+      "item": "the_vault:vault_platinum"
+    }
+  ],
+  "output": {
+    "item": "the_vault:etching",
+    "nbt": "{Vault: {Attributes: [{BaseValue: \"IDENTIFIED\", Id: \"the_vault:gear_state\"}, {BaseValue: \"TREASURE\", Id: \"the_vault:gear_set\"}]}}",
+    "count": 1
+  }
+}
