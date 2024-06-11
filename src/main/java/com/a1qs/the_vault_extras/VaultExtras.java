@@ -2,13 +2,11 @@ package com.a1qs.the_vault_extras;
 
 import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
-import com.a1qs.the_vault_extras.init.ModBlocks;
-import com.a1qs.the_vault_extras.init.ModItems;
-import com.a1qs.the_vault_extras.init.ModKeyBinds;
-import com.a1qs.the_vault_extras.init.ModRecipeTypes;
+import com.a1qs.the_vault_extras.init.*;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.events.ModSoundEvents;
 import net.minecraft.block.Block;
+import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -92,6 +90,11 @@ public class VaultExtras
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+        }
+
+        @SubscribeEvent
+        public static void onEffectRegister(RegistryEvent.Register<Effect> event) {
+            ModEffect.register(event);
         }
     }
 
