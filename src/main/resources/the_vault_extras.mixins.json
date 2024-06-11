@@ -9,6 +9,7 @@
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
+    "MixinChestRarityHelper",
     "MixinEntityEvents",
     "MixinHunterAbility",
     "MixinItemShardPouch",

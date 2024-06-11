@@ -17,8 +17,7 @@
   "tooltip.the_vault_extras.advanced_vault_pearl_speed": "Enhancement: \u00A7e\u00A7lSWIFT\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_explode": "Enhancement: \u00A7c\u00A7lUNSTABLE\u00A7r",
 
-
-
+  "effect.the_vault_extras.extra_chest_rarity": "Extra Chest Rarity",
 
   "command.the_vault_extras.difficulty.set": "The Difficulty has already been set to this value!",
   "command.the_vault_extras.difficulty.trivial": "Set difficulty to: Trivial",
