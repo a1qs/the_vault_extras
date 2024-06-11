@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value={AnvilBlock.class})
 public class MixinAnvilBlock {
-    @Inject(method={"damage"}, at={@At(value="HEAD")}, cancellable = true)
+    @Inject(method = "damage" , at = @At(value="HEAD") , cancellable = true)
     private static void damage(BlockState state, CallbackInfoReturnable<BlockState> cir) {
         if (state.matchesBlock(ModBlocks.VAULT_ANVIL.get())) {
             cir.setReturnValue(state);
