@@ -1,10 +1,8 @@
 package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AnvilBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import com.a1qs.the_vault_extras.block.VaultRecyclerBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -30,12 +28,11 @@ public class ModBlocks {
                     .notSolid()));
 
     public static final RegistryObject<Block> VAULT_ANVIL = registerBlock("vault_anvil",
-            () -> new AnvilBlock(AbstractBlock.Properties.create(Material.ANVIL)
-                    .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE).setRequiresTool()
-                    .hardnessAndResistance(3f)
-                    .sound(SoundType.ANVIL)
-                    .notSolid()));
+            () -> new AnvilBlock(AbstractBlock.Properties.from(Blocks.ANVIL)));
+
+
+    public static final RegistryObject<Block> VAULT_RECYCLER = registerBlock("vault_recycler",
+            () -> new VaultRecyclerBlock(AbstractBlock.Properties.create(Material.ROCK).notSolid()));
 
     private static <T extends Block>
     RegistryObject<T> registerBlock(String name, Supplier<T> block){

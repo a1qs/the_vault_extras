@@ -5,12 +5,14 @@ import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.events.ModSoundEvents;
+import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
+import com.a1qs.the_vault_extras.init.ModTileEntities;
 import net.minecraft.block.Block;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -43,6 +45,8 @@ public class VaultExtras
         ModBlocks.register(eventBus);
         ModSoundEvents.register(eventBus);
         ModRecipeTypes.register(eventBus);
+        ModTileEntities.register(eventBus);
+        ModContainers.register(eventBus);
 
 
         eventBus.addListener(this::setup);
@@ -67,6 +71,10 @@ public class VaultExtras
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new);
+        });
+
         ModKeyBinds.register(event);
     }
 
@@ -84,8 +92,7 @@ public class VaultExtras
     public void onServerStarting(FMLServerStartingEvent event) {
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
+
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
