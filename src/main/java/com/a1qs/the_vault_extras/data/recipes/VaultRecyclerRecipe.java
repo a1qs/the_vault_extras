@@ -1,9 +1,9 @@
 package com.a1qs.the_vault_extras.data.recipes;
 
+import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import iskallia.vault.init.ModItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -18,32 +18,31 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.jetbrains.annotations.Nullable;
 
-public class VendorRecipe implements IVendorRecipes {
+public class VaultRecyclerRecipe implements IVaultRecyclerRecipes {
 
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
-    private final String range;
 
-    public VendorRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems, String range) {
+
+    public VaultRecyclerRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
-        this.range = range;
     }
 
-    public ItemStack getIcon () {
-        return new ItemStack(ModItems.ETCHING);
-    }
-
-    @Override
-    public boolean matches(IInventory inv, World worldIn) {
-        return false;
+    public ItemStack getIcon() {
+        return new ItemStack(ModBlocks.VAULT_RECYCLER.get());
     }
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return recipeItems;
+    }
+
+    @Override
+    public boolean matches(IInventory inv, World worldIn) {
+        return recipeItems.get(0).test(inv.getStackInSlot(0));
     }
 
     @Override
@@ -56,11 +55,6 @@ public class VendorRecipe implements IVendorRecipes {
         return output.copy();
     }
 
-    public String getRange() {
-        return this.range;
-    }
-
-
     @Override
     public ResourceLocation getId() {
         return id;
@@ -68,57 +62,51 @@ public class VendorRecipe implements IVendorRecipes {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.VENDOR_SERIALIZER.get();
+        return ModRecipeTypes.RECYCLER_SERIALIZER.get();
     }
 
-    public static class VendorRecipeType implements IRecipeType<VendorRecipe> {
+    public static class VaultRecyclerRecipeType implements IRecipeType<VaultRecyclerRecipe> {
         @Override
         public String toString() {
-            return VendorRecipe.TYPE_ID.toString();
+            return VaultRecyclerRecipe.TYPE_ID.toString();
         }
     }
 
     public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
-            implements IRecipeSerializer<VendorRecipe> {
+            implements IRecipeSerializer<VaultRecyclerRecipe> {
 
         @Override
-        public VendorRecipe read(ResourceLocation recipeId, JsonObject json) {
+        public VaultRecyclerRecipe read(ResourceLocation recipeId, JsonObject json) {
             ItemStack output = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "output"));
-            String range = JSONUtils.getString(json, "range");
 
 
             JsonArray ingredients = JSONUtils.getJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(2, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
+            inputs.set(0, Ingredient.deserialize(ingredients.get(0)));
 
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.deserialize(ingredients.get(i)));
-            }
 
-            return new VendorRecipe(recipeId, output, inputs, range);
-
+            return new VaultRecyclerRecipe(recipeId, output, inputs);
         }
 
         @Nullable
         @Override
-        public VendorRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+        public VaultRecyclerRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
+            inputs.set(0, Ingredient.read(buffer));
 
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.read(buffer));
-            }
 
             ItemStack output = buffer.readItemStack();
-            return new VendorRecipe(recipeId, output, inputs, buffer.readString());
+            return new VaultRecyclerRecipe(recipeId, output, inputs);
         }
 
         @Override
-        public void write(PacketBuffer buffer, VendorRecipe recipe) {
+        public void write(PacketBuffer buffer, VaultRecyclerRecipe recipe) {
             buffer.writeInt(recipe.getIngredients().size());
             for(Ingredient ing: recipe.getIngredients()) {
-               ing.write(buffer);
+                ing.write(buffer);
             }
             buffer.writeItemStack(recipe.getRecipeOutput(), false);
-            buffer.writeString(recipe.range);
         }
     }
+
 }

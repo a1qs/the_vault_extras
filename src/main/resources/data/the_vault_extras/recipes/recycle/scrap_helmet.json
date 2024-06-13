@@ -1,0 +1,13 @@
+{
+  "type": "the_vault_extras:recycle",
+  "ingredients": [
+    {
+      "item": "the_vault:vault_platinum"
+    }
+  ],
+  "output": {
+    "item": "the_vault:etching",
+    "nbt": "{Vault: {Attributes: [{BaseValue: \"IDENTIFIED\", Id: \"the_vault:gear_state\"}, {BaseValue: \"ASSASSIN\", Id: \"the_vault:gear_set\"}]}}",
+    "count": 1
+  }
+}
