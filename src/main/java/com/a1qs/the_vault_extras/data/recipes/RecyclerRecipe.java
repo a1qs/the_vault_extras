@@ -18,14 +18,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.jetbrains.annotations.Nullable;
 
-public class VaultRecyclerRecipe implements IVaultRecyclerRecipes {
+public class RecyclerRecipe implements IRecyclerRecipe {
 
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
 
 
-    public VaultRecyclerRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
+    public RecyclerRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
@@ -65,18 +65,18 @@ public class VaultRecyclerRecipe implements IVaultRecyclerRecipes {
         return ModRecipeTypes.RECYCLER_SERIALIZER.get();
     }
 
-    public static class VaultRecyclerRecipeType implements IRecipeType<VaultRecyclerRecipe> {
+    public static class RecyclerRecipeType implements IRecipeType<RecyclerRecipe> {
         @Override
         public String toString() {
-            return VaultRecyclerRecipe.TYPE_ID.toString();
+            return RecyclerRecipe.TYPE_ID.toString();
         }
     }
 
     public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
-            implements IRecipeSerializer<VaultRecyclerRecipe> {
+            implements IRecipeSerializer<RecyclerRecipe> {
 
         @Override
-        public VaultRecyclerRecipe read(ResourceLocation recipeId, JsonObject json) {
+        public RecyclerRecipe read(ResourceLocation recipeId, JsonObject json) {
             ItemStack output = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "output"));
 
 
@@ -85,22 +85,22 @@ public class VaultRecyclerRecipe implements IVaultRecyclerRecipes {
             inputs.set(0, Ingredient.deserialize(ingredients.get(0)));
 
 
-            return new VaultRecyclerRecipe(recipeId, output, inputs);
+            return new RecyclerRecipe(recipeId, output, inputs);
         }
 
         @Nullable
         @Override
-        public VaultRecyclerRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+        public RecyclerRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
             inputs.set(0, Ingredient.read(buffer));
 
 
             ItemStack output = buffer.readItemStack();
-            return new VaultRecyclerRecipe(recipeId, output, inputs);
+            return new RecyclerRecipe(recipeId, output, inputs);
         }
 
         @Override
-        public void write(PacketBuffer buffer, VaultRecyclerRecipe recipe) {
+        public void write(PacketBuffer buffer, RecyclerRecipe recipe) {
             buffer.writeInt(recipe.getIngredients().size());
             for(Ingredient ing: recipe.getIngredients()) {
                 ing.write(buffer);

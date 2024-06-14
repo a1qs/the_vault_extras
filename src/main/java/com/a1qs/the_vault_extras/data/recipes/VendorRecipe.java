@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.jetbrains.annotations.Nullable;
 
-public class VendorRecipe implements IVendorRecipes {
+public class VendorRecipe implements IVendorRecipe {
 
     private final ResourceLocation id;
     private final ItemStack output;

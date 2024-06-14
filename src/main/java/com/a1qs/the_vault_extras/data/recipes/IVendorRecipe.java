@@ -7,8 +7,8 @@ import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
-public interface IVaultRecyclerRecipes extends IRecipe<IInventory> {
-    ResourceLocation TYPE_ID = new ResourceLocation(VaultExtras.MOD_ID, "recycle");
+public interface IVendorRecipe extends IRecipe<IInventory> {
+    ResourceLocation TYPE_ID = new ResourceLocation(VaultExtras.MOD_ID, "vendor");
 
     @Override
     default IRecipeType<?> getType() {

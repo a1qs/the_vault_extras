@@ -1,15 +1,11 @@
 package com.a1qs.the_vault_extras.block.tileentity;
 
-import com.a1qs.the_vault_extras.data.recipes.VaultRecyclerRecipe;
-import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import iskallia.vault.item.gear.VaultGear;
 import net.minecraft.block.BlockState;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
@@ -20,8 +16,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 public class VaultRecyclerTile extends TileEntity /*implements ITickableTileEntity*/ {
 
