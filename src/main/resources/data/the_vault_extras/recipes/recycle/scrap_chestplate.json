@@ -2,10 +2,10 @@
   "type": "the_vault_extras:recycle",
   "ingredients": [
     {
-      "item": "the_vault:helmet"
+      "item": "the_vault:chestplate"
     }
   ],
-  "smelttime": 20,
+  "smelttime": 40,
   "output": {
     "item": "the_vault:vault_scrap",
     "count": 2

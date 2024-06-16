@@ -1,8 +1,10 @@
 package com.a1qs.the_vault_extras.integration;
 
 import com.a1qs.the_vault_extras.VaultExtras;
+import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
 import com.a1qs.the_vault_extras.data.recipes.VendorRecipe;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
+import io.netty.util.Recycler;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaRecipeCategoryUid;
@@ -26,7 +28,8 @@ public class VaultExtrasJEI implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(
-                new VendorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+                new VendorRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
+                new RecyclerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -36,6 +39,10 @@ public class VaultExtrasJEI implements IModPlugin {
         registration.addRecipes(rm.getRecipesForType(ModRecipeTypes.VENDOR_RECIPE).stream()
                 .filter(r -> r instanceof VendorRecipe).collect(Collectors.toList()),
             VendorRecipeCategory.UID);
+
+        registration.addRecipes(rm.getRecipesForType(ModRecipeTypes.RECYCLER_RECIPE).stream()
+                        .filter(r -> r instanceof RecyclerRecipe).collect(Collectors.toList()),
+                RecyclerRecipeCategory.UID);
 
         registration.addRecipes(AnvilRecipeProvider.getAnvilRecipes(registration.getVanillaRecipeFactory()), VanillaRecipeCategoryUid.ANVIL);
     }

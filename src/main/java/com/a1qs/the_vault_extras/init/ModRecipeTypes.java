@@ -35,11 +35,13 @@ public class ModRecipeTypes implements IRecipeType {
 
 
 
+
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZER.register(eventBus);
         Registry.register(Registry.RECIPE_TYPE, RecyclerRecipe.TYPE_ID, RECYCLER_RECIPE);
 
         Registry.register(Registry.RECIPE_TYPE, VendorRecipe.TYPE_ID, VENDOR_RECIPE);
+
     }
 
 }

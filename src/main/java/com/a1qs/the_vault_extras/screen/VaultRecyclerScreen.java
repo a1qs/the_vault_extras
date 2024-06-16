@@ -32,12 +32,13 @@ public class VaultRecyclerScreen extends ContainerScreen<VaultRecyclerContainer>
         int j = this.guiTop;
         this.blit(matrixStack, i, j, 0, 0, this.xSize, this.ySize);
 
-        //todo: use the furnace arrow whateverthing to show progress (FKC YOU)
-        /*
-        if(container) {
-            this.blit(matrixStack, i + 82, j + 9, 176, 0, 24, 17);
-        }
-        */
+        //todo: properly draw arrow according to progress
+        // l being the width of the arrow :D
+
+        int l = 20;
+        this.blit(matrixStack, i + 54, j + 35, 176, 0, l + 1, 16);
+
+
 
     }
 }

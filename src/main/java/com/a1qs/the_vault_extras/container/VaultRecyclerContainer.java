@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras.container;
 
+import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import com.a1qs.the_vault_extras.init.ModBlocks;
 import com.a1qs.the_vault_extras.init.ModContainers;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
