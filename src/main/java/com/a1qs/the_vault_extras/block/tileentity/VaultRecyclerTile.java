@@ -3,7 +3,9 @@ package com.a1qs.the_vault_extras.block.tileentity;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
+import iskallia.vault.config.entry.MagnetEntry;
 import iskallia.vault.init.ModItems;
+import iskallia.vault.item.VaultMagnetItem;
 import iskallia.vault.item.gear.VaultGear;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventory;
@@ -84,7 +86,6 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
         }
     }
 
-
     private void smeltItem(ItemStack output, ItemStack extraOutput, float chance) {
         // if the stack in the inventory  is 63 or above, don't freaking do it !!
         if(!(itemHandler.getStackInSlot(1).getCount() >= itemHandler.getSlotLimit(1)-1) && !(itemHandler.getStackInSlot(2).getCount() >= itemHandler.getSlotLimit(2)-1)) {
@@ -95,7 +96,6 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                 itemHandler.insertItem(1, output, false);
 
                 if(random.nextFloat() < chance && !output.getStack().isEmpty()) {
-                    System.out.println(extraOutput);
                     itemHandler.insertItem(2, extraOutput, false);
                 }
 
@@ -105,9 +105,6 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             smeltTime = 0;
         }
     }
-
-
-
 
     private ItemStackHandler createHandler() {
         return new ItemStackHandler(4) {
@@ -125,8 +122,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                     return stack.getItem() == ModItems.VAULT_SCRAP;
                 }
                 if (slot == 0) {
-                    return stack.getItem() instanceof VaultGear;
-
+                    return stack.getItem() instanceof VaultGear || stack.getItem() instanceof VaultMagnetItem;
                 }
 
                 return false;
