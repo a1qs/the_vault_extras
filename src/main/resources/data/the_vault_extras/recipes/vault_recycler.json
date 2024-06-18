@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "PBP",
+    "NNN"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lava_bucket"
+    },
+    "P": {
+      "item": "the_vault:perfect_painite"
+    },
+    "B": {
+      "item": "minecraft:blast_furnace"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "the_vault_extras:vault_recycler",
+    "count": 1
+  }
+}

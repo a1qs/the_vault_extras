@@ -2,7 +2,7 @@
   "type": "the_vault_extras:recycle",
   "ingredients": [
     {
-      "item": "the_vault:chestplate"
+      "item": "the_vault:axe"
     }
   ],
   "smelttime": 30,

@@ -2,17 +2,17 @@
   "type": "the_vault_extras:recycle",
   "ingredients": [
     {
-      "item": "the_vault:chestplate"
+      "item": "the_vault:vault_magnet_strong"
     }
   ],
   "smelttime": 30,
-  "extrachance": 0.6,
+  "extrachance": 0.4,
   "output": {
     "item": "the_vault:vault_scrap",
     "count": 2
   },
   "extraoutput": {
     "item": "the_vault:vault_scrap",
-    "count": 1
+    "count": 2
   }
 }
