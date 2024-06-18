@@ -8,6 +8,11 @@
           "type": "minecraft:item",
           "name": "the_vault_extras:vault_anvil"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
       ]
     }
   ]
