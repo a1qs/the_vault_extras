@@ -6,17 +6,9 @@ import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
 import iskallia.vault.init.ModItems;
 import iskallia.vault.item.gear.VaultGear;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.gui.screen.inventory.FurnaceScreen;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.FurnaceContainer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.CompoundNBT;
-
-
-import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -30,17 +22,21 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity {
 
     private final ItemStackHandler itemHandler = createHandler();
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
-    private int smeltTime = 0;
+    private int smeltTime;
     private int smeltTimeTotal;
 
     public VaultRecyclerTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
+    }
+
+
+    public int getSmeltTime() {
+        return smeltTime;
     }
 
     public VaultRecyclerTile() {
@@ -51,18 +47,19 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     public void read(BlockState state, CompoundNBT nbt) {
         super.read(state, nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inv"));
+        this.smeltTime = nbt.getInt("smeltTime");
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         super.write(compound);
         compound.put("inv", itemHandler.serializeNBT());
+        compound.putInt("smeltTime", this.smeltTime);
 
         return compound;
     }
 
     public void tick() {
-
         if(!world.isRemote) {
             Inventory inv = new Inventory(itemHandler.getSlots());
 
@@ -72,14 +69,9 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
 
             ItemStack stack = inv.getStackInSlot(0);
             if(!stack.isEmpty()) {
-
                 Optional<RecyclerRecipe> recipe = world.getRecipeManager()
                         .getRecipe(ModRecipeTypes.RECYCLER_RECIPE, inv, world);
-
-
                 recipe.ifPresent(iRecipe -> {
-
-
                     ItemStack output = iRecipe.getRecipeOutput();
                     smeltTimeTotal = iRecipe.getSmeltTime();
                     smeltItem(output);
@@ -93,7 +85,6 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
         // if the stack in the inventory  is 63 or above, don't freaking do it !!
         if(!(itemHandler.getStackInSlot(1).getCount() >= itemHandler.getSlotLimit(1)-1)) {
             smeltTime++;
-            System.out.println(smeltTime);
             if(smeltTime >= smeltTimeTotal) {
                 smeltTime = 0;
                 itemHandler.extractItem(0, 1, false);
@@ -104,6 +95,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             smeltTime = 0;
         }
     }
+
 
 
 

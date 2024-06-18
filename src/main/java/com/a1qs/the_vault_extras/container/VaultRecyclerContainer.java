@@ -9,11 +9,12 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntArray;
+import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -23,14 +24,20 @@ public class VaultRecyclerContainer extends Container {
     private final TileEntity tileEntity;
     private final PlayerEntity playerEntity;
     private final IItemHandler playerInventory;
+    private final IIntArray recyclerData;
 
     public VaultRecyclerContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
+        this(windowId, world, pos, playerInventory, player, new IntArray(4));
+    }
+
+    public VaultRecyclerContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, IIntArray recyclerData) {
         super(ModContainers.VAULT_RECYCLER_CONTAINER.get(), windowId);
+        this.recyclerData = recyclerData;
+        assertIntArraySize(recyclerData, 2);
         this.tileEntity = world.getTileEntity(pos);
         playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
 
-        //todo: check pixel values
         layoutPlayerInventorySlots(8 , 86);
 
         if(tileEntity != null) {
@@ -41,7 +48,21 @@ public class VaultRecyclerContainer extends Container {
                 addSlot(new SlotItemHandler(h, 3, 118, 35));
             });
         }
+        this.trackIntArray(recyclerData);
+
+        trackInt(new IntReferenceHolder() {
+            @Override
+            public int get() {
+                return getRecyclerTile().getSmeltTime();
+            }
+
+            @Override
+            public void set(int value) {
+                recyclerData.set(0, value);
+            }
+        });
     }
+
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
@@ -56,6 +77,14 @@ public class VaultRecyclerContainer extends Container {
         }
 
         return index;
+    }
+
+    public IIntArray getRecyclerData() {
+        return recyclerData;
+    }
+
+    public VaultRecyclerTile getRecyclerTile(){
+        return (VaultRecyclerTile) tileEntity;
     }
 
     private int addSlotBox(IItemHandler handler, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
