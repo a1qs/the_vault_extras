@@ -32,7 +32,12 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> VAULT_RECYCLER = registerBlock("vault_recycler",
-            () -> new VaultRecyclerBlock(AbstractBlock.Properties.create(Material.ROCK).notSolid()));
+            () -> new VaultRecyclerBlock(AbstractBlock.Properties.create(Material.ROCK)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.PICKAXE).setRequiresTool()
+                    .hardnessAndResistance(3f)
+                    .notSolid()));
+
 
     private static <T extends Block>
     RegistryObject<T> registerBlock(String name, Supplier<T> block){
