@@ -5,7 +5,6 @@ import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import com.a1qs.the_vault_extras.container.VaultRecyclerContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.screen.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -42,7 +41,5 @@ public class VaultRecyclerScreen extends ContainerScreen<VaultRecyclerContainer>
             int l = smeltingDuration*24/30;
             this.blit(matrixStack, i + 54, j + 35, 176, 0, l + 1, 16);
         }
-
-
     }
 }
