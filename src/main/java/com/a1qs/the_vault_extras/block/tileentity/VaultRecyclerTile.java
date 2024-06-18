@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.Random;
 
 public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity {
 
@@ -29,6 +30,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
     private int smeltTime;
     private int smeltTimeTotal;
+    private final Random random = new Random();
 
     public VaultRecyclerTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
@@ -73,22 +75,30 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                         .getRecipe(ModRecipeTypes.RECYCLER_RECIPE, inv, world);
                 recipe.ifPresent(iRecipe -> {
                     ItemStack output = iRecipe.getRecipeOutput();
+                    ItemStack extraOutput = iRecipe.getExtraOutput();
+                    float extraChance = iRecipe.getExtraChance();
                     smeltTimeTotal = iRecipe.getSmeltTime();
-                    smeltItem(output);
+                    smeltItem(output, extraOutput, extraChance);
                 });
             }
         }
     }
 
 
-    private void smeltItem(ItemStack output) {
+    private void smeltItem(ItemStack output, ItemStack extraOutput, float chance) {
         // if the stack in the inventory  is 63 or above, don't freaking do it !!
-        if(!(itemHandler.getStackInSlot(1).getCount() >= itemHandler.getSlotLimit(1)-1)) {
+        if(!(itemHandler.getStackInSlot(1).getCount() >= itemHandler.getSlotLimit(1)-1) && !(itemHandler.getStackInSlot(2).getCount() >= itemHandler.getSlotLimit(2)-1)) {
             smeltTime++;
             if(smeltTime >= smeltTimeTotal) {
                 smeltTime = 0;
                 itemHandler.extractItem(0, 1, false);
                 itemHandler.insertItem(1, output, false);
+
+                if(random.nextFloat() < chance && !output.getStack().isEmpty()) {
+                    System.out.println(extraOutput);
+                    itemHandler.insertItem(2, extraOutput, false);
+                }
+
                 markDirty();
             }
         } else {
