@@ -8,6 +8,7 @@
 
   "block.the_vault_extras.infusion_altar": "Infusion Altar",
   "block.the_vault_extras.vault_anvil": "Vault Anvil",
+  "block.the_vault_extras.vault_recycler": "Vault Recycler",
 
   "tooltip.the_vault_extras.cake_seal1": "\u00A78Seems inedible\u00A7r",
   "tooltip.the_vault_extras.cake_seal2": "\u00A75Your ticket to a buffet of cakes\u00A7r",
@@ -17,8 +18,6 @@
   "tooltip.the_vault_extras.advanced_vault_pearl_speed": "Enhancement: \u00A7e\u00A7lSWIFT\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_explode": "Enhancement: \u00A7c\u00A7lUNSTABLE\u00A7r",
 
-  "effect.the_vault_extras.extra_chest_rarity": "Extra Chest Rarity",
-
   "command.the_vault_extras.difficulty.set": "The Difficulty has already been set to this value!",
   "command.the_vault_extras.difficulty.trivial": "Set difficulty to: Trivial",
   "command.the_vault_extras.difficulty.casual": "Set difficulty to: Casual",
@@ -26,7 +25,10 @@
   "command.the_vault_extras.difficulty.hard": "Set difficulty to: Hard",
   "command.the_vault_extras.difficulty.extreme": "Set difficulty to: Extreme",
 
+  "effect.the_vault_extras.extra_chest_rarity": "Extra Chest Rarity",
+  "screen.vault_extras.vault_recycler": "Vault Recycler",
   "itemGroup.vaultExtrasTab": "The Vault Extras",
+  "jei.the_vault_extras.recycle": "Vault Recycler",
   "jei.the_vault_extras.vendor": "Vendor Purchases",
   "the_vault_extras.hunter_cast": "Cast Ability Hunter",
   "the_vault_extras.mob_trap": "Mob Trap Activated",
