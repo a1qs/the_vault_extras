@@ -19,7 +19,7 @@ public class MixinPlayerInventory {
 
     @Final
     @Shadow
-    private PlayerEntity player;
+    public PlayerEntity player;
 
     public MixinPlayerInventory() {
     }
