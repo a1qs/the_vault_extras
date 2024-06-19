@@ -13,6 +13,7 @@
     "MixinEntityEvents",
     "MixinHunterAbility",
     "MixinItemShardPouch",
+    "MixinItemStack",
     "MixinMobTrapEffects",
     "MixinModTasks",
     "MixinNameProviderPublic",
