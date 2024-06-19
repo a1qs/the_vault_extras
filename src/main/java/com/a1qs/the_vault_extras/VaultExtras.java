@@ -43,11 +43,12 @@ public class VaultExtras
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModConfigs.register();
+        ModConfigs.registerCompressionConfigs();
         ModSoundEvents.register(eventBus);
         ModRecipeTypes.register(eventBus);
         ModTileEntities.register(eventBus);
         ModContainers.register(eventBus);
-
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
