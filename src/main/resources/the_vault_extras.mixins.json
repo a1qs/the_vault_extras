@@ -21,6 +21,7 @@
     "MixinPlayerEntity",
     "MixinPlayerEvents",
     "MixinPlayerInventory",
+    "MixinReloadConfigsCommand",
     "MixinVaultGeneralConfig",
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
