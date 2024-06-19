@@ -124,6 +124,9 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:dank-storage-335673:3765084")
     runtimeOnly fg.deobf("curse.maven:shutup-experimental-settings-407174:3188120")
 
+    implementation fg.deobf("curse.maven:quark-243121:3642325")
+    implementation fg.deobf("curse.maven:autoreglib-250363:3326041")
+
     implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:3998397")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
