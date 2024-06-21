@@ -112,15 +112,6 @@ public abstract class MixinVaultMagnetItem {
 
     /**
      * @author a1qs
-     * @reason make Vault Magnets enchantable
-     */
-    @Overwrite
-    public boolean isEnchantable(ItemStack stack) {
-       return true;
-    }
-
-    /**
-     * @author a1qs
      * @reason make Vault Magnets enchantable with Unbreaking
      */
     @Overwrite
