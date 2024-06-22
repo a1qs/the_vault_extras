@@ -6,6 +6,7 @@ import com.a1qs.the_vault_extras.item.CakeSeal;
 import com.a1qs.the_vault_extras.item.LootableItemExtras;
 import com.a1qs.the_vault_extras.item.VaultAnnihilator;
 import iskallia.vault.config.entry.vending.ProductEntry;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -41,6 +42,11 @@ public class ModItems {
             () -> new CakeSeal(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)
                     .maxStackSize(1)));
+
+    public static final RegistryObject<Item> VAULT_MEAL = ITEMS.register("vault_meal",
+            () -> new Item(new Item.Properties()
+                    .group(ModItemGroup.VAULT_EXTRAS)
+                    .food(new Food.Builder().hunger(10).saturation(1.5F).fastToEat().build())));
 
     public static final RegistryObject<Item> MYSTERY_RUNE = ITEMS.register("mystery_rune",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
