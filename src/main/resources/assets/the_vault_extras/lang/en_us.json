@@ -7,6 +7,7 @@
   "item.the_vault_extras.cake_seal": "Cake: After Dark",
   "item.the_vault_extras.mystery_rune": "Mystery Rune",
   "item.the_vault_extras.mystery_book": "Mystery Book",
+  "item.the_vault_extras.bunny_charm": "Bunny Charm",
 
   "block.the_vault_extras.infusion_altar": "Infusion Altar",
   "block.the_vault_extras.vault_anvil": "Vault Anvil",
@@ -16,9 +17,10 @@
   "tooltip.the_vault_extras.cake_seal2": "\u00A75Your ticket to a buffet of cakes\u00A7r",
   "tooltip.the_vault_extras.vault_annihilator1": "\u00A7eForged by the Vault Gods\u00A7r",
   "tooltip.the_vault_extras.vault_annihilator2": "\u00A7eObliterates any block that crosses it's path\u00A7r",
-  "tooltip.the_vault_extras.advanced_vault_pearl_unbreakable": "Enhancement: \u00A7lINDESTRUCTABLE",
+  "tooltip.the_vault_extras.advanced_vault_pearl_unbreakable": "Enhancement: \u00A7lINDESTRUCTABLE\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_speed": "Enhancement: \u00A7e\u00A7lSWIFT\u00A7r",
   "tooltip.the_vault_extras.advanced_vault_pearl_explode": "Enhancement: \u00A7c\u00A7lUNSTABLE\u00A7r",
+  "tooltip.the_vault_extras.bunny_charm1": "\u00A7eAllows you to hop around like a bunny!\u00A7r",
 
   "command.the_vault_extras.difficulty.set": "The Difficulty has already been set to this value!",
   "command.the_vault_extras.difficulty.trivial": "Set difficulty to: Trivial",

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "the_vault:shard_pouch"
+    "the_vault:shard_pouch",
+    "the_vault_extras:bunny_charm"
   ]
 }

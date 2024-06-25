@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "the_vault_extras:item/bunny_charm"
+  }
+}
