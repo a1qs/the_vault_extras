@@ -33,6 +33,9 @@ public class MixinVaultRoomNames {
             case "contest_squid":
                 cir.setReturnValue(new StringTextComponent("Contest: Squid").mergeStyle(TextFormatting.DARK_AQUA));
                 break;
+            case "god_room":
+                cir.setReturnValue(new StringTextComponent("God Room").mergeStyle(TextFormatting.DARK_AQUA));
+                break;
         }
     }
 }
