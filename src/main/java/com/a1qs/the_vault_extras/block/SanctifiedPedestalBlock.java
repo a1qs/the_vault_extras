@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras.block;
 
 import com.a1qs.the_vault_extras.block.tileentity.SanctifiedPedestalTile;
+import com.a1qs.the_vault_extras.init.ModParticles;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import iskallia.vault.attribute.EnumAttribute;
 import iskallia.vault.attribute.IntegerAttribute;
@@ -10,7 +11,7 @@ import iskallia.vault.item.gear.VaultGear;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.item.Items;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -67,6 +68,10 @@ public class SanctifiedPedestalBlock extends Block {
                             }
                         }
                     }
+                } else if (!(stack.getItem() == Items.AIR) && !state.get(USED)) {
+                    player.sendStatusMessage(new StringTextComponent(TextFormatting.RED + "This item doesnt seem to work.. perhaps I should try something god-related"), true);
+                } else {
+                    player.sendStatusMessage(new StringTextComponent(TextFormatting.RED + "Nothing happened, maybe I should try using an item"), true);
                 }
             }
         }
@@ -82,16 +87,16 @@ public class SanctifiedPedestalBlock extends Block {
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if(!stateIn.get(USED)) {
             if(0.35F < rand.nextFloat()) {
-                worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.2D, pos.getY() + 1.1D, pos.getZ() + 0.2D, 0.0D, 0.01D, 0.0D);
-                worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.8D, pos.getY() + 1.1D, pos.getZ() + 0.8D, 0.0D, 0.01D, 0.0D);
-                worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.8D, pos.getY() + 1.1D, pos.getZ() + 0.2D, 0.0D, 0.01D, 0.0D);
-                worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.2D, pos.getY() + 1.1D, pos.getZ() + 0.8D, 0.0D, 0.01D, 0.0D);
+                worldIn.addParticle(ModParticles.WHITE_FLAME.get(), pos.getX() + 0.15D, pos.getY() + 1.1D, pos.getZ() + 0.15D, 0.0D, 0.01D, 0.0D);
+                worldIn.addParticle(ModParticles.WHITE_FLAME.get(), pos.getX() + 0.85D, pos.getY() + 1.1D, pos.getZ() + 0.85D, 0.0D, 0.01D, 0.0D);
+                worldIn.addParticle(ModParticles.WHITE_FLAME.get(), pos.getX() + 0.85D, pos.getY() + 1.1D, pos.getZ() + 0.15D, 0.0D, 0.01D, 0.0D);
+                worldIn.addParticle(ModParticles.WHITE_FLAME.get(), pos.getX() + 0.15D, pos.getY() + 1.1D, pos.getZ() + 0.85D, 0.0D, 0.01D, 0.0D);
             }
         } else {
-            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.2D, pos.getY() + 1.1D, pos.getZ() + 0.2D, 0.0D, 0.01D, 0.0D);
-            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.8D, pos.getY() + 1.1D, pos.getZ() + 0.8D, 0.0D, 0.01D, 0.0D);
-            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.8D, pos.getY() + 1.1D, pos.getZ() + 0.2D, 0.0D, 0.01D, 0.0D);
-            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.2D, pos.getY() + 1.1D, pos.getZ() + 0.8D, 0.0D, 0.01D, 0.0D);
+            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.85D, pos.getY() + 1.1D, pos.getZ() + 0.85D, 0.0D, 0.01D, 0.0D);
+            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.85D, pos.getY() + 1.1D, pos.getZ() + 0.15D, 0.0D, 0.01D, 0.0D);
+            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.15D, pos.getY() + 1.1D, pos.getZ() + 0.85D, 0.0D, 0.01D, 0.0D);
+            worldIn.addParticle(RedstoneParticleData.REDSTONE_DUST, pos.getX() + 0.15D, pos.getY() + 1.1D, pos.getZ() + 0.15D, 0.0D, 0.01D, 0.0D);
         }
     }
 
