@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
+import com.a1qs.the_vault_extras.block.SanctifiedPedestalBlock;
 import com.a1qs.the_vault_extras.block.VaultRecyclerBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -36,6 +37,11 @@ public class ModBlocks {
                     .harvestLevel(2)
                     .harvestTool(ToolType.PICKAXE).setRequiresTool()
                     .hardnessAndResistance(3f)
+                    .notSolid()));
+
+    public static final RegistryObject<Block> SANCTIFIED_PEDESTAL = registerBlock("sanctified_pedestal",
+            () -> new SanctifiedPedestalBlock(AbstractBlock.Properties.create(Material.ROCK)
+                    .hardnessAndResistance(-1f)
                     .notSolid()));
 
 
