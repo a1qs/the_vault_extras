@@ -6,12 +6,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
-import java.util.Random;
-
 public class SanctifiedPedestalTile extends TileEntity {
 
     private boolean isUsed = false;
-    private static final Random rand = new Random();
 
     public SanctifiedPedestalTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
@@ -19,10 +16,6 @@ public class SanctifiedPedestalTile extends TileEntity {
 
     public SanctifiedPedestalTile() {
         this(ModTileEntities.SANCTIFIED_PEDESTAL_TILE.get());
-    }
-
-    public boolean getUsed() {
-        return this.isUsed;
     }
 
     public void setUsed(boolean used) {
