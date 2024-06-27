@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
+import iskallia.vault.Vault;
 import iskallia.vault.config.DurabilityConfig;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModItems;
@@ -57,19 +58,16 @@ public abstract class MixinVaultMagnetItem {
         int unbreakingLevel;
         DurabilityConfig cfg = ModConfigs.DURBILITY;
 
-
-
-
         for(int i = 0; i < inventory.getSizeInventory(); ++i) {
             ItemStack stack = inventory.getStackInSlot(i);
             if (!stack.isEmpty()) {
                 if (isMagnet(stack) && stack.getOrCreateTag().getBoolean("Enabled")) {
-
                     unbreakingLevel = calculateUnbreakingLevel(player, stack);
                     float chance = cfg.getDurabilityIgnoreChance(unbreakingLevel);
-                    if(random.nextFloat() < chance) {
-                        stack.damageItem(1, player, (onBroken) -> {
-                        });
+                    if(player.getEntityWorld().getDimensionKey() == Vault.VAULT_KEY) {
+                        if (random.nextFloat() > chance) {
+                            stack.damageItem(1, player, (onBroken) -> {});
+                        }
                     }
                 } else {
                     LazyOptional<IItemHandler> itemHandler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
@@ -79,13 +77,13 @@ public abstract class MixinVaultMagnetItem {
                             if (isMagnet(stackInHandler) && stack.getOrCreateTag().getBoolean("Enabled")) {
                                 int handlerUnbreakingLevel = calculateUnbreakingLevel(player, stack);
                                 float chance = cfg.getDurabilityIgnoreChance(handlerUnbreakingLevel);
-                                if(random.nextFloat() < chance) {
-                                    stackInHandler.damageItem(1, player, (onBroken) -> {
-                                    });
+                                if(player.getEntityWorld().getDimensionKey() == Vault.VAULT_KEY) {
+                                    if (random.nextFloat() > chance) {
+                                        stackInHandler.damageItem(1, player, (onBroken) -> {});
+                                    }
                                 }
                             }
                         }
-
                     });
                 }
             }
@@ -97,12 +95,12 @@ public abstract class MixinVaultMagnetItem {
                 ItemStack stack = CuriosApi.getCuriosHelper().findFirstCurio(inventory.player, magnet).get().getStack();
 
                 if (stack.getOrCreateTag().getBoolean("Enabled")) {
-
                     unbreakingLevel = calculateUnbreakingLevel(player, stack);
                     float chance = cfg.getDurabilityIgnoreChance(unbreakingLevel);
-                    if(random.nextFloat() < chance) {
-                        stack.damageItem(1, player, (onBroken) -> {
-                        });
+                    if(player.getEntityWorld().getDimensionKey() == Vault.VAULT_KEY) {
+                        if (random.nextFloat() > chance) {
+                            stack.damageItem(1, player, (onBroken) -> {});
+                        }
                     }
                 }
                 break;
