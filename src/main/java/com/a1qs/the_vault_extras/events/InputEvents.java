@@ -2,9 +2,8 @@ package com.a1qs.the_vault_extras.events;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.init.ModKeyBinds;
-import com.a1qs.the_vault_extras.network.InputMessage;
+import com.a1qs.the_vault_extras.network.MagnetMessage;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
-import com.sun.media.jfxmedia.logging.Logger;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -30,7 +29,7 @@ public class InputEvents {
 
     private static void onInput(Minecraft mc, int key, int action) {
         if(mc.currentScreen == null && ModKeyBinds.magnetToggle.isPressed()) {
-            VaultExtrasNetwork.CHANNEL.sendToServer(new InputMessage(key));
+            VaultExtrasNetwork.CHANNEL.sendToServer(new MagnetMessage(key));
         }
     }
 }
