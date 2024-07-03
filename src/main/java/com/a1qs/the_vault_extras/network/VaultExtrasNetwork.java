@@ -13,6 +13,6 @@ public class VaultExtrasNetwork {
                     version -> version.equals(NETWORK_VERSION), version -> version.equals(NETWORK_VERSION));
 
     public static void init() {
-        CHANNEL.registerMessage(0, InputMessage.class, InputMessage::encode, InputMessage::decode, InputMessage::handle);
+        CHANNEL.registerMessage(0, MagnetMessage.class, MagnetMessage::encode, MagnetMessage::decode, MagnetMessage::handle);
     }
 }

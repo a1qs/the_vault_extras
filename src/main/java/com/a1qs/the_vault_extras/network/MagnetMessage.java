@@ -16,26 +16,26 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.function.Supplier;
 
-public class InputMessage {
+public class MagnetMessage {
 
     public int key;
 
-    public InputMessage() {
+    public MagnetMessage() {
     }
 
-    public InputMessage(int key) {
+    public MagnetMessage(int key) {
         this.key = key;
     }
 
-    public static void encode(InputMessage message, PacketBuffer buffer) {
+    public static void encode(MagnetMessage message, PacketBuffer buffer) {
         buffer.writeInt(message.key);
     }
 
-    public static InputMessage decode(PacketBuffer buffer) {
-        return new InputMessage(buffer.readInt());
+    public static MagnetMessage decode(PacketBuffer buffer) {
+        return new MagnetMessage(buffer.readInt());
     }
 
-    public static void handle (InputMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+    public static void handle (MagnetMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() ->{
             ServerPlayerEntity player = context.getSender();
