@@ -35,9 +35,6 @@ public class GetPlayerLevel {
 
         int vaultLevel = PlayerVaultStatsData.get(target.getServerWorld()).getVaultStats(target).getVaultLevel();
         source.sendFeedback(new TranslationTextComponent("command.the_vault_extras.getplayerlevel.success", target.getDisplayName(), vaultLevel), true);
-
-
-        // source.sendFeedback(new TranslationTextComponent("commands.give.success.single", count, itemIn.createStack(count, false).getTextComponent(), targets.iterator().next().getDisplayName()), true);
-        return 0;
+        return vaultLevel;
     }
 }
