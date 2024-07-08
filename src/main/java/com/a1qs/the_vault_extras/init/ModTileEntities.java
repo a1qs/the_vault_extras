@@ -1,7 +1,7 @@
 package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import com.a1qs.the_vault_extras.block.tileentity.SanctifiedPedestalTile;
+import com.a1qs.the_vault_extras.block.tileentity.DecayedCrystallizerTile;
 import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,9 +17,10 @@ public class ModTileEntities {
             TILE_ENTITIES.register("vault_recycler_tile", () -> TileEntityType.Builder.create(
                     VaultRecyclerTile::new, ModBlocks.VAULT_RECYCLER.get()).build(null)
             );
-    public static RegistryObject<TileEntityType<SanctifiedPedestalTile>> SANCTIFIED_PEDESTAL_TILE =
-            TILE_ENTITIES.register("sanctified_pedestal_tile", () -> TileEntityType.Builder.create(
-                    SanctifiedPedestalTile::new, ModBlocks.SANCTIFIED_PEDESTAL.get()).build(null)
+
+    public static RegistryObject<TileEntityType<DecayedCrystallizerTile>> DECAYED_CRYSTALLIZER_TILE =
+            TILE_ENTITIES.register("decayed_crystallizer_tile", () -> TileEntityType.Builder.create(
+                    DecayedCrystallizerTile::new, ModBlocks.DECAYED_CRYSTALLIZER.get()).build(null)
             );
 
     public static void register(IEventBus eventBus) {
