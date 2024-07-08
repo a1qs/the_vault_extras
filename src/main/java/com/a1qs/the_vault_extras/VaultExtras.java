@@ -4,7 +4,7 @@ import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
-import com.a1qs.the_vault_extras.events.ModSoundEvents;
+import com.a1qs.the_vault_extras.events.ModSounds;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import net.minecraft.block.Block;
@@ -45,7 +45,7 @@ public class VaultExtras
         ModBlocks.register(eventBus);
         ModConfigs.register();
         ModConfigs.registerCompressionConfigs();
-        ModSoundEvents.register(eventBus);
+        ModSounds.register(eventBus);
         ModRecipeTypes.register(eventBus);
         ModTileEntities.register(eventBus);
         ModContainers.register(eventBus);

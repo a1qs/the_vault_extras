@@ -8,10 +8,11 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModSoundEvents {
+public class ModSounds {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, VaultExtras.MOD_ID);
+
 
     public static final RegistryObject<SoundEvent> HUNTER_SFX =
             registerSoundEvent("hunter");
