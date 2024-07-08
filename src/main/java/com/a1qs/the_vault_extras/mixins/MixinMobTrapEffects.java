@@ -1,6 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
-import com.a1qs.the_vault_extras.events.ModSoundEvents;
+import com.a1qs.the_vault_extras.events.ModSounds;
 import iskallia.vault.world.vault.VaultRaid;
 import iskallia.vault.world.vault.chest.MobTrapEffect;
 import iskallia.vault.world.vault.player.VaultPlayer;
@@ -22,8 +22,8 @@ public class MixinMobTrapEffects {
         ServerPlayerEntity playerEntity = (ServerPlayerEntity) world.getEntityByUuid(player.getPlayerId());
         assert playerEntity != null;
 
-        playerEntity.world.playSound(playerEntity, playerEntity.getPosY(), playerEntity.getPosY(), playerEntity.getPosZ(), ModSoundEvents.MOB_TRAP_SFX.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
-        playerEntity.playSound(ModSoundEvents.MOB_TRAP_SFX.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
+        playerEntity.world.playSound(playerEntity, playerEntity.getPosY(), playerEntity.getPosY(), playerEntity.getPosZ(), ModSounds.MOB_TRAP_SFX.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
+        playerEntity.playSound(ModSounds.MOB_TRAP_SFX.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
 
     }
 

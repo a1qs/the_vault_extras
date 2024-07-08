@@ -1,6 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
-import com.a1qs.the_vault_extras.events.ModSoundEvents;
+import com.a1qs.the_vault_extras.events.ModSounds;
 import iskallia.vault.Vault;
 
 import iskallia.vault.skill.ability.config.HunterConfig;
@@ -22,8 +22,8 @@ public abstract class MixinHunterAbility<C extends HunterConfig> extends Ability
     private void hunterSoundEffect(C config, ServerPlayerEntity player, boolean active, CallbackInfoReturnable<Boolean> cir) {
         World world = player.getEntityWorld();
         if (player instanceof ServerPlayerEntity && world instanceof ServerWorld && world.getDimensionKey() == Vault.VAULT_KEY) {
-            player.world.playSound(player, player.getPosX(), player.getPosY(), player.getPosZ(), ModSoundEvents.HUNTER_SFX.get(), SoundCategory.PLAYERS, 0.2F, 1.0F);
-            player.playSound(ModSoundEvents.HUNTER_SFX.get(), SoundCategory.PLAYERS, 0.2F, 1.0F);
+            player.world.playSound(player, player.getPosX(), player.getPosY(), player.getPosZ(), ModSounds.HUNTER_SFX.get(), SoundCategory.PLAYERS, 0.2F, 1.0F);
+            player.playSound(ModSounds.HUNTER_SFX.get(), SoundCategory.PLAYERS, 0.2F, 1.0F);
         }
     }
 }
