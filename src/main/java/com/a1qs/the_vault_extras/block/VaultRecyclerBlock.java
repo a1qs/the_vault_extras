@@ -32,7 +32,6 @@ public class VaultRecyclerBlock extends Block {
 
     public VaultRecyclerBlock(Properties properties) {
         super(properties);
-
     }
 
     @Override
