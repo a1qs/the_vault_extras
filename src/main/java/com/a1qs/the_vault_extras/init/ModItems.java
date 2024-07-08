@@ -58,7 +58,7 @@ public class ModItems {
                     () -> ((ProductEntry)ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
 
 
-    public static void register (IEventBus eventBus) {
+    public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 }
