@@ -30,6 +30,7 @@
   "command.the_vault_extras.difficulty.hard": "Set difficulty to: Hard",
   "command.the_vault_extras.difficulty.extreme": "Set difficulty to: Extreme",
   "command.the_vault_extras.getplayerlevel.success": "%s's Vault Level is: %s",
+  "command.the_vault_extras.setFavour.success": "Added %s Favour(s) to %s",
 
   "effect.the_vault_extras.extra_chest_rarity": "Extra Chest Rarity",
   "screen.vault_extras.vault_recycler": "Vault Recycler",
@@ -42,5 +43,6 @@
   "key.the_vault_extras.magnet_toggle": "Toggle Magnet",
   "curios.identifier.magnet": "Magnet",
   "curios.identifier.vault_charm": "Vault Charm"
+
 }
 

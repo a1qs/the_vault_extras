@@ -49,6 +49,10 @@ public class ModItems {
             () -> new BunnyHoppingCharm(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)));
 
+    public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
+            () -> new DebugItem(new Item.Properties()
+                    .group(ModItemGroup.VAULT_EXTRAS)));
+
     public static final RegistryObject<Item> MYSTERY_RUNE = ITEMS.register("mystery_rune",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
                     () -> ((ProductEntry)ModConfigs.MYSTERY_RUNE.POOL.getRandom(new Random())).generateItemStack()));
@@ -56,6 +60,7 @@ public class ModItems {
     public static final RegistryObject<Item> MYSTERY_BOOK = ITEMS.register("mystery_book",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
                     () -> ((ProductEntry)ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
+
 
 
     public static void register(IEventBus eventBus) {
