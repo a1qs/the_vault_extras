@@ -4,7 +4,6 @@ import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
 import com.a1qs.the_vault_extras.data.recipes.VendorRecipe;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
-import io.netty.util.Recycler;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaRecipeCategoryUid;
