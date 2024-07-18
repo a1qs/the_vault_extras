@@ -42,7 +42,7 @@ public class SetGlobalCrystalDifficultyCommand {
     // I don't care, it works
     // go make a PR if it bothers you that much
     private int setDifficultyTrivial(CommandContext<CommandSource> context) {
-        CommandSource source = (CommandSource)context.getSource();
+        CommandSource source = context.getSource();
         if(GlobalDifficultyData.get(source.getWorld()).getCrystalCost() == GlobalDifficultyData.Difficulty.TRIVIAL) {
             throw new CommandException(new TranslationTextComponent(ERROR_MESSAGE_KEY));
         }
@@ -52,7 +52,7 @@ public class SetGlobalCrystalDifficultyCommand {
     }
 
     private int setDifficultyCasual(CommandContext<CommandSource> context) {
-        CommandSource source = (CommandSource)context.getSource();
+        CommandSource source = context.getSource();
         if(GlobalDifficultyData.get(source.getWorld()).getCrystalCost() == GlobalDifficultyData.Difficulty.CASUAL) {
             throw new CommandException(new TranslationTextComponent(ERROR_MESSAGE_KEY));
         }
@@ -62,7 +62,7 @@ public class SetGlobalCrystalDifficultyCommand {
     }
 
     private int setDifficultyStandard(CommandContext<CommandSource> context) {
-        CommandSource source = (CommandSource)context.getSource();
+        CommandSource source = context.getSource();
         if(GlobalDifficultyData.get(source.getWorld()).getCrystalCost() == GlobalDifficultyData.Difficulty.STANDARD) {
             throw new CommandException(new TranslationTextComponent(ERROR_MESSAGE_KEY));
         }
@@ -72,7 +72,7 @@ public class SetGlobalCrystalDifficultyCommand {
     }
 
     private int setDifficultyHard(CommandContext<CommandSource> context) {
-        CommandSource source = (CommandSource)context.getSource();
+        CommandSource source = context.getSource();
         if(GlobalDifficultyData.get(source.getWorld()).getCrystalCost() == GlobalDifficultyData.Difficulty.HARD) {
             throw new CommandException(new TranslationTextComponent(ERROR_MESSAGE_KEY));
         }
@@ -82,7 +82,7 @@ public class SetGlobalCrystalDifficultyCommand {
     }
 
     private int setDifficultyExtreme(CommandContext<CommandSource> context) {
-        CommandSource source = (CommandSource)context.getSource();
+        CommandSource source = context.getSource();
         if(GlobalDifficultyData.get(source.getWorld()).getCrystalCost() == GlobalDifficultyData.Difficulty.EXTREME) {
             throw new CommandException(new TranslationTextComponent(ERROR_MESSAGE_KEY));
         }
