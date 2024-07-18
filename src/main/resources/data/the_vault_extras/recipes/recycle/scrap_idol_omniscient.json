@@ -9,7 +9,7 @@
   "extrachance": 0.6,
   "output": {
     "item": "the_vault:vault_scrap",
-    "count": 2
+    "count": 3
   },
   "extraoutput": {
     "item": "the_vault:vault_scrap",
