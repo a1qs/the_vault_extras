@@ -70,6 +70,9 @@ public class AnvilRecipeProvider {
         VaultCrystalItem.setRandomSeed(raffleCrystal);
         recipeList.add(factory.createAnvilRecipe(new ItemStack(ModItems.VAULT_CRYSTAL), Collections.singletonList(new ItemStack(ModItems.CRYSTAL_SEAL_RAFFLE)), Collections.singletonList(raffleCrystal)));
 
+
+        //todo: probably refactor this to not show redundant information
+
         //Repair Vault Armor Item [T1]
         ItemStack vaultArmorPieceT1 = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 0, 0, false);
         ItemStack repairedVaultArmorPieceT1 = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 0, 1, false);
@@ -107,11 +110,65 @@ public class AnvilRecipeProvider {
 
         recipeList.add(factory.createAnvilRecipe(scrollArmorPiece, Collections.singletonList(new ItemStack(ModItems.ARTISAN_SCROLL)), Collections.singletonList(scrollRerolledArmorPiece)));
 
+        //T1 Vault Plating
+        ItemStack t1plateArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 0, 0, false);
+        ItemStack t1platedArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 0, 0, false);
+        ModAttributes.ADD_PLATING.create(t1platedArmorPiece, 1);
+
+        recipeList.add(factory.createAnvilRecipe(t1plateArmorPiece, Collections.singletonList(new ItemStack(ModItems.VAULT_PLATING)), Collections.singletonList(t1platedArmorPiece)));
+
+        //T2 Vault Plating
+        ItemStack t2plateArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 1, VaultGear.Rarity.SCRAPPY, 2, 8.0D, 0.7D, 1600, 0, 5, 0, 0, false);
+        ItemStack t2platedArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 1, VaultGear.Rarity.SCRAPPY, 2, 8.0D, 0.7D, 1600, 0, 5, 0, 0, false);
+        ModAttributes.ADD_PLATING.create(t2platedArmorPiece, 1);
+
+        recipeList.add(factory.createAnvilRecipe(t2plateArmorPiece, Collections.singletonList(new ItemStack(ModItems.VAULT_PLATING_T2)), Collections.singletonList(t2platedArmorPiece)));
+
+        //T3 Vault Plating
+        ItemStack t3plateArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 2, VaultGear.Rarity.SCRAPPY, 3, 11.0D, 1.3D, 3200, 0, 5, 0, 0, false);
+        ItemStack t3platedArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 2, VaultGear.Rarity.SCRAPPY, 3, 11.0D, 1.3D, 3200, 0, 5, 0, 0, false);
+        ModAttributes.ADD_PLATING.create(t3platedArmorPiece, 1);
+
+        recipeList.add(factory.createAnvilRecipe(t3plateArmorPiece, Collections.singletonList(new ItemStack(ModItems.VAULT_PLATING_T2)), Collections.singletonList(t3platedArmorPiece)));
+
+        //Wutax Shard application
+        ItemStack nonWutaxArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 25, 0, false);
+        ItemStack wutaxedArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 0, 5, 24, 0, false);
+
+        recipeList.add(factory.createAnvilRecipe(nonWutaxArmorPiece, Collections.singletonList(new ItemStack(ModItems.WUTAX_SHARD)), Collections.singletonList(wutaxedArmorPiece)));
+
+        //Wutax Crystal application
+        ItemStack nonLeveledArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 1, 5, 25, 0, false);
+        ItemStack leveledArmorPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, 1, 5.0D, 0.2D, 1100, 1, 5, 24, 0, false);
+        VaultGear.addLevel(leveledArmorPiece, 1.0F);
+        ModAttributes.ADD_ARMOR.create(leveledArmorPiece, 1.0D);
+
+        recipeList.add(factory.createAnvilRecipe(nonLeveledArmorPiece, Collections.singletonList(new ItemStack(ModItems.WUTAX_CRYSTAL)), Collections.singletonList(leveledArmorPiece)));
+
+        //T2 Gear charm application
+        ItemStack nonT2GearCharmedArmorPiece = createArmorPiece(VaultGear.State.UNIDENTIFIED, 0, VaultGear.Rarity.SCRAPPY, -1, 5.0D, 0.2D, 1100, 0, 5, 0, 0, false);
+        ModAttributes.GEAR_ROLL_TYPE.create(nonT2GearCharmedArmorPiece, "Epic");
+        ItemStack T2GearCharmedArmorPiece = createArmorPiece(VaultGear.State.UNIDENTIFIED, 1, VaultGear.Rarity.SCRAPPY, -1, 5.0D, 0.2D, 1100, 0, 5, 0, 0, false);
+        ModAttributes.GEAR_ROLL_TYPE.create(T2GearCharmedArmorPiece, "Common");
+
+        recipeList.add(factory.createAnvilRecipe(nonT2GearCharmedArmorPiece, Collections.singletonList(new ItemStack(ModItems.GEAR_CHARM)), Collections.singletonList(T2GearCharmedArmorPiece)));
+
+        //T2 Gear charm application
+//        ItemStack nonT3GearCharmedArmorPiece = createArmorPiece(VaultGear.State.UNIDENTIFIED, 1, VaultGear.Rarity.SCRAPPY, -1, 11.0D, 1.3D, 3200, 0, 5, 0, 0, false);
+//        ModAttributes.GEAR_ROLL_TYPE.create(nonT3GearCharmedArmorPiece, "Epic");
+//        ItemStack T3GearCharmedArmorPiece = createArmorPiece(VaultGear.State.UNIDENTIFIED, 2, VaultGear.Rarity.SCRAPPY, -1, 11.0D, 1.3D, 3200, 0, 5, 0, 0, false);
+//        ModAttributes.GEAR_ROLL_TYPE.create(T3GearCharmedArmorPiece, "Common");
+//        addTooltip(ItemTooltipEvent, )
+
+//        recipeList.add(factory.createAnvilRecipe(nonT3GearCharmedArmorPiece, Collections.singletonList(new ItemStack(ModItems.GEAR_CHARM)), Collections.singletonList(T3GearCharmedArmorPiece)));
+
+        // Flawed ruby application
+        //ItemStack nonImbuedPiece = createArmorPiece(VaultGear.State.IDENTIFIED, 2, )
+
+
+
         //todo: Add integration to:
-        // - t1/t2/t3 vault plating
-        // - wutax shard/crystals
         // - runes/catalysts/inhibitors and painite stars
-        // - t2/t3 gear charms
         // - banished souls
         // - magnets
         // - void orbs
@@ -120,7 +177,7 @@ public class AnvilRecipeProvider {
         return recipeList;
     }
 
-    public static ItemStack createArmorPiece(VaultGear.State state, int tier, VaultGear.Rarity rarity, int model, double armor, double toughness, int durability, int maxLevel, int maxRepairs, int minVaultLevel, int currentRepairs, boolean reforged) {
+    private static ItemStack createArmorPiece(VaultGear.State state, int tier, VaultGear.Rarity rarity, int model, double armor, double toughness, int durability, int maxLevel, int maxRepairs, int minVaultLevel, int currentRepairs, boolean reforged) {
         ItemStack stack = new ItemStack(ModItems.CHESTPLATE);
 
         ModAttributes.GEAR_STATE.create(stack, state);
@@ -136,8 +193,6 @@ public class AnvilRecipeProvider {
         ModAttributes.CURRENT_REPAIRS.create(stack, currentRepairs);
         ModAttributes.REFORGED.create(stack, reforged);
 
-
         return stack;
     }
-
 }
