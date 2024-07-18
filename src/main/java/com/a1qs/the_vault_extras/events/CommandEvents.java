@@ -2,6 +2,7 @@ package com.a1qs.the_vault_extras.events;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.commands.GetPlayerLevel;
+import com.a1qs.the_vault_extras.commands.ModifyFavourDataCommand;
 import com.a1qs.the_vault_extras.commands.SetGlobalCrystalDifficultyCommand;
 import com.a1qs.the_vault_extras.commands.SetGlobalDifficultyCommand;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -16,6 +17,7 @@ public class CommandEvents {
         new SetGlobalDifficultyCommand(event.getDispatcher());
         new SetGlobalCrystalDifficultyCommand(event.getDispatcher());
         new GetPlayerLevel(event.getDispatcher());
+        new ModifyFavourDataCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }
