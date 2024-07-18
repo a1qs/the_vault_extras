@@ -22,7 +22,9 @@
     "MixinPlayerEvents",
     "MixinPlayerInventory",
     "MixinReloadConfigsCommand",
+    "MixinSummonEternalAbility",
     "MixinVaultGeneralConfig",
+    "MixinVaultInfluenceHandler",
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
     "MixinVaultRoomNames"
