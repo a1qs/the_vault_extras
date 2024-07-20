@@ -20,10 +20,8 @@ import java.util.UUID;
 
 
 public class PlayerTabNameEvent {
-    public PlayerTabNameEvent() {
-    }
 
-    private static final Set<UUID> IN_VAULT = new HashSet();
+    private static final Set<UUID> IN_VAULT = new HashSet<>();
 
     @SubscribeEvent
     public static void onTabListNameFormat(PlayerEvent.@NotNull TabListNameFormat event) {
