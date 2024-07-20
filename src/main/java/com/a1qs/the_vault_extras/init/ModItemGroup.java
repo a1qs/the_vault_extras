@@ -1,6 +1,5 @@
 package com.a1qs.the_vault_extras.init;
 
-import com.a1qs.the_vault_extras.init.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 

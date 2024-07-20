@@ -1,9 +1,8 @@
 package com.a1qs.the_vault_extras.block.tileentity;
 
+import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
 import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
-import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;
-import iskallia.vault.config.entry.MagnetEntry;
 import iskallia.vault.init.ModItems;
 import iskallia.vault.item.VaultMagnetItem;
 import iskallia.vault.item.gear.VaultGear;

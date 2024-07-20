@@ -3,8 +3,8 @@ package com.a1qs.the_vault_extras.config;
 import com.google.gson.annotations.Expose;
 import iskallia.vault.config.Config;
 import iskallia.vault.config.entry.vending.ProductEntry;
-import net.minecraft.item.Items;
 import iskallia.vault.util.data.WeightedList;
+import net.minecraft.item.Items;
 
 public class MysteryRuneConfig extends Config {
     @Expose

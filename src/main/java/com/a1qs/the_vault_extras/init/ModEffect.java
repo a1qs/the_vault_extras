@@ -7,7 +7,7 @@ import net.minecraft.potion.EffectType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 public class ModEffect {

@@ -1,13 +1,12 @@
 package com.a1qs.the_vault_extras;
 
 import com.a1qs.the_vault_extras.config.VaultExtrasConfig;
+import com.a1qs.the_vault_extras.events.ModSounds;
 import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
-import com.a1qs.the_vault_extras.events.ModSounds;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
-import com.a1qs.the_vault_extras.init.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.potion.Effect;
@@ -70,9 +69,9 @@ public class VaultExtras
         MinecraftForge.EVENT_BUS.addListener(PlayerLogOutEvent::removeFromPartyUponLogout);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
         VaultExtrasNetwork.init();
+        ModGameRules.initialize();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

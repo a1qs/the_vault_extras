@@ -1,10 +1,13 @@
 package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import com.a1qs.the_vault_extras.block.SanctifiedPedestalBlock;
 import com.a1qs.the_vault_extras.block.DecayedCrystallizer;
+import com.a1qs.the_vault_extras.block.SanctifiedPedestalBlock;
 import com.a1qs.the_vault_extras.block.VaultRecyclerBlock;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AnvilBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;

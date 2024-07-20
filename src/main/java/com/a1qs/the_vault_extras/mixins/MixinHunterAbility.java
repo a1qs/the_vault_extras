@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.mixins;
 
 import com.a1qs.the_vault_extras.events.ModSounds;
 import iskallia.vault.Vault;
-
 import iskallia.vault.skill.ability.config.HunterConfig;
 import iskallia.vault.skill.ability.effect.AbilityEffect;
 import iskallia.vault.skill.ability.effect.HunterAbility;

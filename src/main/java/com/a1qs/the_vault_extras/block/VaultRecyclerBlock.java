@@ -1,8 +1,8 @@
 package com.a1qs.the_vault_extras.block;
 
+import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import com.a1qs.the_vault_extras.container.VaultRecyclerContainer;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
-import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

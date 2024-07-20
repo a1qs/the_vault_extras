@@ -6,7 +6,6 @@ import net.minecraftforge.common.UsernameCache;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

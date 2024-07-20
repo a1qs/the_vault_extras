@@ -1,7 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
 import iskallia.vault.init.ModTasks;
-
 import iskallia.vault.util.scheduler.DailyScheduler;
 import iskallia.vault.world.data.SoulShardTraderData;
 import net.minecraft.server.MinecraftServer;
