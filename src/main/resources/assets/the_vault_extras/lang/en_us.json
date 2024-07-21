@@ -8,11 +8,13 @@
   "item.the_vault_extras.mystery_rune": "Mystery Rune",
   "item.the_vault_extras.mystery_book": "Mystery Book",
   "item.the_vault_extras.bunny_charm": "Bunny Charm",
+  "item.the_vault_extras.vault_meal": "Vault Meal",
 
   "block.the_vault_extras.infusion_altar": "Infusion Altar",
   "block.the_vault_extras.vault_anvil": "Vault Anvil",
   "block.the_vault_extras.vault_recycler": "Vault Recycler",
   "block.the_vault_extras.sanctified_pedestal": "Sanctified Pedestal",
+  "block.the_vault_extras.decayed_crystallizer": "Decayed Crystallizer",
 
   "tooltip.the_vault_extras.cake_seal1": "\u00A78Seems inedible\u00A7r",
   "tooltip.the_vault_extras.cake_seal2": "\u00A75Your ticket to a buffet of cakes\u00A7r",
