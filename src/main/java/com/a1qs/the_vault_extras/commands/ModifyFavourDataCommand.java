@@ -36,7 +36,7 @@ public class ModifyFavourDataCommand {
         PlayerFavourData.VaultGodType vaultGod = context.getArgument("godType", PlayerFavourData.VaultGodType.class);
         PlayerFavourData data = PlayerFavourData.get(target.getServerWorld());
         data.addFavour(target, vaultGod, amount);
-        context.getSource().sendFeedback(new TranslationTextComponent("command.the_vault_extras.setFavour.success", amount, target.getDisplayName()), true);
+        context.getSource().sendFeedback(new TranslationTextComponent("command.the_vault_extras.set_favour.success", amount, target.getDisplayName()), true);
         return 0;
     }
 
