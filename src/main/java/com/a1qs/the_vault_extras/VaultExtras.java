@@ -2,6 +2,7 @@ package com.a1qs.the_vault_extras;
 
 import com.a1qs.the_vault_extras.config.VaultExtrasConfig;
 import com.a1qs.the_vault_extras.events.ModSounds;
+import com.a1qs.the_vault_extras.events.PlayerEvents;
 import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
@@ -67,6 +68,7 @@ public class VaultExtras
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTabListNameFormat);
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTick);
         MinecraftForge.EVENT_BUS.addListener(PlayerLogOutEvent::removeFromPartyUponLogout);
+        MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
