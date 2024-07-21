@@ -37,7 +37,7 @@ public abstract class MixinVaultPlayer {
         float expGrantedPercent = MathHelper.clamp((float)this.getTimer().runTime / ((float)this.getTimer().getStartTime()/2), 0.0F, 1.0F);
         expGrantedPercent *= multiplier;
         //noinspection UnnecessaryUnboxing
-        expGrantedPercent *= (float)((Integer)this.mapIfPresent(
+        expGrantedPercent *= (float)(this.mapIfPresent(
                 server, player -> MathHelper.clamp(player.getServerWorld().getGameRules().getInt(ModGameRules.EXP_MULTIPLIER), 0, 25), 1
         ))
                 .intValue();
