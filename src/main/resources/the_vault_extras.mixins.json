@@ -6,9 +6,11 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "the_vault_extras.refmap.json",
   "mixins": [
+    "InvokerChallengeCrystalArchive",
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
+    "MixinChallengeCrystalArchive",
     "MixinChestRarityHelper",
     "MixinEntityEvents",
     "MixinHunterAbility",
