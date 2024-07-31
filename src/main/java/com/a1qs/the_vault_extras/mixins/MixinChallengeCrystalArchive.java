@@ -3,6 +3,7 @@ package com.a1qs.the_vault_extras.mixins;
 import iskallia.vault.item.crystal.CrystalData;
 import iskallia.vault.world.data.generated.ChallengeCrystalArchive;
 import iskallia.vault.world.vault.VaultRaid;
+import iskallia.vault.world.vault.logic.objective.SummonAndKillBossObjective;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,17 +24,32 @@ public class MixinChallengeCrystalArchive {
 
     @Inject(method = "initialize", at = @At("RETURN"))
     private static void addAdditionalCrystals(CallbackInfo ci) {
-        CrystalData custom = InvokerChallengeCrystalArchive.invokeBaseData();
-        custom.setType(CrystalData.Type.CLASSIC);
-        custom.setSelectedObjective((VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
-        custom.setTargetObjectiveCount(6);
-        custom.addModifier("Treasure");
-        custom.addModifier("Treasure");
-        custom.addModifier("Treasure");
-        custom.addModifier("Safe Zone");
-        custom.addModifier("Locked");
-        custom.addModifier("Rush");
-        custom.addModifier("Rush");
-        generatedCrystals.add(InvokerChallengeCrystalArchive.invokeMake(custom));
+        // By Josh
+        CrystalData swarm = InvokerChallengeCrystalArchive.invokeBaseData();
+        swarm.setType(CrystalData.Type.CLASSIC);
+        swarm.setSelectedObjective(((SummonAndKillBossObjective) VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
+        swarm.setTargetObjectiveCount(6);
+        swarm.addModifier("Antlike");
+        swarm.addModifier("Frenzier");
+        swarm.addModifier("Hunt");
+        swarm.addModifier("Phoenix");
+        swarm.addModifier("Free Hugs");
+        swarm.addModifier("Indestructible");
+        swarm.addModifier("Nihility");
+        generatedCrystals.add(InvokerChallengeCrystalArchive.invokeMake(swarm));
+
+        // By Zing
+        CrystalData gravedigger = InvokerChallengeCrystalArchive.invokeBaseData();
+        gravedigger.setType(CrystalData.Type.CLASSIC);
+        gravedigger.setSelectedObjective(((SummonAndKillBossObjective) VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
+        gravedigger.setTargetObjectiveCount(10);
+        gravedigger.addGuaranteedRoom("graves", 500);
+        gravedigger.addModifier("Abundance");
+        gravedigger.addModifier("Abundance");
+        gravedigger.addModifier("Abundance");
+        gravedigger.addModifier("Chaotic");
+        gravedigger.addModifier("Forbidden Knowledge");
+        generatedCrystals.add(InvokerChallengeCrystalArchive.invokeMake(gravedigger));
     }
+
 }
