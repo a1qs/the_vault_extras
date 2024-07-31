@@ -8,6 +8,7 @@
   "mixins": [
     "InvokerChallengeCrystalArchive",
     "InvokerEntityEvents",
+    "InvokerPartyCommand",
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
