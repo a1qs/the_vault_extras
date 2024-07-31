@@ -13,10 +13,7 @@ import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.Util;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -64,7 +61,7 @@ public class MixinCakeHuntObjective {
                 ModifiableAttributeInstance attribute = other.getAttribute(Attributes.MAX_HEALTH);
                 if (attribute != null) {
                     attribute.removeModifier(PENALTY);
-                    double amount = (double)((float)this.cakeCount * this.healthPenalty);
+                    double amount = ((float)this.cakeCount * this.healthPenalty);
                     amount = Math.min(amount, attribute.getValue() - 2.0);
                     AttributeModifier modifierx = new AttributeModifier(PENALTY, "Cake Health Penalty", -amount, AttributeModifier.Operation.ADDITION);
                     attribute.applyNonPersistentModifier(modifierx);

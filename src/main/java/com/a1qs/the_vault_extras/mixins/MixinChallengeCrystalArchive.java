@@ -3,7 +3,6 @@ package com.a1qs.the_vault_extras.mixins;
 import iskallia.vault.item.crystal.CrystalData;
 import iskallia.vault.world.data.generated.ChallengeCrystalArchive;
 import iskallia.vault.world.vault.VaultRaid;
-import iskallia.vault.world.vault.logic.objective.SummonAndKillBossObjective;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,7 +26,7 @@ public class MixinChallengeCrystalArchive {
         // By Josh
         CrystalData swarm = InvokerChallengeCrystalArchive.invokeBaseData();
         swarm.setType(CrystalData.Type.CLASSIC);
-        swarm.setSelectedObjective(((SummonAndKillBossObjective) VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
+        swarm.setSelectedObjective((VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
         swarm.setTargetObjectiveCount(6);
         swarm.addModifier("Antlike");
         swarm.addModifier("Frenzier");
@@ -41,7 +40,7 @@ public class MixinChallengeCrystalArchive {
         // By Zing
         CrystalData gravedigger = InvokerChallengeCrystalArchive.invokeBaseData();
         gravedigger.setType(CrystalData.Type.CLASSIC);
-        gravedigger.setSelectedObjective(((SummonAndKillBossObjective) VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
+        gravedigger.setSelectedObjective((VaultRaid.SUMMON_AND_KILL_BOSS.get()).getId());
         gravedigger.setTargetObjectiveCount(10);
         gravedigger.addGuaranteedRoom("graves", 500);
         gravedigger.addModifier("Abundance");
