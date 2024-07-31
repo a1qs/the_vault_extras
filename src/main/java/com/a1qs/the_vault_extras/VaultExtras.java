@@ -8,7 +8,6 @@ import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
@@ -31,17 +30,12 @@ import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(VaultExtras.MOD_ID)
-public class VaultExtras
-{
+public class VaultExtras {
     public static final String MOD_ID = "the_vault_extras";
-
-    // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
     public VaultExtras() {
-        // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
@@ -55,15 +49,11 @@ public class VaultExtras
         ModParticles.register(eventBus);
 
         eventBus.addListener(this::setup);
-        // Register the enqueueIMC method for modloading
         eventBus.addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
         eventBus.addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
         eventBus.addListener(this::clientSetup);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VaultExtrasConfig.SPEC, "vaultextras-common.toml");
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTabListNameFormat);
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTick);
@@ -77,15 +67,13 @@ public class VaultExtras
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new);
-        });
-
+        event.enqueueWork(() ->
+                ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new));
         ModKeyBinds.register(event);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
-        //communicate to curios to register a slot
+        // Communicate to Curios API to add a slot type of: CURIO
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
                 () -> SlotTypePreset.CURIO.getMessageBuilder().build());
     }
@@ -93,7 +81,6 @@ public class VaultExtras
     private void processIMC(final InterModProcessEvent event) {
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
     }
@@ -101,10 +88,6 @@ public class VaultExtras
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-        }
-
         @SubscribeEvent
         public static void onEffectRegister(RegistryEvent.Register<Effect> event) {
             ModEffect.register(event);

@@ -21,11 +21,7 @@ public class MixinPlayerInventory {
     @Shadow
     public PlayerEntity player;
 
-    public MixinPlayerInventory() {
-    }
-
     @Inject(method = {"addItemStackToInventory"}, at = {@At("HEAD")}, cancellable = true)
-
     public void interceptItemAddition(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.getItem() == ModItems.SOUL_SHARD) {
             if (!(this.player.openContainer instanceof ShardPouchContainer)) {

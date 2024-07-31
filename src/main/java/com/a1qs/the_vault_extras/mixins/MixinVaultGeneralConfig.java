@@ -13,14 +13,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinVaultGeneralConfig {
 
 
-    @Inject(method = "cancelItemInteraction", at = @At(value="RETURN"), cancellable = true)
+    @Inject(method = "cancelItemInteraction", at = @At(value="RETURN"))
     private static void cancelItemInteractionInfo(PlayerInteractEvent event, CallbackInfo ci){
         if(event.isCanceled()) {
             event.getPlayer().sendStatusMessage(new StringTextComponent(TextFormatting.RED +"This item is disabled in the Vault :)"), true);
         }
     }
 
-    @Inject(method = "cancelBlockInteraction", at = @At(value="RETURN"), cancellable = true)
+    @Inject(method = "cancelBlockInteraction", at = @At(value="RETURN"))
     private static void cancelBlockInteractionInfo(PlayerInteractEvent event, CallbackInfo ci){
         if(event.isCanceled()) {
             event.getPlayer().sendStatusMessage(new StringTextComponent(TextFormatting.RED +"This Block is disabled in the Vault :)"), true);
