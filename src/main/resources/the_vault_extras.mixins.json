@@ -7,6 +7,7 @@
   "refmap": "the_vault_extras.refmap.json",
   "mixins": [
     "InvokerChallengeCrystalArchive",
+    "InvokerEntityEvents",
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
