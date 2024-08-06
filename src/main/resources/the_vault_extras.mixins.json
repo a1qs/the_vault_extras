@@ -22,6 +22,8 @@
     "MixinModTasks",
     "MixinNameProviderPublic",
     "MixinPartyCommand",
+    "MixinPhoenixModifierSnapshotData",
+    "MixinPhoenixSetSnapshotData",
     "MixinPlayerEntity",
     "MixinPlayerEvents",
     "MixinPlayerInventory",
