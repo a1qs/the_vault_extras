@@ -34,8 +34,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import java.util.Objects;
 import java.util.Random;
 
 public class DecayedCrystallizer extends Block {
@@ -45,16 +48,17 @@ public class DecayedCrystallizer extends Block {
 
     public DecayedCrystallizer(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(ONCOOLDOWN, Boolean.valueOf(false)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(ONCOOLDOWN, Boolean.FALSE));
     }
 
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(@NotNull BlockState state, @NotNull IBlockReader worldIn, @NotNull BlockPos pos, @NotNull ISelectionContext context) {
         return shape;
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public @NotNull ActionResultType onBlockActivated(@NotNull BlockState state, World worldIn, @NotNull BlockPos pos, @NotNull PlayerEntity player, @NotNull Hand handIn, @NotNull BlockRayTraceResult hit) {
         if(!worldIn.isRemote) {
             TileEntity tileEntity = worldIn.getTileEntity(pos);
             ServerWorld serverWorld = (ServerWorld) worldIn;
@@ -67,8 +71,8 @@ public class DecayedCrystallizer extends Block {
                     ItemStack itemStack = new ItemStack(this);
                     CompoundNBT tileNBT = tile.getTileData();
                     itemStack.getOrCreateTag().put("BlockEntityTag", tileNBT);
-                    itemStack.getChildTag("BlockEntityTag").putInt("cooldown", tile.getCooldown());
-                    itemStack.getChildTag("BlockEntityTag").putString("id", ModTileEntities.DECAYED_CRYSTALLIZER_TILE.getId().toString());
+                    Objects.requireNonNull(itemStack.getChildTag("BlockEntityTag")).putInt("cooldown", tile.getCooldown());
+                    Objects.requireNonNull(itemStack.getChildTag("BlockEntityTag")).putString("id", ModTileEntities.DECAYED_CRYSTALLIZER_TILE.getId().toString());
                     worldIn.removeBlock(pos, false);
                     worldIn.removeTileEntity(pos);
                     serverWorld.addEntity(new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack));
