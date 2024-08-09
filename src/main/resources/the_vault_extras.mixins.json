@@ -28,6 +28,8 @@
     "MixinPlayerEvents",
     "MixinPlayerInventory",
     "MixinReloadConfigsCommand",
+    "MixinShardTradeContainer$RandomSellSlot",
+    "MixinShardTradeContainer$ShardSellSlot",
     "MixinSummonEternalAbility",
     "MixinVaultGeneralConfig",
     "MixinVaultInfluenceHandler",
