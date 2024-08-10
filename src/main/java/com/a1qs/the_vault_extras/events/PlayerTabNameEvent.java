@@ -3,25 +3,28 @@ package com.a1qs.the_vault_extras.events;
 
 import iskallia.vault.Vault;
 import iskallia.vault.world.data.PlayerVaultStatsData;
+import iskallia.vault.world.data.VaultRaidData;
+import iskallia.vault.world.vault.VaultRaid;
+import iskallia.vault.world.vault.player.VaultPlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 
 public class PlayerTabNameEvent {
 
     private static final Set<UUID> IN_VAULT = new HashSet<>();
+    private static final HashMap<UUID, Integer> PLAYER_VAULT_TIMER = new HashMap<>();
 
     @SubscribeEvent
     public static void onTabListNameFormat(PlayerEvent.@NotNull TabListNameFormat event) {
@@ -39,7 +42,8 @@ public class PlayerTabNameEvent {
 
             // If the player is inside a Vault dimension, append (Vault) to the playername
             if (IN_VAULT.contains(player.getUniqueID())) {
-                display.appendSibling(new StringTextComponent(TextFormatting.DARK_GRAY +" (Vault)"));
+                String timeRemaining = formatTimeString(PLAYER_VAULT_TIMER.get(player.getUniqueID()));
+                display.appendSibling(new StringTextComponent(TextFormatting.DARK_GRAY +" (Vault: " + timeRemaining + ")"));
             }
 
             event.setDisplayName(display);
@@ -52,7 +56,6 @@ public class PlayerTabNameEvent {
         World world = eventPlayer.getEntityWorld();
         if (eventPlayer instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) eventPlayer;
-            boolean updated;
 
             // Continue every 5 seconds, not every tick
             if (event.phase != TickEvent.Phase.END && serverPlayerEntity.server.getTickCounter() % 100L != 0L) {
@@ -62,15 +65,30 @@ public class PlayerTabNameEvent {
             // If the player is inside a Vault dimension, add the UUID to a HashSet
             // returns true for the boolean if the player is not part of the HashSet
             if (world.getDimensionKey() == Vault.VAULT_KEY) {
-                updated = IN_VAULT.add(serverPlayerEntity.getUniqueID());
+
+                //PLAYER_VAULT_TIMER.put(serverPlayerEntity.getUniqueID(), ClientVaultRaidData.getRemainingTicks());
+                if(world instanceof ServerWorld) {
+                    ServerWorld sWorld = (ServerWorld) world;
+                    VaultRaid raid = VaultRaidData.get(sWorld).getAt(sWorld, serverPlayerEntity.getPosition());
+                    Optional<VaultPlayer> optionalVaultPlayer = raid.getPlayer(serverPlayerEntity);
+                    optionalVaultPlayer.ifPresent(vaultPlayer ->
+                            PLAYER_VAULT_TIMER.put(serverPlayerEntity.getUniqueID(), vaultPlayer.getTimer().getTimeLeft()));
+                    serverPlayerEntity.refreshTabListName();
+                }
+
+
             } else {
-                updated = IN_VAULT.remove(serverPlayerEntity.getUniqueID());
+               IN_VAULT.remove(serverPlayerEntity.getUniqueID());
             }
 
-            //Update the Tablist
-            if (updated) {
-                serverPlayerEntity.refreshTabListName();
-            }
+
         }
+    }
+
+    private static String formatTimeString(int remainingTicks) {
+        long seconds = (remainingTicks / 20 % 60);
+        long minutes = (remainingTicks / 20 / 60 % 60);
+        long hours = (remainingTicks / 20 / 60 / 60);
+        return hours > 0L ? String.format("%02d:%02d:%02d", hours, minutes, seconds) : String.format("%02d:%02d", minutes, seconds);
     }
 }
