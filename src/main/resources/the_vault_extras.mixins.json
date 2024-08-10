@@ -36,5 +36,8 @@
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
     "MixinVaultRoomNames"
+  ],
+  "client": [
+    "MixinMinecraft"
   ]
 }
