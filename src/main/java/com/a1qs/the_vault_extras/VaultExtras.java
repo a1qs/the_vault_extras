@@ -33,7 +33,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 @Mod(VaultExtras.MOD_ID)
 public class VaultExtras {
     public static final String MOD_ID = "the_vault_extras";
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public VaultExtras() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
