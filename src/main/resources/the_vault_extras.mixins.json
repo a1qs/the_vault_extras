@@ -9,6 +9,7 @@
     "InvokerChallengeCrystalArchive",
     "InvokerEntityEvents",
     "InvokerPartyCommand",
+    "InvokerPaxelEnhancements",
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
