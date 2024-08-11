@@ -6,10 +6,12 @@ import iskallia.vault.world.vault.VaultRaid;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,21 @@ public class MixinChallengeCrystalArchive {
         gravedigger.addModifier("Chaotic");
         gravedigger.addModifier("Forbidden Knowledge");
         generatedCrystals.add(InvokerChallengeCrystalArchive.invokeMake(gravedigger));
+    }
+
+    /**
+     * @author a1qs
+     * @reason make crystals not challenge
+     */
+    @Overwrite
+    private static CrystalData baseData() {
+        CrystalData data = new CrystalData();
+        data.setModifiable(false);
+        data.setCanTriggerInfluences(false);
+        data.setCanGenerateTreasureRooms(false);
+        data.setPreventsRandomModifiers(true);
+        //data.setChallenge(true);
+        return data;
     }
 
 }

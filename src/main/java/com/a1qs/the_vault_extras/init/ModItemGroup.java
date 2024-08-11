@@ -10,7 +10,7 @@ public class ModItemGroup {
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModBlocks.INFUSION_ALTAR.get());
+            return new ItemStack(ModItems.VAULT_ANNIHILATOR.get());
         }
     };
 }

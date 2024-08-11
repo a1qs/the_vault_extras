@@ -25,13 +25,6 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, VaultExtras.MOD_ID);
 
-    public static final RegistryObject<Block> INFUSION_ALTAR = registerBlock("infusion_altar",
-            () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
-                    .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE).setRequiresTool()
-                    .hardnessAndResistance(3f)
-                    .notSolid()));
-
     public static final RegistryObject<Block> VAULT_ANVIL = registerBlock("vault_anvil",
             () -> new AnvilBlock(AbstractBlock.Properties.from(Blocks.ANVIL)));
 
