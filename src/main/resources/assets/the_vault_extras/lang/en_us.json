@@ -44,7 +44,21 @@
   "key.category.the_vault_extras": "The Vault Extras",
   "key.the_vault_extras.magnet_toggle": "Toggle Magnet",
   "curios.identifier.magnet": "Magnet",
-  "curios.identifier.vault_charm": "Vault Charm"
+  "curios.identifier.vault_charm": "Vault Charm",
+
+  "paxel_enhancement.the_vault.advanced_hammer": "Advanced Hammering",
+  "paxel_enhancement.the_vault.advanced_hammer.desc": "Breaks blocks in a 5x5 pattern",
+  "paxel_enhancement.the_vault.reaching": "Reaching",
+  "paxel_enhancement.the_vault.reaching.desc": "Increases your Reach distance by +2.5 Blocks",
+  "paxel_enhancement.the_vault.advanced_reaching": "Advanced Reaching",
+  "paxel_enhancement.the_vault.advanced_reaching.desc": "Increases your Reach distance by +5 Blocks",
+  "paxel_enhancement.the_vault.advanced_fortune": "Advanced Fortunate",
+  "paxel_enhancement.the_vault.advanced_fortune.desc": "Adds 2 additional Fortune levels when a block is mined",
+  "paxel_enhancement.the_vault.explosive": "Explosive",
+  "paxel_enhancement.the_vault.explosive.desc": "Blocks Explode upon being mined",
+  "paxel_enhancement.the_vault.lucky": "Lucky",
+  "paxel_enhancement.the_vault.luckier": "Luckier",
+  "paxel_enhancement.the_vault.opulent": "Opulent"
 
 }
 
