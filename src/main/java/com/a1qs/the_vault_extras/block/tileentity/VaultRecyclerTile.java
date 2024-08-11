@@ -5,15 +5,25 @@ import com.a1qs.the_vault_extras.init.ModRecipeTypes;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import iskallia.vault.init.ModItems;
 import iskallia.vault.item.VaultMagnetItem;
+import iskallia.vault.item.gear.EtchingItem;
 import iskallia.vault.item.gear.VaultGear;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -47,14 +57,14 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     }
 
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void read(@NotNull BlockState state, @NotNull CompoundNBT nbt) {
         super.read(state, nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inv"));
         this.smeltTime = nbt.getInt("smeltTime");
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
+    public @NotNull CompoundNBT write(@NotNull CompoundNBT compound) {
         super.write(compound);
         compound.put("inv", itemHandler.serializeNBT());
         compound.putInt("smeltTime", this.smeltTime);
@@ -63,6 +73,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     }
 
     public void tick() {
+        assert world != null;
         if(!world.isRemote) {
             Inventory inv = new Inventory(itemHandler.getSlots());
 
@@ -93,6 +104,9 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                 smeltTime = 0;
                 itemHandler.extractItem(0, 1, false);
                 itemHandler.insertItem(1, output, false);
+                assert this.world != null;
+                this.world.playSound(null, this.getPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 0.5F + (new Random()).nextFloat() * 0.25F, 0.75F + (new Random()).nextFloat() * 0.25F);
+                spawnRecycleParticles(this.getPos());
 
                 if(random.nextFloat() < chance && !output.getStack().isEmpty()) {
                     itemHandler.insertItem(2, extraOutput, false);
@@ -112,16 +126,16 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                 markDirty();
             }
 
-            // make vault scrap valid for output slots
+            // make vault scrap/etching frags/magnetite/pog valid for output slots
             // make vault gear valid for input slots
             // allows users to input vault scrap into the output slots, make a pr if it bothers you
             @Override
             public boolean isItemValid(int slot, @NotNull ItemStack stack) {
                 if (slot == 1 || slot == 2 || slot == 3) {
-                    return stack.getItem() == ModItems.VAULT_SCRAP;
+                    return stack.getItem() == ModItems.VAULT_SCRAP || stack.getItem() == ModItems.ETCHING_FRAGMENT || stack.getItem() == ModItems.MAGNETITE || stack.getItem() == ModItems.POG;
                 }
                 if (slot == 0) {
-                    return stack.getItem() instanceof VaultGear || stack.getItem() instanceof VaultMagnetItem;
+                    return stack.getItem() instanceof VaultGear || stack.getItem() instanceof VaultMagnetItem || stack.getItem() instanceof EtchingItem;
                 }
 
                 return false;
@@ -146,6 +160,40 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             return handler.cast();
         }
         return super.getCapability(cap, side);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void spawnRecycleParticles(BlockPos pos) {
+        World world = Minecraft.getInstance().world;
+        if (world != null) {
+            int i;
+            Random random;
+            Vector3d offset;
+            for(i = 0; i < 4; ++i) {
+                random = world.getRandom();
+                offset = new Vector3d(random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1));
+                world.addParticle(ParticleTypes.LAVA, true, (double)pos.getX() + 0.5 + offset.x, (double)pos.getY() + random.nextDouble() * 0.15000000596046448 + 0.25, (double)pos.getZ() + 0.5 + offset.z, offset.x / 2.0, random.nextDouble() * 0.1, offset.z / 2.0);
+            }
+
+            for(i = 0; i < 3; ++i) {
+                random = world.getRandom();
+                offset = new Vector3d(random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1));
+                world.addParticle(ParticleTypes.LAVA, true, (double)pos.getX() + 0.5 + offset.x, (double)pos.up().getY() + random.nextDouble() * 0.15000000596046448, (double)pos.getZ() + 0.5 + offset.z, offset.x / 20.0, random.nextDouble() * 0.2, offset.z / 20.0);
+            }
+
+            for(i = 0; i < 3; ++i) {
+                random = world.getRandom();
+                offset = new Vector3d(random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1));
+                world.addParticle(ParticleTypes.SMOKE, true, (double)pos.getX() + 0.5 + offset.x, (double)pos.up().getY() + random.nextDouble() * 0.15000000596046448, (double)pos.getZ() + 0.5 + offset.z, offset.x / 20.0, random.nextDouble() * 0.2, offset.z / 20.0);
+            }
+
+            for(i = 0; i < 3; ++i) {
+                random = world.getRandom();
+                offset = new Vector3d(random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1));
+                world.addParticle(ParticleTypes.LARGE_SMOKE, true, (double)pos.getX() + 0.5 + offset.x, (double)pos.up().getY() + random.nextDouble() * 0.15000000596046448, (double)pos.getZ() + 0.5 + offset.z, offset.x / 10.0, random.nextDouble() * 0.05, offset.z / 10.0);
+            }
+
+        }
     }
 
 }

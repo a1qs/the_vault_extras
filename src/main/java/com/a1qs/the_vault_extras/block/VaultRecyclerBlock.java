@@ -3,6 +3,7 @@ package com.a1qs.the_vault_extras.block;
 import com.a1qs.the_vault_extras.block.tileentity.VaultRecyclerTile;
 import com.a1qs.the_vault_extras.container.VaultRecyclerContainer;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
+import com.a1qs.the_vault_extras.util.VoxelShapeUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,6 +17,9 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
@@ -29,9 +33,15 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.Nullable;
 
 public class VaultRecyclerBlock extends Block {
+    public static final VoxelShape VAULT_RECYCLER_SHAPE;
 
     public VaultRecyclerBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return VAULT_RECYCLER_SHAPE;
     }
 
     @Override
@@ -86,5 +96,42 @@ public class VaultRecyclerBlock extends Block {
 
             super.onReplaced(state, worldIn, pos, newState, isMoving);
         }
+    }
+
+
+
+    static {
+        VoxelShape[] shape = {
+                VoxelShapes.create(0.6875, 0.8125, 0, 1, 1, 1),
+                VoxelShapes.create(0, 0.8125, 0, 0.3125, 1, 1),
+                VoxelShapes.create(0.3125, 0.8125, 0, 0.6875, 1, 0.3125),
+                VoxelShapes.create(0.3125, 0.8125, 0.6875, 0.6875, 1, 1),
+                VoxelShapes.create(0.25, 0.5625, 0.25, 0.75, 0.75, 0.75),
+                VoxelShapes.create(0.25, 0.1875, 0.25, 0.75, 0.375, 0.75),
+                VoxelShapes.create(0.296875, 0.375, 0.296875, 0.359375, 0.5625, 0.359375),
+                VoxelShapes.create(0.640625, 0.375, 0.296875, 0.703125, 0.5625, 0.359375),
+                VoxelShapes.create(0.5625, 0.921875, 0.3125, 0.625, 0.984375, 0.6875),
+                VoxelShapes.create(0.375, 0.921875, 0.3125, 0.4375, 0.984375, 0.6875),
+                VoxelShapes.create(0.640625, 0.375, 0.640625, 0.703125, 0.5625, 0.703125),
+                VoxelShapes.create(0.296875, 0.375, 0.640625, 0.359375, 0.5625, 0.703125),
+                VoxelShapes.create(0.640625, 0.375, 0.46875, 0.703125, 0.5625, 0.53125),
+                VoxelShapes.create(0.296875, 0.375, 0.46875, 0.359375, 0.5625, 0.53125),
+                VoxelShapes.create(0.46875, 0.375, 0.640625, 0.53125, 0.5625, 0.703125),
+                VoxelShapes.create(0.46875, 0.375, 0.296875, 0.53125, 0.5625, 0.359375),
+                VoxelShapes.create(0.375, 0.375, 0.375, 0.625, 0.5625, 0.625),
+                VoxelShapes.create(0.375, 0.71875, 0.375, 0.625, 0.90625, 0.625),
+                VoxelShapes.create(0.1875, 0.75, 0.1875, 0.8125, 0.875, 0.8125),
+                VoxelShapes.create(0.0625, 0, 0.0625, 0.9375, 0.125, 0.9375),
+                VoxelShapes.create(0.1875, 0.0625, 0.1875, 0.8125, 0.1875, 0.8125),
+                VoxelShapes.create(0.6875, 0.5, 0.6875, 0.9375, 0.9375, 0.9375),
+                VoxelShapes.create(0.75, 0.4375, 0.75, 0.875, 0.5, 0.875),
+                VoxelShapes.create(0.125, 0.4375, 0.75, 0.25, 0.5, 0.875),
+                VoxelShapes.create(0.125, 0.4375, 0.125, 0.25, 0.5, 0.25),
+                VoxelShapes.create(0.75, 0.4375, 0.125, 0.875, 0.5, 0.25),
+                VoxelShapes.create(0.0625, 0.5, 0.6875, 0.3125, 0.9375, 0.9375),
+                VoxelShapes.create(0.0625, 0.5, 0.0625, 0.3125, 0.9375, 0.3125),
+                VoxelShapes.create(0.6875, 0.5, 0.0625, 0.9375, 0.9375, 0.3125),
+        };
+        VAULT_RECYCLER_SHAPE = VoxelShapeUtil.mergeVoxelShapes(shape);
     }
 }
