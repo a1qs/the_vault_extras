@@ -6,6 +6,8 @@ import com.a1qs.the_vault_extras.events.PlayerEvents;
 import com.a1qs.the_vault_extras.events.PlayerLogOutEvent;
 import com.a1qs.the_vault_extras.events.PlayerTabNameEvent;
 import com.a1qs.the_vault_extras.init.*;
+import com.a1qs.the_vault_extras.item.paxel.AdvancedHammerEnhancement;
+import com.a1qs.the_vault_extras.item.paxel.PaxelRegistry;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
 import net.minecraft.client.gui.ScreenManager;
@@ -59,11 +61,13 @@ public class VaultExtras {
         MinecraftForge.EVENT_BUS.addListener(PlayerTabNameEvent::onTick);
         MinecraftForge.EVENT_BUS.addListener(PlayerLogOutEvent::removeFromPartyUponLogout);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(AdvancedHammerEnhancement::onBlockMined);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         VaultExtrasNetwork.init();
         ModGameRules.initialize();
+        PaxelRegistry.registerEnhancements();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
