@@ -30,8 +30,10 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("deprecation")
 public class VaultRecyclerBlock extends Block {
     public static final VoxelShape VAULT_RECYCLER_SHAPE;
 
@@ -40,12 +42,12 @@ public class VaultRecyclerBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull IBlockReader worldIn, @NotNull BlockPos pos, @NotNull ISelectionContext context) {
         return VAULT_RECYCLER_SHAPE;
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public @NotNull ActionResultType onBlockActivated(@NotNull BlockState state, World worldIn, @NotNull BlockPos pos, @NotNull PlayerEntity player, @NotNull Hand handIn, @NotNull BlockRayTraceResult hit) {
 
         if(!worldIn.isRemote()) {
             TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -64,13 +66,12 @@ public class VaultRecyclerBlock extends Block {
     private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos) {
         return new INamedContainerProvider() {
             @Override
-            public ITextComponent getDisplayName() {
+            public @NotNull ITextComponent getDisplayName() {
                 return new TranslationTextComponent("screen.vault_extras.vault_recycler");
             }
 
-            @Nullable
             @Override
-            public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+            public @NotNull Container createMenu(int i, @NotNull PlayerInventory playerInventory, @NotNull PlayerEntity playerEntity) {
                 return new VaultRecyclerContainer(i, worldIn, pos, playerInventory, playerEntity);
             }
         };
@@ -87,9 +88,10 @@ public class VaultRecyclerBlock extends Block {
         return true;
     }
 
-    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+    public void onReplaced(BlockState state, @NotNull World worldIn, @NotNull BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.matchesBlock(newState.getBlock())) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
+            assert tileentity != null;
             LazyOptional<IItemHandler> c = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
             RecipeWrapper wr = new RecipeWrapper((IItemHandlerModifiable) c.orElseThrow(NullPointerException::new));
             InventoryHelper.dropInventoryItems(worldIn, pos, wr);
@@ -97,8 +99,6 @@ public class VaultRecyclerBlock extends Block {
             super.onReplaced(state, worldIn, pos, newState, isMoving);
         }
     }
-
-
 
     static {
         VoxelShape[] shape = {
