@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras.item;
 
 import com.a1qs.the_vault_extras.init.ModConfigs;
+import iskallia.vault.item.paxel.enhancement.PaxelEnhancements;
 import iskallia.vault.util.data.WeightedList;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
@@ -16,6 +17,7 @@ public class DebugItem extends Item {
 
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
+        System.out.println(PaxelEnhancements.REGISTRY);
         return ActionResultType.SUCCESS;
     }
 

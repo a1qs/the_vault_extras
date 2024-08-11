@@ -36,7 +36,7 @@ public class AdvancedHammerEnhancement extends PaxelEnhancement {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onBlockMined(BlockEvent.BreakEvent event) {
-        ServerPlayerEntity player = (ServerPlayerEntity)event.getPlayer();
+        ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
         ItemStack heldStack = player.getHeldItemMainhand();
         if (PaxelEnhancements.getEnhancement(heldStack) instanceof AdvancedHammerEnhancement) {
             ServerWorld world = (ServerWorld)event.getWorld();
