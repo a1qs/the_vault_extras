@@ -1,0 +1,18 @@
+{
+  "type": "the_vault_extras:recycle",
+  "ingredients": [
+    {
+      "item": "the_vault:etching"
+    }
+  ],
+  "smelttime": 30,
+  "extrachance": 0.05,
+  "output": {
+    "item": "the_vault:etching_fragment",
+    "count": 4
+  },
+  "extraoutput": {
+    "item": "the_vault:gem_pog",
+    "count": 1
+  }
+}
