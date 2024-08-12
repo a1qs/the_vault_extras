@@ -27,7 +27,7 @@ public class VendorRecipeCategory implements IRecipeCategory<VendorRecipe> {
 
 
     public static final ResourceLocation UID = new ResourceLocation(VaultExtras.MOD_ID, "vendor");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(VaultExtras.MOD_ID, "textures/gui/vendor_trade_gui.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(VaultExtras.MOD_ID, "textures/gui/vendor_trade_jei.png");
     private final IDrawable background;
     private final IDrawable icon;
 

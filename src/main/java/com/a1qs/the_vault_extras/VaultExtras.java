@@ -12,6 +12,7 @@ import com.a1qs.the_vault_extras.item.paxel.PaxelRegistry;
 import com.a1qs.the_vault_extras.item.paxel.ReachingEnhancement;
 import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
+import com.a1qs.the_vault_extras.util.LootTableUtil;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
@@ -23,10 +24,8 @@ import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.lifecycle.*;
+import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -90,8 +89,11 @@ public class VaultExtras {
     }
 
     @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
+    public void onServerStarted(FMLServerStartedEvent event) {
+        LootTableUtil.loadLootTables();
+        System.out.println("SERVER HAS STARTED");
     }
+
 
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
