@@ -57,55 +57,6 @@ public class VaultExtrasJEI implements IModPlugin {
                 RecyclerRecipeCategory.UID);
 
         registration.addRecipes(AnvilRecipeProvider.getAnvilRecipes(registration.getVanillaRecipeFactory()), VanillaRecipeCategoryUid.ANVIL);
-
-
-        List<LootTableRecipe> recipes = new ArrayList<>();
-
-        // Load and register your recipes
-        for (Map.Entry<ResourceLocation, JsonObject> entry : LootTableUtil.LOOT_TABLES.entrySet()) {
-            ResourceLocation lootTableLocation = entry.getKey();
-            JsonObject lootTableJson = entry.getValue();
-            System.out.println(entry.getValue());
-            List<ItemStack> possibleOutputs = new ArrayList<>();
-            JsonArray pools = lootTableJson.getAsJsonArray("pools");
-            System.out.println("POols: " + pools);
-            for (JsonElement poolElement : pools) {
-                JsonObject pool = poolElement.getAsJsonObject();
-                System.out.println("pool: " + pool);
-                JsonArray entries = pool.getAsJsonArray("entries");
-                System.out.println("entries: " + entries);
-
-                for (JsonElement entryElement : entries) {
-                    JsonObject entry2 = entryElement.getAsJsonObject();
-                    System.out.println("entry2: " + entry2);
-                    if (entry2.get("type").getAsString().equals("minecraft:item")) {
-                        System.out.println("TYPE EXQUALS MC ITEM");
-                        String itemId = entry2.get("name").getAsString();
-                        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId));
-                        System.out.println(entry2.get("name").getAsString());
-
-                        if (item != null && item != Items.AIR) {
-                            possibleOutputs.add(new ItemStack(item));
-                        } else {
-                            VaultExtras.LOGGER.warn("Skipping invalid or air item: {}", itemId);
-                        }
-
-                    } else {
-                        System.out.println("type is not a minecraft:item");
-                    }
-                }
-            }
-
-            if (!possibleOutputs.isEmpty()) {
-                LootTableRecipe recipe = new LootTableRecipe(lootTableLocation, possibleOutputs);
-                recipes.add(recipe);
-            }
-        }
-
-        // Debug log to check if recipes are being added
-        System.out.println("Number of LootTableRecipes: " + recipes.size());
-
-        // Register the recipes with JEI
-        registration.addRecipes(recipes, LootTableRecipeCategory.UID);
+        registration.addRecipes(LootTableUtil.getLootTableRecipes(), LootTableRecipeCategory.UID);
     }
 }
