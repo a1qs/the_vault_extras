@@ -1,7 +1,7 @@
 package com.a1qs.the_vault_extras.integration;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import com.a1qs.the_vault_extras.data.recipes.LootTableRecipe;
+import com.a1qs.the_vault_extras.data.recipes.loot.LootTableRecipe;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import iskallia.vault.init.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
@@ -16,7 +16,6 @@ import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -69,13 +68,11 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, @NotNull LootTableRecipe recipe, @NotNull IIngredients ingredients) {
-        this.currentRecipeLayout = recipeLayout;
+        recipe.setRecipeLayout(recipeLayout);
+
         IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
-
         int itemsPerPage = 54;
-
         List<List<ItemStack>> outputLists = recipe.getPaginatedOutputs(recipe.getCurrentPage(), itemsPerPage);
-
 
         int index = 0;
         for (List<ItemStack> outputList : outputLists) {
@@ -95,13 +92,13 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
         Minecraft minecraft = Minecraft.getInstance();
         FontRenderer fontRenderer = minecraft.fontRenderer;
 
+        // Draw text and other UI components relative to the current recipe
         fontRenderer.drawStringWithShadow(matrixStack, "Loot table:", 0, 110, 0xFFffffff);
         fontRenderer.drawStringWithShadow(matrixStack, recipe.getLootTable().toString(), 0, 120, 0xFFffffff);
 
-
-
         int totalPages = recipe.getTotalPages(54);
 
+        // Only draw navigation buttons if more than one page exists
         if (recipe.getCurrentPage() > 0) {
             drawButton(matrixStack, "<", 0, 130, 10, 10, mouseX, mouseY);
         }
@@ -132,23 +129,24 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
         if (mouseButton == 0) { // Left click
             // Check if the click is within the button bounds
             if (mouseX >= buttonX1 && mouseX <= buttonX1 + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
-                // Play the click sound
                 Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 
+                // Check and set the next page if possible
                 if (recipe.getCurrentPage() < recipe.getTotalPages(54) - 1) {
                     recipe.setCurrentPage(recipe.getCurrentPage() + 1);
-                    updateLayout(currentRecipeLayout, recipe);
+                    updateLayout(recipe.getRecipeLayout(), recipe);
                 }
 
                 return true; // Indicate that the click was handled
             }
 
             if (mouseX >= buttonX2 && mouseX <= buttonX2 + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
-                // Play the click sound
                 Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+
+                // Check and set the previous page if possible
                 if (recipe.getCurrentPage() > 0) {
                     recipe.setCurrentPage(recipe.getCurrentPage() - 1);
-                    updateLayout(currentRecipeLayout, recipe);
+                    updateLayout(recipe.getRecipeLayout(), recipe);
                 }
 
                 return true; // Indicate that the click was handled

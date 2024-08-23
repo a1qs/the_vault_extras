@@ -1,5 +1,6 @@
-package com.a1qs.the_vault_extras.data.recipes;
+package com.a1qs.the_vault_extras.data.recipes.loot;
 
+import mezz.jei.api.gui.IRecipeLayout;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -11,6 +12,7 @@ public class LootTableRecipe {
     private final ResourceLocation lootTable;
     private List<ItemStack> possibleOutputs;
     private int currentPage;
+    private IRecipeLayout recipeLayout;
 
 
     public LootTableRecipe(ResourceLocation lootTable, List<ItemStack> possibleOutputs) {
@@ -56,9 +58,11 @@ public class LootTableRecipe {
         return paginatedOutputs;
     }
 
-//    public List<ItemStack> getPaginatedOutputs(int itemsPerPage) {
-//        int startIndex = currentPage * itemsPerPage;
-//        int endIndex = Math.min(startIndex + itemsPerPage, possibleOutputs.size());
-//        return possibleOutputs.subList(startIndex, endIndex);
-//    }
+    public void setRecipeLayout(IRecipeLayout layout) {
+        this.recipeLayout = layout;
+    }
+
+    public IRecipeLayout getRecipeLayout() {
+        return this.recipeLayout;
+    }
 }

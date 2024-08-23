@@ -1,7 +1,7 @@
 package com.a1qs.the_vault_extras.util;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import com.a1qs.the_vault_extras.data.recipes.LootTableRecipe;
+import com.a1qs.the_vault_extras.data.recipes.loot.LootTableRecipe;
 import com.google.gson.*;
 import iskallia.vault.Vault;
 import net.minecraft.client.Minecraft;
