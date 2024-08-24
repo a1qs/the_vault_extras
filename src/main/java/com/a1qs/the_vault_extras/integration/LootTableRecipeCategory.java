@@ -29,7 +29,6 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
     public static final ResourceLocation TEXTURE = new ResourceLocation(VaultExtras.MOD_ID, "textures/gui/loot_info_jei.png");
     private final IDrawable background;
     private final IDrawable icon;
-    private IRecipeLayout currentRecipeLayout;
 
     public LootTableRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 162, 136);
@@ -94,7 +93,7 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
 
         // Draw text and other UI components relative to the current recipe
         fontRenderer.drawStringWithShadow(matrixStack, "Loot table:", 0, 110, 0xFFffffff);
-        fontRenderer.drawStringWithShadow(matrixStack, recipe.getLootTable().toString(), 0, 120, 0xFFffffff);
+        fontRenderer.drawStringWithShadow(matrixStack, recipe.getLootTableName(), 0, 120, 0xFFffffff);
 
         int totalPages = recipe.getTotalPages(54);
 

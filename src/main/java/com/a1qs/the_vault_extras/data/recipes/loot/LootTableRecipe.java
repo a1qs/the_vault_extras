@@ -2,27 +2,26 @@ package com.a1qs.the_vault_extras.data.recipes.loot;
 
 import mezz.jei.api.gui.IRecipeLayout;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class LootTableRecipe {
-    private final ResourceLocation lootTable;
-    private List<ItemStack> possibleOutputs;
+    private final String lootTableName;
+    private final List<ItemStack> possibleOutputs;
     private int currentPage;
     private IRecipeLayout recipeLayout;
 
 
-    public LootTableRecipe(ResourceLocation lootTable, List<ItemStack> possibleOutputs) {
-        this.lootTable = lootTable;
+    public LootTableRecipe(String lootTableName, List<ItemStack> possibleOutputs) {
+        this.lootTableName = lootTableName;
         this.possibleOutputs = possibleOutputs;
         this.currentPage = 0;
     }
 
-    public ResourceLocation getLootTable() {
-        return lootTable;
+    public String getLootTableName() {
+        return lootTableName;
     }
 
     public List<ItemStack> getPossibleOutputs() {
