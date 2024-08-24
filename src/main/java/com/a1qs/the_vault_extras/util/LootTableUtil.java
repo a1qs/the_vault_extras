@@ -22,9 +22,6 @@ public class LootTableUtil {
 
     public static JsonObject loadLootTable(ResourceLocation location) {
         try {
-            // Log the loot table we're attempting to load
-            System.out.println("Trying to load loot table: " + location);
-
             IResourceManager resourceManager;
             if (ServerLifecycleHooks.getCurrentServer() != null) {
                 // Server-side resource manager
@@ -46,8 +43,6 @@ public class LootTableUtil {
             JsonElement jsonElement = jsonParser.parse(new InputStreamReader(inputStream));
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-            // Log the loaded JSON
-            System.out.println("Loaded loot table: " + jsonObject);
             return jsonObject;
         } catch (IOException e) {
             // Print error if the file cannot be found or read
