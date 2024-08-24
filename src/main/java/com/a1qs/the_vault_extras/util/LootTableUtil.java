@@ -296,7 +296,7 @@ public class LootTableUtil {
         LOOT_TABLES.put("LVL 250 Cow", loadLootTable(new ResourceLocation(Vault.MOD_ID, "entities/lvl250/cow")));
         LOOT_TABLES.put("LVL 250 Treasure Goblin", loadLootTable(new ResourceLocation(Vault.MOD_ID, "entities/lvl250/treasure_goblin")));
         
-        LOOT_TABLES.put("LVL 300 Altar", loadLootTable(new ResourceLocation(Vault.MOD_ID, "chest/altar300")));
+        LOOT_TABLES.put("LVL 300 Vault Altar", loadLootTable(new ResourceLocation(Vault.MOD_ID, "chest/altar300")));
         LOOT_TABLES.put("Ancient Box", loadLootTable(new ResourceLocation(Vault.MOD_ID, "chest/ancientbox")));
 
     }

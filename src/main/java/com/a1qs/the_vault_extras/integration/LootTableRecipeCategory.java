@@ -31,7 +31,7 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
     private final IDrawable icon;
 
     public LootTableRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 162, 136);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 162, 139);
         this.icon = helper.createDrawableIngredient(new ItemStack(ModBlocks.VAULT_CHEST));
     }
 
@@ -66,7 +66,7 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, @NotNull LootTableRecipe recipe, @NotNull IIngredients ingredients) {
+    public void setRecipe(@NotNull IRecipeLayout recipeLayout, @NotNull LootTableRecipe recipe, @NotNull IIngredients ingredients) {
         recipe.setRecipeLayout(recipeLayout);
 
         IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
@@ -92,36 +92,45 @@ public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>
         FontRenderer fontRenderer = minecraft.fontRenderer;
 
         // Draw text and other UI components relative to the current recipe
-        fontRenderer.drawStringWithShadow(matrixStack, "Loot table:", 0, 110, 0xFFffffff);
-        fontRenderer.drawStringWithShadow(matrixStack, recipe.getLootTableName(), 0, 120, 0xFFffffff);
+        fontRenderer.drawStringWithShadow(matrixStack, recipe.getLootTableName(), 0, 110, 0xFFffffff);
 
         int totalPages = recipe.getTotalPages(54);
 
+        minecraft.fontRenderer.drawStringWithShadow(matrixStack, (recipe.getCurrentPage()+1) + " / " + totalPages , 70, 126, 0xFFffffff);
+
         // Only draw navigation buttons if more than one page exists
         if (recipe.getCurrentPage() > 0) {
-            drawButton(matrixStack, "<", 0, 130, 10, 10, mouseX, mouseY);
+            drawImageButton(matrixStack, 0, 120, 20, 20, mouseX, mouseY, "<");
         }
 
         if (recipe.getCurrentPage() < totalPages - 1) {
-            drawButton(matrixStack, ">", 150, 130, 10, 10, mouseX, mouseY);
+            drawImageButton(matrixStack, 143, 120, 20, 20, mouseX, mouseY, ">");
         }
     }
 
-    private void drawButton(MatrixStack matrixStack, String text, int x, int y, int width, int height, double mouseX, double mouseY) {
+    private void drawImageButton(MatrixStack matrixStack, int x, int y, int width, int height, double mouseX, double mouseY, String direction) {
+        Minecraft minecraft = Minecraft.getInstance();
+
+        // Bind the texture
+        minecraft.getTextureManager().bindTexture(TEXTURE);
+
+        // Determine if the button is hovered
         boolean isHovered = mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
 
-        int backgroundColor = isHovered ? 0xFFAAAAAA : 0xFF888888;
-        AbstractGui.fill(matrixStack, x, y, x + width, y + height, backgroundColor);
+        // Calculate the texture coordinates for normal and hovered states
+        int textureX = 162;
+        int textureY = isHovered ? 20 : 0;  // Use different Y offset for hovered state
 
-        Minecraft.getInstance().fontRenderer.drawString(matrixStack, text, x + (width / 2) - (Minecraft.getInstance().fontRenderer.getStringWidth(text) / 2), y + (height / 2) - 4, 0xFF404040);
+        AbstractGui.blit(matrixStack, x, y, width, height, textureX, textureY, 20, 20, 256, 256);
+        minecraft.fontRenderer.drawStringWithShadow(matrixStack, direction , x+8, y+6, 0xFFffffff);
     }
 
     @Override
     public boolean handleClick(@NotNull LootTableRecipe recipe, double mouseX, double mouseY, int mouseButton) {
-        int buttonX1 = 150;
-        int buttonY = 130;
-        int buttonWidth = 10;
-        int buttonHeight = 10;
+        int buttonX1 = 143;
+        int buttonY = 120;
+        int buttonWidth = 20;
+        int buttonHeight = 20;
         int buttonX2 = 0;
 
 
