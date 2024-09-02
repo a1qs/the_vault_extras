@@ -36,6 +36,7 @@ public class DeleteDimensionEvent {
     }
 
     private static void deleteDimensionData(MinecraftServer server, RegistryKey<World> dimensionKey){
+        //todo: TEST THIS ON SERVERS OH GOD OH FUCK OH GOD AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         Path dimensionsPath = server.func_240776_a_(new FolderName("dimensions"));
         Path vaultPath = dimensionsPath.resolve("the_vault").resolve("vault").normalize();
         Path poiPath = vaultPath.resolve("poi").normalize();
