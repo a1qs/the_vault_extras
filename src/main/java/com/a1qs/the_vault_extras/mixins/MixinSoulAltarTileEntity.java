@@ -46,6 +46,5 @@ public abstract class MixinSoulAltarTileEntity extends FillableAltarTileEntity {
                 }
             });
         }
-
     }
 }
