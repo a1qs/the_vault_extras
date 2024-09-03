@@ -37,6 +37,7 @@
     "MixinSummonEternalAbility",
     "MixinVaultArmorItem",
     "MixinVaultAxeItem",
+    "MixinVaultCharmControllerContainer",
     "MixinVaultGeneralConfig",
     "MixinVaultInfluenceHandler",
     "MixinVaultMagnetItem",
