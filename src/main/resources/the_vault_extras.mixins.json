@@ -16,7 +16,9 @@
     "MixinChallengeCrystalArchive",
     "MixinChestRarityHelper",
     "MixinEntityEvents",
+    "MixinGearAnvilEvents",
     "MixinHunterAbility",
+    "MixinIdolItem",
     "MixinItemShardPouch",
     "MixinItemStack",
     "MixinMobTrapEffects",
@@ -33,11 +35,14 @@
     "MixinShardTradeContainer$ShardSellSlot",
     "MixinSoulAltarTileEntity",
     "MixinSummonEternalAbility",
+    "MixinVaultArmorItem",
+    "MixinVaultAxeItem",
     "MixinVaultGeneralConfig",
     "MixinVaultInfluenceHandler",
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
-    "MixinVaultRoomNames"
+    "MixinVaultRoomNames",
+    "MixinVaultSwordItem"
   ],
   "client": [
     "MixinMinecraft"
