@@ -31,6 +31,7 @@
     "MixinPlayerEvents",
     "MixinPlayerInventory",
     "MixinReloadConfigsCommand",
+    "MixinRepairContainer",
     "MixinShardTradeContainer$RandomSellSlot",
     "MixinShardTradeContainer$ShardSellSlot",
     "MixinSoulAltarTileEntity",
@@ -46,6 +47,7 @@
     "MixinVaultSwordItem"
   ],
   "client": [
+    "MixinAnvilScreen",
     "MixinMinecraft"
   ]
 }
