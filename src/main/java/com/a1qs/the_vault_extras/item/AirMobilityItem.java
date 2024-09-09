@@ -16,9 +16,9 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 
-public class BunnyHoppingCharm extends Item implements ICurioItem {
+public class AirMobilityItem extends Item implements ICurioItem {
 
-    public BunnyHoppingCharm(Properties properties) {
+    public AirMobilityItem(Properties properties) {
         super(properties);
     }
 
@@ -36,7 +36,7 @@ public class BunnyHoppingCharm extends Item implements ICurioItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip." + VaultExtras.MOD_ID + ".bunny_charm1"));
+        tooltip.add(new TranslationTextComponent("tooltip." + VaultExtras.MOD_ID + ".air_mobility_item"));
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 }

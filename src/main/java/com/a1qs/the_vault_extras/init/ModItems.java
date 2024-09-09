@@ -45,8 +45,8 @@ public class ModItems {
                     .group(ModItemGroup.VAULT_EXTRAS)
                     .food(new Food.Builder().hunger(10).saturation(1.5F).fastToEat().build())));
 
-    public static final RegistryObject<Item> BUNNY_CHARM = ITEMS.register("bunny_charm",
-            () -> new BunnyHoppingCharm(new Item.Properties()
+    public static final RegistryObject<Item> BUNNY_CHARM = ITEMS.register("zephyr_charm",
+            () -> new AirMobilityItem(new Item.Properties()
                     .group(ModItemGroup.VAULT_EXTRAS)));
 
     public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
