@@ -48,6 +48,7 @@
   ],
   "client": [
     "MixinAnvilScreen",
-    "MixinMinecraft"
+    "MixinMinecraft",
+    "MixinVaultChestTileEntity"
   ]
 }
