@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "the_vault:item/unidentified_rune"
+    "layer0": "the_vault_extras:item/unidentified_rune"
   }
 }
