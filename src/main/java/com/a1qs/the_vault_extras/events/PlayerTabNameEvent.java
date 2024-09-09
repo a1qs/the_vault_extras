@@ -70,10 +70,12 @@ public class PlayerTabNameEvent {
                 if(world instanceof ServerWorld) {
                     ServerWorld sWorld = (ServerWorld) world;
                     VaultRaid raid = VaultRaidData.get(sWorld).getAt(sWorld, serverPlayerEntity.getPosition());
-                    Optional<VaultPlayer> optionalVaultPlayer = raid.getPlayer(serverPlayerEntity);
-                    optionalVaultPlayer.ifPresent(vaultPlayer ->
-                            PLAYER_VAULT_TIMER.put(serverPlayerEntity.getUniqueID(), vaultPlayer.getTimer().getTimeLeft()));
-                    serverPlayerEntity.refreshTabListName();
+                    if(raid != null) {
+                        Optional<VaultPlayer> optionalVaultPlayer = raid.getPlayer(serverPlayerEntity);
+                        optionalVaultPlayer.ifPresent(vaultPlayer ->
+                                PLAYER_VAULT_TIMER.put(serverPlayerEntity.getUniqueID(), vaultPlayer.getTimer().getTimeLeft()));
+                        serverPlayerEntity.refreshTabListName();
+                    }
                 }
 
 
