@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.integration;
+package com.a1qs.the_vault_extras.integration.category;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.data.recipes.RecyclerRecipe;

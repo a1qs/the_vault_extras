@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.integration;
+package com.a1qs.the_vault_extras.integration.category;
 
 import com.google.common.collect.Lists;
 import iskallia.vault.Vault;

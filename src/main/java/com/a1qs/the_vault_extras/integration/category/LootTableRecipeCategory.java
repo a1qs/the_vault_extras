@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.integration;
+package com.a1qs.the_vault_extras.integration.category;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.data.recipes.loot.LootTableRecipe;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class LootTableRecipeCategory implements IRecipeCategory<LootTableRecipe>  {
     public static final ResourceLocation UID = new ResourceLocation(VaultExtras.MOD_ID, "loottable");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(VaultExtras.MOD_ID, "textures/gui/loot_info_jei.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(VaultExtras.MOD_ID, "textures/gui/loot_info_jei.png");
     private final IDrawable background;
     private final IDrawable icon;
 

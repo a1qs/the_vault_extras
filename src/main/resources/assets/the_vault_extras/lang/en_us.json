@@ -24,6 +24,8 @@
   "tooltip.the_vault_extras.advanced_vault_pearl_explode": "Enhancement: \u00A7c\u00A7lUNSTABLE\u00A7r",
   "tooltip.the_vault_extras.air_mobility_item": "\u00A7eAllows you to freely move in the air\u00A7r",
 
+  "jeitooltip.the_vault_extras.chance": "Chance: %d%%",
+
   "command.the_vault_extras.difficulty.set": "The Difficulty has already been set to this value!",
   "command.the_vault_extras.difficulty.trivial": "Set difficulty to: Trivial",
   "command.the_vault_extras.difficulty.casual": "Set difficulty to: Casual",
@@ -38,6 +40,8 @@
   "itemGroup.vaultExtrasTab": "The Vault Extras",
   "jei.the_vault_extras.recycle": "Vault Recycler",
   "jei.the_vault_extras.vendor": "Vendor Purchases",
+  "jei.the_vault_extras.loottable": "Loot Tables",
+  "jei.the_vault_extras.mystery_egg": "Mystery Eggs",
   "the_vault_extras.hunter_cast": "Cast Ability Hunter",
   "the_vault_extras.mob_trap": "Mob Trap Activated",
   "key.category.the_vault_extras": "The Vault Extras",

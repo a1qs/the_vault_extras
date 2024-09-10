@@ -5,7 +5,6 @@ import iskallia.vault.config.VaultChestConfig;
 import iskallia.vault.init.ModBlocks;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.util.PlayerFilter;
-import iskallia.vault.util.VaultRarity;
 import iskallia.vault.util.data.RandomListAccess;
 import iskallia.vault.world.vault.VaultRaid;
 import iskallia.vault.world.vault.chest.VaultChestEffect;
@@ -16,9 +15,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.particles.ParticleType;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -27,6 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -71,7 +69,7 @@ public class MixinVaultChestTileEntity {
                         thisInstance.getWorld().setBlockState(thisInstance.getPos(), ModBlocks.VAULT_BEDROCK.getDefaultState());
 
                         if(effect.getName().equals("Mob Trap")) {
-                            spawnParticles(thisInstance.getPos());
+                            _VH2_5_The_vault_extras$spawnParticles(thisInstance.getPos());
                         }
                         return true;
                     }
@@ -82,8 +80,9 @@ public class MixinVaultChestTileEntity {
         }).orElse(false);
     }
 
+    @Unique
     @OnlyIn(Dist.CLIENT)
-    private static void spawnParticles(BlockPos pos) {
+    private static void _VH2_5_The_vault_extras$spawnParticles(BlockPos pos) {
         World world = Minecraft.getInstance().world;
         if (world != null) {
             ParticleManager mgr = Minecraft.getInstance().particles;

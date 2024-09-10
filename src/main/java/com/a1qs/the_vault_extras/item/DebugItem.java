@@ -5,6 +5,7 @@ import iskallia.vault.item.paxel.enhancement.PaxelEnhancements;
 import iskallia.vault.util.data.WeightedList;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.server.Main;
 import net.minecraft.util.ActionResultType;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
@@ -17,7 +18,7 @@ public class DebugItem extends Item {
 
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
-        System.out.println(PaxelEnhancements.REGISTRY);
+        getAllEntries();
         return ActionResultType.SUCCESS;
     }
 
