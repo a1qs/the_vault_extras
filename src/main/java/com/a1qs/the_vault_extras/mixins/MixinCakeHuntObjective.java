@@ -3,7 +3,9 @@ package com.a1qs.the_vault_extras.mixins;
 import com.a1qs.the_vault_extras.init.ModItems;
 import iskallia.vault.config.VaultModifiersConfig;
 import iskallia.vault.init.ModConfigs;
+import iskallia.vault.util.MathUtilities;
 import iskallia.vault.util.MiscUtils;
+import iskallia.vault.world.data.VaultRaidData;
 import iskallia.vault.world.vault.VaultRaid;
 import iskallia.vault.world.vault.logic.objective.CakeHuntObjective;
 import iskallia.vault.world.vault.modifier.*;
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -37,12 +40,14 @@ public class MixinCakeHuntObjective {
 
     @Shadow private float healthPenalty;
     @Shadow private int cakeCount;
+    @Shadow private int maxCakeCount;
     @Shadow private float modifierChance;
     @Shadow private VaultModifiersConfig.ModifierPoolType poolType;
 
-    @Inject(method = "expandVault", at = @At(value="HEAD"))
-    private void playSoundOnCakeClick(ServerWorld world, ServerPlayerEntity player, BlockPos cakePos, VaultRaid vault, CallbackInfo ci) {
-        vault.getPlayers().forEach((vPlayer) -> vPlayer.runIfPresent(world.getServer(), (sPlayer) -> sPlayer.getEntityWorld().playSound(null, sPlayer.getPosX(), sPlayer.getPosY(), sPlayer.getPosZ(), SoundEvents.BLOCK_NOTE_BLOCK_BELL, SoundCategory.PLAYERS, 0.6F, 1.0F)));
+    @Inject(method = "<init>", at = @At(value= "TAIL"))
+    private void init(ResourceLocation id, CallbackInfo ci) {
+        this.maxCakeCount = 15 + rand.nextInt(32);
+        this.modifierChance = 1.0F;
     }
 
     @Inject(method = "addSpecialLoot", at = @At(value="TAIL"))
@@ -100,7 +105,10 @@ public class MixinCakeHuntObjective {
                 vault.getModifiers().addPermanentModifier(modifier);
                 vault.getPlayers().forEach(vPlayer -> {
                     modifier.apply(vault, vPlayer, sWorld, sWorld.getRandom());
-                    vPlayer.runIfPresent(sWorld.getServer(), sPlayer -> sPlayer.sendMessage(ct, Util.DUMMY_UUID));
+                    vPlayer.runIfPresent(sWorld.getServer(), sPlayer -> {
+                        sPlayer.sendMessage(ct, Util.DUMMY_UUID);
+                        sPlayer.getEntityWorld().playSound(null, sPlayer.getPosX(), sPlayer.getPosY(), sPlayer.getPosZ(), SoundEvents.BLOCK_NOTE_BLOCK_BELL, SoundCategory.PLAYERS, 0.6F, 1.0F);
+                    });
                 });
             }
         }
