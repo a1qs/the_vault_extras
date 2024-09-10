@@ -38,6 +38,7 @@ public class VaultExtrasJEI implements IModPlugin {
                 new VendorRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
                 new LootTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
                 new MysteryEggItemRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
+                new BoxRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
                 new RecyclerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
@@ -46,8 +47,8 @@ public class VaultExtrasJEI implements IModPlugin {
         RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().world).getRecipeManager();
 
         registration.addRecipes(rm.getRecipesForType(ModRecipeTypes.VENDOR_RECIPE).stream()
-                .filter(r -> r instanceof VendorRecipe).collect(Collectors.toList()),
-            VendorRecipeCategory.UID);
+                        .filter(r -> r instanceof VendorRecipe).collect(Collectors.toList()),
+                VendorRecipeCategory.UID);
 
         registration.addRecipes(rm.getRecipesForType(ModRecipeTypes.RECYCLER_RECIPE).stream()
                         .filter(r -> r instanceof RecyclerRecipe).collect(Collectors.toList()),
@@ -55,6 +56,7 @@ public class VaultExtrasJEI implements IModPlugin {
 
 
         registration.addRecipes(MysteryEggItemRecipeCategory.getRecipes(), MysteryEggItemRecipeCategory.UID);
+        registration.addRecipes(BoxRecipeCategory.getRecipes(), BoxRecipeCategory.UID);
 
         registration.addRecipes(AnvilRecipeProvider.getAnvilRecipes(registration.getVanillaRecipeFactory()), VanillaRecipeCategoryUid.ANVIL);
         registration.addRecipes(LootTableUtil.getLootTableRecipes(), LootTableRecipeCategory.UID);
@@ -63,6 +65,7 @@ public class VaultExtrasJEI implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.VAULT_RECYCLER.get()), RecyclerRecipeCategory.UID);
+
         registration.addRecipeCatalyst(new ItemStack(iskallia.vault.init.ModBlocks.VAULT_CHEST.asItem()), LootTableRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(iskallia.vault.init.ModBlocks.VAULT_BONUS_CHEST.asItem()), LootTableRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(iskallia.vault.init.ModBlocks.VAULT_COOP_CHEST.asItem()), LootTableRecipeCategory.UID);
@@ -74,7 +77,13 @@ public class VaultExtrasJEI implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(iskallia.vault.init.ModBlocks.VAULT_CRATE_SCAVENGER.asItem()), LootTableRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(Blocks.BLACK_SHULKER_BOX.asItem()), LootTableRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(iskallia.vault.init.ModBlocks.VAULT_ALTAR.asItem()), LootTableRecipeCategory.UID);
+
         registration.addRecipeCatalyst(new ItemStack(ModItems.MYSTERY_EGG.asItem()), MysteryEggItemRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(ModItems.MYSTERY_HOSTILE_EGG.asItem()), MysteryEggItemRecipeCategory.UID);
+
+        registration.addRecipeCatalyst(new ItemStack(ModItems.MYSTERY_BOX.asItem()), BoxRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModItems.PANDORAS_BOX.asItem()), BoxRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(com.a1qs.the_vault_extras.init.ModItems.MYSTERY_BOOK.get()), BoxRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(com.a1qs.the_vault_extras.init.ModItems.MYSTERY_RUNE.get()), BoxRecipeCategory.UID);
     }
 }

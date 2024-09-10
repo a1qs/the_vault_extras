@@ -22,7 +22,7 @@ public abstract class AbstractWeightedItemRecipeCategory<T extends WeightedItemR
 
     public AbstractWeightedItemRecipeCategory(IGuiHelper guiHelper, ResourceLocation texture, ItemStack iconItem) {
         this.guiHelper = guiHelper;
-        this.background = guiHelper.createDrawable(texture, 0, 0, 162, 101);
+        this.background = guiHelper.createDrawable(texture, 0, 0, 162, 120);
         this.icon = guiHelper.createDrawableIngredient(iconItem);
     }
 
