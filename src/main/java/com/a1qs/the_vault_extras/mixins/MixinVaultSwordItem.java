@@ -8,6 +8,8 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,6 +20,7 @@ import java.util.List;
 @Mixin(value = VaultSwordItem.class, remap = false)
 public class MixinVaultSwordItem {
 
+    @OnlyIn(Dist.CLIENT)
     @Inject(method = "addInformation", at = @At(value = "TAIL"))
     public void addDuraInfo(ItemStack itemStack, World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
         StringTextComponent durabilityLabel = new StringTextComponent("Durability: ");

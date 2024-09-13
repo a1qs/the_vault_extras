@@ -5,6 +5,8 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,6 +17,7 @@ import java.util.List;
 @Mixin(value = VaultArmorItem.class, remap = false)
 public class MixinVaultArmorItem {
 
+    @OnlyIn(Dist.CLIENT)
     @Inject(method = "addInformation", at = @At(value = "TAIL"))
     public void addDuraInfo(ItemStack itemStack, World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
         StringTextComponent durabilityLabel = new StringTextComponent("Durability: ");
