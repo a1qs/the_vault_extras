@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras.mixins;
 
 
+import com.a1qs.the_vault_extras.mixins.invokers.InvokerEntityEvents;
 import iskallia.vault.Vault;
 import iskallia.vault.entity.*;
 import iskallia.vault.event.EntityEvents;

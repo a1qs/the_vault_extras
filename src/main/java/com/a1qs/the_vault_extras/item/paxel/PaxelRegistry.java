@@ -1,7 +1,7 @@
 package com.a1qs.the_vault_extras.item.paxel;
 
 import com.a1qs.the_vault_extras.init.ModEffect;
-import com.a1qs.the_vault_extras.mixins.InvokerPaxelEnhancements;
+import com.a1qs.the_vault_extras.mixins.invokers.InvokerPaxelEnhancements;
 import iskallia.vault.item.paxel.enhancement.EffectEnhancement;
 import iskallia.vault.item.paxel.enhancement.FortuneEnhancement;
 import iskallia.vault.item.paxel.enhancement.PaxelEnhancement;

@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.mixins;
+package com.a1qs.the_vault_extras.mixins.invokers;
 
 import iskallia.vault.event.EntityEvents;
 import iskallia.vault.world.vault.VaultRaid;

@@ -2,6 +2,7 @@ package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.block.DecayedCrystallizer;
+import com.a1qs.the_vault_extras.block.PillarBlock;
 import com.a1qs.the_vault_extras.block.SanctifiedPedestalBlock;
 import com.a1qs.the_vault_extras.block.VaultRecyclerBlock;
 import net.minecraft.block.AbstractBlock;
@@ -46,9 +47,29 @@ public class ModBlocks {
                     .hardnessAndResistance(-1f)
                     .notSolid()));
 
+    public static final RegistryObject<Block> VAULT_STONE_PILLAR = registerBlock("vault_stone_pillar",
+            () -> new PillarBlock(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
 
-    private static <T extends Block>
-    RegistryObject<T> registerBlock(String name, Supplier<T> block){
+    public static final RegistryObject<Block> VAULT_STONE_POLISHED = registerBlock("vault_stone_polished",
+            () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_POLISHED_CHISELED = registerBlock("vault_stone_polished_chiseled",
+            () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_BRICKS = registerBlock("vault_stone_bricks",
+            () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_BRICKS_CRACKED = registerBlock("vault_stone_bricks_cracked",
+            () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_BUMBO = registerBlock("vault_stone_bumbo",
+            () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_COBBLESTONE = registerBlock("vault_cobblestone",
+            () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)));
+
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
 
         registerBlockItem(name, toReturn);

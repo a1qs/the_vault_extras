@@ -14,6 +14,13 @@
   "block.the_vault_extras.vault_recycler": "Vault Recycler",
   "block.the_vault_extras.sanctified_pedestal": "Sanctified Pedestal",
   "block.the_vault_extras.decayed_crystallizer": "Decayed Crystallizer",
+  "block.the_vault_extras.vault_stone_pillar": "Vault Stone Pillar",
+  "block.the_vault_extras.vault_stone_polished": "Polished Vault Stone",
+  "block.the_vault_extras.vault_stone_polished_chiseled": "Chiseled Vault Stone",
+  "block.the_vault_extras.vault_stone_bricks": "Vault Stone Bricks",
+  "block.the_vault_extras.vault_stone_bricks_cracked": "Cracked Vault Stone Bricks",
+  "block.the_vault_extras.vault_stone_bumbo": "Bumbo Vault Stone",
+  "block.the_vault_extras.vault_cobblestone": "Vault Cobblestone",
 
   "tooltip.the_vault_extras.cake_seal1": "\u00A78Seems inedible\u00A7r",
   "tooltip.the_vault_extras.cake_seal2": "\u00A75Your ticket to a buffet of cakes\u00A7r",
@@ -47,6 +54,7 @@
   "the_vault_extras.mob_trap": "Mob Trap Activated",
   "key.category.the_vault_extras": "The Vault Extras",
   "key.the_vault_extras.magnet_toggle": "Toggle Magnet",
+  "key.the_vault_extras.veinminer_hold": "Select and use ability: Vein Miner",
   "curios.identifier.magnet": "Magnet",
   "curios.identifier.vault_charm": "Vault Charm",
 
