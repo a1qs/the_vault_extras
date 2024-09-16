@@ -40,6 +40,7 @@
     "MixinVaultInfluenceHandler",
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
+    "MixinVaultRaid",
     "MixinVaultRoomNames"
   ],
   "client": [
