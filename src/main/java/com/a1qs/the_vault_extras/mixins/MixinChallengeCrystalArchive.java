@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
+import com.a1qs.the_vault_extras.mixins.invokers.InvokerChallengeCrystalArchive;
 import iskallia.vault.item.crystal.CrystalData;
 import iskallia.vault.world.data.generated.ChallengeCrystalArchive;
 import iskallia.vault.world.vault.VaultRaid;
@@ -11,7 +12,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
 import java.util.List;

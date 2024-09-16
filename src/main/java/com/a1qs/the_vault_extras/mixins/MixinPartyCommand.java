@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras.mixins;
 
+import com.a1qs.the_vault_extras.mixins.invokers.InvokerPartyCommand;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import iskallia.vault.command.PartyCommand;

@@ -1,4 +1,4 @@
-package com.a1qs.the_vault_extras.mixins;
+package com.a1qs.the_vault_extras.mixins.invokers;
 
 import iskallia.vault.item.crystal.CrystalData;
 import iskallia.vault.world.data.generated.ChallengeCrystalArchive;
