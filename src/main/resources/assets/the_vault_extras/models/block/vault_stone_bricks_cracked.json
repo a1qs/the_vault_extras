@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "the_vault_extras:block/vault_stone_bricks_cracked"
+	}
+}
