@@ -6,10 +6,6 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "the_vault_extras.refmap.json",
   "mixins": [
-    "InvokerChallengeCrystalArchive",
-    "InvokerEntityEvents",
-    "InvokerPartyCommand",
-    "InvokerPaxelEnhancements",
     "MixinAnvilBlock",
     "MixinAnvilEvents",
     "MixinCakeHuntObjective",
@@ -40,7 +36,11 @@
     "MixinVaultInfluenceHandler",
     "MixinVaultMagnetItem",
     "MixinVaultPlayer",
-    "MixinVaultRoomNames"
+    "MixinVaultRoomNames",
+    "invokers.InvokerChallengeCrystalArchive",
+    "invokers.InvokerEntityEvents",
+    "invokers.InvokerPartyCommand",
+    "invokers.InvokerPaxelEnhancements"
   ],
   "client": [
     "MixinAnvilScreen",
