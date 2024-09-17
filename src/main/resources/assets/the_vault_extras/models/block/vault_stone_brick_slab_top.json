@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "the_vault_extras:block/vault_stone_bricks",
+    "top": "the_vault_extras:block/vault_stone_bricks",
+    "side": "the_vault_extras:block/vault_stone_bricks"
+  }
+}

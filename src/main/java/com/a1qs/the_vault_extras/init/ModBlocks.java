@@ -5,10 +5,7 @@ import com.a1qs.the_vault_extras.block.DecayedCrystallizer;
 import com.a1qs.the_vault_extras.block.PillarBlock;
 import com.a1qs.the_vault_extras.block.SanctifiedPedestalBlock;
 import com.a1qs.the_vault_extras.block.VaultRecyclerBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AnvilBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -53,11 +50,23 @@ public class ModBlocks {
     public static final RegistryObject<Block> VAULT_STONE_POLISHED = registerBlock("vault_stone_polished",
             () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
 
+    public static final RegistryObject<Block> VAULT_STONE_POLISHED_STAIRS = registerBlock("vault_stone_polished_stairs",
+            () -> new StairsBlock(() -> VAULT_STONE_POLISHED.get().getDefaultState(), AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_POLISHED_SLAB = registerBlock("vault_stone_polished_slab",
+            () -> new SlabBlock(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
     public static final RegistryObject<Block> VAULT_STONE_POLISHED_CHISELED = registerBlock("vault_stone_polished_chiseled",
             () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
 
     public static final RegistryObject<Block> VAULT_STONE_BRICKS = registerBlock("vault_stone_bricks",
             () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_BRICK_STAIRS = registerBlock("vault_stone_brick_stairs",
+            () -> new StairsBlock(() -> VAULT_STONE_BRICKS.get().getDefaultState(), AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
+
+    public static final RegistryObject<Block> VAULT_STONE_BRICK_SLAB = registerBlock("vault_stone_brick_slab",
+            () -> new SlabBlock(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
 
     public static final RegistryObject<Block> VAULT_STONE_BRICKS_CRACKED = registerBlock("vault_stone_bricks_cracked",
             () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
@@ -66,7 +75,15 @@ public class ModBlocks {
             () -> new Block(AbstractBlock.Properties.from(iskallia.vault.init.ModBlocks.VAULT_STONE)));
 
     public static final RegistryObject<Block> VAULT_COBBLESTONE = registerBlock("vault_cobblestone",
-            () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)));
+            () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+
+    public static final RegistryObject<Block> VAULT_COBBLESTONE_STAIRS = registerBlock("vault_cobblestone_stairs",
+            () -> new StairsBlock(() -> VAULT_COBBLESTONE.get().getDefaultState(), AbstractBlock.Properties.from(ModBlocks.VAULT_COBBLESTONE.get())));
+
+    public static final RegistryObject<Block> VAULT_COBBLESTONE_SLAB = registerBlock("vault_cobblestone_slab",
+            () -> new SlabBlock(AbstractBlock.Properties.from(ModBlocks.VAULT_COBBLESTONE.get())));
+
+
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

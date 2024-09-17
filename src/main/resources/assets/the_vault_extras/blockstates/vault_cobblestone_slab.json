@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "the_vault_extras:block/vault_cobblestone_slab"
+    },
+    "type=double": {
+      "model": "the_vault_extras:block/vault_cobblestone"
+    },
+    "type=top": {
+      "model": "the_vault_extras:block/vault_cobblestone_slab_top"
+    }
+  }
+}
