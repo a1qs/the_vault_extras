@@ -31,7 +31,7 @@ public class RuinedVaultPortalStructure extends Structure<NoFeatureConfig> {
 
     @Override
     public GenerationStage.Decoration getDecorationStage() {
-        return super.getDecorationStage();
+        return GenerationStage.Decoration.SURFACE_STRUCTURES;
     }
 
     @Override
@@ -74,8 +74,8 @@ public class RuinedVaultPortalStructure extends Structure<NoFeatureConfig> {
                             10), AbstractVillagePiece::new, chunkGenerator, templateManagerIn,
                     blockpos, this.components, this.rand,false,true);
 
-            this.components.forEach(piece -> piece.offset(0, 1, 0));
-            this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
+            this.components.forEach(piece -> piece.offset(0, -1, 0));
+            //this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
 
             this.recalculateStructureSize();
         }

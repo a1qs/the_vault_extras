@@ -5,7 +5,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "the_vault_extras:house",
+        "location": "the_vault_extras:ruined_vault_portal",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
