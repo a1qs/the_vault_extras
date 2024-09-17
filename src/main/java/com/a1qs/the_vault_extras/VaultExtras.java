@@ -50,6 +50,7 @@ public class VaultExtras {
         ModTileEntities.register(eventBus);
         ModContainers.register(eventBus);
         ModParticles.register(eventBus);
+        ModStructures.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
