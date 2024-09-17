@@ -27,8 +27,10 @@ import java.util.Iterator;
 import java.util.Random;
 
 @Mixin(value = {ItemStack.class}, priority = 1002)
-public abstract class MixinItemStack {
-    public MixinItemStack() {
+public abstract class MixinItemStack extends net.minecraftforge.common.capabilities.CapabilityProvider<ItemStack> implements net.minecraftforge.common.extensions.IForgeItemStack {
+
+    protected MixinItemStack(Class<ItemStack> baseClass) {
+        super(baseClass);
     }
 
     @Shadow
@@ -36,7 +38,9 @@ public abstract class MixinItemStack {
     @Deprecated
     private Item item;
 
-    @Shadow
+
+
+    @Shadow()
     public abstract boolean isDamageable();
 
     @Shadow
