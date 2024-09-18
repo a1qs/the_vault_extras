@@ -3,11 +3,13 @@ package com.a1qs.the_vault_extras.events;
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.config.VaultExtrasConfig;
 import iskallia.vault.Vault;
+import iskallia.vault.world.data.VaultRaidData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.FolderName;
+import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +19,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class DeleteDimensionEvent {
@@ -76,5 +82,11 @@ public class DeleteDimensionEvent {
 
     private static RegistryKey<World> getDimensionToRemove() {
         return Vault.VAULT_KEY;
+    }
+
+    private static List<UUID> getKnownUUIDs() {
+        List<UUID> uuidList = new ArrayList<>();
+        UsernameCache.getMap().forEach((uuid, name) -> uuidList.add(uuid));
+        return uuidList;
     }
 }
