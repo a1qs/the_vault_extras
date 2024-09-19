@@ -14,8 +14,8 @@ public final class VaultExtrasConfig {
         ENABLE_COOP_FAVOURS = BUILDER.comment("Enable Favour changes for Vaults in Coop Vaults")
                 .define("ENABLE_COOP_FAVOURS", true);
 
-        ENABLE_VAULT_DELETION = BUILDER.comment("EXPERIMENTAL: Enable Vaults being deleted upon leaving them & noone being inside the Vault dimension")
-                .define("ENABLE_VAULT_DELETION", false);
+        ENABLE_VAULT_DELETION = BUILDER.comment("Enable Vaults being deleted with noone running a Vault.")
+                .define("ENABLE_VAULT_DELETION", true);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

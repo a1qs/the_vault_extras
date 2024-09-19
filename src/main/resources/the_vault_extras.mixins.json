@@ -38,6 +38,7 @@
     "MixinVaultPlayer",
     "MixinVaultRaid",
     "MixinVaultRoomNames",
+    "accessors.AccessorVaultRaidData",
     "invokers.InvokerChallengeCrystalArchive",
     "invokers.InvokerEntityEvents",
     "invokers.InvokerPartyCommand",
