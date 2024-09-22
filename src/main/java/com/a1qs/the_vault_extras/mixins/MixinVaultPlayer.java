@@ -41,6 +41,8 @@ public abstract class MixinVaultPlayer {
                 server, player -> MathHelper.clamp(player.getServerWorld().getGameRules().getInt(ModGameRules.EXP_MULTIPLIER), 0, 25), 1
         ))
                 .intValue();
+
+        expGrantedPercent *= 3; //3x base multiplier we ball
         int vaultLevel = stats.getVaultLevel();
         expGrantedPercent *= MathHelper.clamp(1.0F - (float)vaultLevel / 500.0F, 0.0F, 1.0F);
         float remainingPercent = 1.0F - (float)stats.getExp() / (float)stats.getTnl();

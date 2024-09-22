@@ -3,7 +3,9 @@ package com.a1qs.the_vault_extras.mixins;
 
 import com.a1qs.the_vault_extras.mixins.invokers.InvokerEntityEvents;
 import iskallia.vault.Vault;
-import iskallia.vault.entity.*;
+import iskallia.vault.entity.AggressiveCowEntity;
+import iskallia.vault.entity.EternalEntity;
+import iskallia.vault.entity.VaultFighterEntity;
 import iskallia.vault.event.EntityEvents;
 import iskallia.vault.init.ModConfigs;
 import iskallia.vault.init.ModItems;
@@ -30,7 +32,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 @Mixin(value = EntityEvents.class, remap = false)
 public class MixinEntityEvents {

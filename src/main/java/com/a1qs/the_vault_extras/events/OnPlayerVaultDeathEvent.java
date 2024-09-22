@@ -4,7 +4,6 @@ import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.vault.DeathMessages;
 import iskallia.vault.Vault;
 import iskallia.vault.world.data.PlayerFavourData;
-import iskallia.vault.world.vault.VaultRaid;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;

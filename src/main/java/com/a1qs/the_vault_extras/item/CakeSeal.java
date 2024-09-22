@@ -19,7 +19,6 @@ public class CakeSeal extends Item {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, @NotNull List<ITextComponent> tooltip, @NotNull ITooltipFlag flagIn) {
-        Item item = stack.getItem();
         tooltip.add(new TranslationTextComponent("tooltip." + VaultExtras.MOD_ID + ".cake_seal1"));
         tooltip.add(new TranslationTextComponent("tooltip." + VaultExtras.MOD_ID + ".cake_seal2"));
         super.addInformation(stack, worldIn, tooltip, flagIn);

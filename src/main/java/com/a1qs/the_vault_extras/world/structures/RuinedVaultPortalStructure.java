@@ -1,7 +1,6 @@
 package com.a1qs.the_vault_extras.world.structures;
 
 import com.a1qs.the_vault_extras.VaultExtras;
-import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SharedSeedRandom;

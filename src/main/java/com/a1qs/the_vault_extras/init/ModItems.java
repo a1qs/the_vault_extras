@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.item.*;
-import iskallia.vault.config.entry.vending.ProductEntry;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -55,11 +54,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> MYSTERY_RUNE = ITEMS.register("mystery_rune",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
-                    () -> ((ProductEntry)ModConfigs.MYSTERY_RUNE.POOL.getRandom(new Random())).generateItemStack()));
+                    () -> (ModConfigs.MYSTERY_RUNE.POOL.getRandom(new Random())).generateItemStack()));
 
     public static final RegistryObject<Item> MYSTERY_BOOK = ITEMS.register("mystery_book",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
-                    () -> ((ProductEntry)ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
+                    () -> (ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
+
+    public static final RegistryObject<Item> INCOMPLETE_CRYSTAL = ITEMS.register("incomplete_crystal",
+            () -> new CrystalChargeItem(new Item.Properties()
+                    .group(ModItemGroup.VAULT_EXTRAS)));
 
 
 
