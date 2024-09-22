@@ -55,11 +55,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> MYSTERY_RUNE = ITEMS.register("mystery_rune",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
-                    () -> ((ProductEntry)ModConfigs.MYSTERY_RUNE.POOL.getRandom(new Random())).generateItemStack()));
+                    () -> (ModConfigs.MYSTERY_RUNE.POOL.getRandom(new Random())).generateItemStack()));
 
     public static final RegistryObject<Item> MYSTERY_BOOK = ITEMS.register("mystery_book",
             () -> new LootableItemExtras( new Item.Properties().group((ModItemGroup.VAULT_EXTRAS)) ,
-                    () -> ((ProductEntry)ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
+                    () -> (ModConfigs.MYSTERY_BOOK.POOL.getRandom(new Random())).generateItemStack()));
+
+    public static final RegistryObject<Item> INCOMPLETE_CRYSTAL = ITEMS.register("incomplete_crystal",
+            () -> new CrystalChargeItem(new Item.Properties()
+                    .group(ModItemGroup.VAULT_EXTRAS)));
 
 
 

@@ -1,5 +1,6 @@
 package com.a1qs.the_vault_extras;
 
+import com.a1qs.the_vault_extras.block.render.DecayedCrystallizerTileRender;
 import com.a1qs.the_vault_extras.config.VaultExtrasConfig;
 import com.a1qs.the_vault_extras.events.ModSounds;
 import com.a1qs.the_vault_extras.events.PlayerEvents;
@@ -14,6 +15,7 @@ import com.a1qs.the_vault_extras.network.VaultExtrasNetwork;
 import com.a1qs.the_vault_extras.screen.VaultRecyclerScreen;
 import com.a1qs.the_vault_extras.util.LootTableUtil;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,11 +24,11 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -79,9 +81,20 @@ public class VaultExtras {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() ->
-                ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new));
+        event.enqueueWork(() -> {
+            ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new);
+
+            ItemModelsProperties.registerProperty(ModItems.INCOMPLETE_CRYSTAL.get(), new ResourceLocation(MOD_ID,"charge"),
+                    (stack, world, entity) -> {
+                        if (stack.hasTag() && stack.getTag().contains("ChargeLevel")) {
+                            return stack.getTag().getInt("ChargeLevel");
+                        }
+                        return 0;
+                    });
+        });
+
         ModKeyBinds.register(event);
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.DECAYED_CRYSTALLIZER_TILE.get(), DecayedCrystallizerTileRender::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

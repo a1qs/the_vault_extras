@@ -79,7 +79,7 @@ public class DecayedCrystallizer extends Block {
                 }
 
                 if(tile.getCooldown() == 0 && !player.isCrouching()) {
-                    tile.setCooldown(3600);
+                    tile.setCooldown(tile.getCooldownTime());
 
                     Style customStyle = Style.EMPTY.setColor(Color.fromInt(10598235)).applyFormatting(TextFormatting.BOLD);
                     ItemStack crystal = new ItemStack(ModItems.VAULT_CRYSTAL);
