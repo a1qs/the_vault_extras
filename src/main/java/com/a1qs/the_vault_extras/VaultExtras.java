@@ -1,6 +1,7 @@
 package com.a1qs.the_vault_extras;
 
 import com.a1qs.the_vault_extras.block.render.DecayedCrystallizerTileRender;
+import com.a1qs.the_vault_extras.client.ClientInit;
 import com.a1qs.the_vault_extras.config.VaultExtrasConfig;
 import com.a1qs.the_vault_extras.events.ModSounds;
 import com.a1qs.the_vault_extras.events.PlayerEvents;
@@ -18,6 +19,7 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -84,20 +86,15 @@ public class VaultExtras {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        System.out.println("Client setup called");
         event.enqueueWork(() -> {
             ScreenManager.registerFactory(ModContainers.VAULT_RECYCLER_CONTAINER.get(), VaultRecyclerScreen::new);
+            ClientInit.registerItemProperites();
 
-            ItemModelsProperties.registerProperty(ModItems.INCOMPLETE_CRYSTAL.get(), new ResourceLocation(MOD_ID,"charge"),
-                    (stack, world, entity) -> {
-                        if (stack.hasTag() && stack.getTag().contains("ChargeLevel")) {
-                            return stack.getTag().getInt("ChargeLevel");
-                        }
-                        return 0;
-                    });
         });
-
         ModKeyBinds.register(event);
         ClientRegistry.bindTileEntityRenderer(ModTileEntities.DECAYED_CRYSTALLIZER_TILE.get(), DecayedCrystallizerTileRender::new);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
