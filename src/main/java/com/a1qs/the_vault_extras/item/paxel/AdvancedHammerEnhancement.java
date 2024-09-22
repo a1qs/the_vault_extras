@@ -5,9 +5,6 @@ import iskallia.vault.item.paxel.enhancement.PaxelEnhancement;
 import iskallia.vault.item.paxel.enhancement.PaxelEnhancements;
 import iskallia.vault.util.BlockDropCaptureHelper;
 import iskallia.vault.util.BlockHelper;
-
-import java.util.LinkedList;
-import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -26,6 +23,9 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+
+import java.util.LinkedList;
+import java.util.List;
 
 @EventBusSubscriber
 public class AdvancedHammerEnhancement extends PaxelEnhancement {

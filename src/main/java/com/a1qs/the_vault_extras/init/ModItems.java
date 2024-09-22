@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.init;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.item.*;
-import iskallia.vault.config.entry.vending.ProductEntry;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;

@@ -2,7 +2,10 @@ package com.a1qs.the_vault_extras.util;
 
 import com.a1qs.the_vault_extras.VaultExtras;
 import com.a1qs.the_vault_extras.data.recipes.loot.LootTableRecipe;
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import iskallia.vault.Vault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
@@ -14,7 +17,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class LootTableUtil {

@@ -2,7 +2,6 @@ package com.a1qs.the_vault_extras.item;
 
 import com.a1qs.the_vault_extras.init.ModConfigs;
 import com.a1qs.the_vault_extras.mixins.accessors.AccessorVaultRaidData;
-import iskallia.vault.item.paxel.enhancement.PaxelEnhancements;
 import iskallia.vault.nbt.VListNBT;
 import iskallia.vault.util.data.WeightedList;
 import iskallia.vault.world.data.VaultRaidData;
@@ -10,10 +9,8 @@ import iskallia.vault.world.vault.VaultRaid;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.server.Main;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 import java.util.Iterator;
 

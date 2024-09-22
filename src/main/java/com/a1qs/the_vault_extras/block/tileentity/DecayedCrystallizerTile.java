@@ -5,7 +5,6 @@ import com.a1qs.the_vault_extras.init.ModItems;
 import com.a1qs.the_vault_extras.init.ModTileEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;

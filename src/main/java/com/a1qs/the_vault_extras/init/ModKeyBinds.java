@@ -6,8 +6,6 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 
-import java.awt.event.KeyEvent;
-
 public class ModKeyBinds {
     public static KeyBinding magnetToggle;
     public static KeyBinding veinminerHold;
