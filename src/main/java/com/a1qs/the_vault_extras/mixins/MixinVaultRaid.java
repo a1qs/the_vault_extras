@@ -55,6 +55,16 @@ public class MixinVaultRaid {
 
     @Shadow @Final public static VaultCondition IS_OUTSIDE;
 
+    @Shadow @Final public static VaultTask CHECK_BAIL;
+
+    @Shadow @Final public static VaultTask REMOVE_INVENTORY_RESTORE_SNAPSHOTS;
+
+    @Shadow @Final public static VaultTask REMOVE_SCAVENGER_ITEMS;
+
+    @Shadow @Final public static VaultTask GRANT_EXP_DEATH;
+
+    @Shadow @Final public static VaultTask SAVE_SOULBOUND_GEAR;
+
     @Final
     @Shadow
     public static VaultTask EXIT_DEATH = VaultTask.register(Vault.id("exit_death_new"), (vault, player, world) -> {
@@ -68,25 +78,25 @@ public class MixinVaultRaid {
             playerEntity.attackEntityFrom((new DamageSource("vaultFailed")).setDamageBypassesArmor().setDamageAllowedInCreativeMode(), 1.0E8F);
             player.exit();
 
+//            // Delete inventory
+//            playerEntity.inventory.func_234564_a_((stack) -> {
+//                return true;
+//            }, -1, playerEntity.container.func_234641_j_());
+//            playerEntity.openContainer.detectAndSendChanges();
+//            playerEntity.container.onCraftMatrixChanged(playerEntity.inventory);
+//            playerEntity.updateHeldItem();
+
             // Leave party if one exists
-            VaultPartyData data = VaultPartyData.get((ServerWorld) playerEntity.world);
-            Optional<VaultPartyData.Party> party = data.getParty(playerEntity.getUniqueID());
-            if (party.isPresent()) {
-                Commands command = new Commands(Commands.EnvironmentType.ALL);
-                command.handleCommand(playerEntity.getCommandSource(), "party leave");
-
-                // Try to remove from vault objective
-                vault.getPlayers().remove(player);
-            }
-
-            // Delete inventory
-            playerEntity.inventory.func_234564_a_((stack) -> {
-                return true;
-            }, -1, playerEntity.container.func_234641_j_());
-            playerEntity.openContainer.detectAndSendChanges();
-            playerEntity.container.onCraftMatrixChanged(playerEntity.inventory);
-            playerEntity.updateHeldItem();
-
+//            VaultPartyData data = VaultPartyData.get((ServerWorld) playerEntity.world);
+//            Optional<VaultPartyData.Party> party = data.getParty(playerEntity.getUniqueID());
+//            if (party.isPresent() && party.get().getMembers().size() > 1) {
+//                Commands command = new Commands(Commands.EnvironmentType.ALL);
+//                command.handleCommand(playerEntity.getCommandSource(), "party leave");
+//
+//                REMOVE_SCAVENGER_ITEMS.execute(vault, player, world);
+//                // Try to remove from vault objective
+//                vault.getPlayers().remove(player);
+//            }
 
             HIDE_OVERLAY.execute(vault, player, world);
             UUID parent = (UUID)vault.getProperties().getBase(PARENT).orElse((UUID) null);
@@ -147,9 +157,11 @@ public class MixinVaultRaid {
                                         // Leave party if one exists
                                         VaultPartyData data = VaultPartyData.get((ServerWorld) sPlayer.world);
                                         Optional<VaultPartyData.Party> party = data.getParty(sPlayer.getUniqueID());
-                                        if (party.isPresent()) {
+                                        if (party.isPresent() && party.get().getMembers().size() > 1) {
                                             Commands command = new Commands(Commands.EnvironmentType.ALL);
                                             command.handleCommand(sPlayer.getCommandSource(), "party leave");
+
+                                            REMOVE_SCAVENGER_ITEMS.then(REMOVE_INVENTORY_RESTORE_SNAPSHOTS).then(EXIT_SAFELY).execute(vault, player, world);
 
                                             // Try to remove from vault objective
                                             vault.getPlayers().remove(player);
@@ -170,17 +182,6 @@ public class MixinVaultRaid {
             });
         }
     });
-
-
-    @Shadow @Final public static VaultTask CHECK_BAIL;
-
-    @Shadow @Final public static VaultTask REMOVE_INVENTORY_RESTORE_SNAPSHOTS;
-
-    @Shadow @Final public static VaultTask REMOVE_SCAVENGER_ITEMS;
-
-    @Shadow @Final public static VaultTask GRANT_EXP_DEATH;
-
-    @Shadow @Final public static VaultTask SAVE_SOULBOUND_GEAR;
 
     /**
      * @author Josh
