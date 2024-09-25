@@ -1,3 +1,3 @@
 iwolfking for the majority of the Curio Shard Pouch/shop implementation
-BONNe for the fix for the Mining speed midair bug
+Iridium for the Overworld Ruined Vault Portal idea/structure
 The Vault Hunters Developer team for the Vault Anvil Texture, ported from Vault Hunters 3rd Edition
