@@ -44,6 +44,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     private int smeltTimeTotal;
     private final Random random = new Random();
     private boolean internalInsert = false;
+    private boolean isInternalOperation = false;
 
     public VaultRecyclerTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
@@ -110,7 +111,9 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             if(smeltTime >= smeltTimeTotal) {
                 smeltTime = 0;
 
+                isInternalOperation = true;
                 itemHandler.extractItem(0, 1, false);
+                isInternalOperation = false;
                 internalInsert = true;
                 itemHandler.insertItem(1, output, false);
                 internalInsert = false;
@@ -165,6 +168,24 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
 
                 return super.insertItem(slot, stack, simulate);
             }
+
+            @NotNull
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                // Block extraction from external systems (hoppers, pipes, etc.) in the input slot
+                if (slot == 0) {
+                    if (!isInternalOperation && !isPlayerRequesting()) {
+                        return ItemStack.EMPTY; // Block non-player and non-internal extraction from input slot
+                    }
+                }
+
+                return super.extractItem(slot, amount, simulate);
+            }
+
+            //Check if world is clientsided
+            private boolean isPlayerRequesting() {
+                return world != null && world.isRemote();
+            }
         };
     }
 
@@ -173,6 +194,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return handler.cast();
+
         }
         return super.getCapability(cap, side);
     }
