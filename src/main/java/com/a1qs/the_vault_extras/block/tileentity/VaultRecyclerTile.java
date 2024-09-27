@@ -28,6 +28,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -42,6 +43,7 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     private int smeltTime;
     private int smeltTimeTotal;
     private final Random random = new Random();
+    private boolean internalInsert = false;
 
     public VaultRecyclerTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
@@ -107,8 +109,11 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             smeltTime++;
             if(smeltTime >= smeltTimeTotal) {
                 smeltTime = 0;
+
                 itemHandler.extractItem(0, 1, false);
+                internalInsert = true;
                 itemHandler.insertItem(1, output, false);
+                internalInsert = false;
                 assert this.world != null;
                 this.world.playSound(null, this.getPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 0.5F + (new Random()).nextFloat() * 0.25F, 0.75F + (new Random()).nextFloat() * 0.25F);
 
@@ -117,7 +122,9 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
 
 
                 if(random.nextFloat() < chance && !output.getStack().isEmpty()) {
+                    internalInsert = true;
                     itemHandler.insertItem(2, extraOutput, false);
+                    internalInsert = false;
                 }
 
                 markDirty();
@@ -136,7 +143,6 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
 
             // make vault scrap/etching frags/magnetite/pog valid for output slots
             // make vault gear valid for input slots
-            // allows users to input vault scrap into the output slots, make a pr if it bothers you
             @Override
             public boolean isItemValid(int slot, @NotNull ItemStack stack) {
                 if (slot == 1 || slot == 2 || slot == 3) {
@@ -152,7 +158,8 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
             @NotNull
             @Override
             public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-                if(!isItemValid(slot, stack)) {
+                if (slot != 0 && !internalInsert) return stack;
+                if (!isItemValid(slot, stack)) {
                     return stack;
                 }
 
