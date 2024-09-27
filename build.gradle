@@ -16,7 +16,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 
 def mc_version = "1.16.5"
-version = "${mc_version}-2.2.0"
+version = "${mc_version}-2.2.1"
 group = 'com.a1qs.the_vault_extras' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'the_vault_extras'
 
