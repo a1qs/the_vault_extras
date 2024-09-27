@@ -73,31 +73,36 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
     }
 
     public void tick() {
-        assert world != null;
-        if(!world.isRemote) {
-            Inventory inv = new Inventory(itemHandler.getSlots());
+        if(world == null) return;
+        if(world.isRemote()) return;
 
-            for (int i = 0; i < itemHandler.getSlots(); i++) {
-                inv.setInventorySlotContents(i, itemHandler.getStackInSlot(i));
-            }
+        Inventory inv = new Inventory(itemHandler.getSlots());
 
-            ItemStack stack = inv.getStackInSlot(0);
-            if(!stack.isEmpty()) {
-                Optional<RecyclerRecipe> recipe = world.getRecipeManager()
-                        .getRecipe(ModRecipeTypes.RECYCLER_RECIPE, inv, world);
-                recipe.ifPresent(iRecipe -> {
-                    ItemStack output = iRecipe.getRecipeOutput();
-                    ItemStack extraOutput = iRecipe.getExtraOutput();
-                    float extraChance = iRecipe.getExtraChance();
-                    smeltTimeTotal = iRecipe.getSmeltTime();
-                    smeltItem(output, extraOutput, extraChance);
-                });
-            }
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inv.setInventorySlotContents(i, itemHandler.getStackInSlot(i));
         }
+
+        ItemStack stack = inv.getStackInSlot(0);
+        if(!stack.isEmpty()) {
+            Optional<RecyclerRecipe> recipe = world.getRecipeManager()
+                    .getRecipe(ModRecipeTypes.RECYCLER_RECIPE, inv, world);
+            recipe.ifPresent(iRecipe -> {
+                ItemStack output = iRecipe.getRecipeOutput();
+                ItemStack extraOutput = iRecipe.getExtraOutput();
+                float extraChance = iRecipe.getExtraChance();
+                smeltTimeTotal = iRecipe.getSmeltTime();
+                smeltItem(output, extraOutput, extraChance);
+            });
+        } else {
+            smeltTime = 0;
+        }
+
     }
 
     private void smeltItem(ItemStack output, ItemStack extraOutput, float chance) {
         // if the stack in the inventory  is 63 or above, don't freaking do it !!
+        if(world == null) return;
+
         if(!(itemHandler.getStackInSlot(1).getCount() >= itemHandler.getSlotLimit(1)-1) && !(itemHandler.getStackInSlot(2).getCount() >= itemHandler.getSlotLimit(2)-1)) {
             smeltTime++;
             if(smeltTime >= smeltTimeTotal) {
@@ -106,7 +111,10 @@ public class VaultRecyclerTile extends TileEntity implements ITickableTileEntity
                 itemHandler.insertItem(1, output, false);
                 assert this.world != null;
                 this.world.playSound(null, this.getPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 0.5F + (new Random()).nextFloat() * 0.25F, 0.75F + (new Random()).nextFloat() * 0.25F);
-                spawnRecycleParticles(this.getPos());
+
+                if(world.isRemote) spawnRecycleParticles(this.getPos());
+
+
 
                 if(random.nextFloat() < chance && !output.getStack().isEmpty()) {
                     itemHandler.insertItem(2, extraOutput, false);
