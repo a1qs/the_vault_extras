@@ -351,7 +351,6 @@ public class LootTableUtil {
     }
 
 
-    //todo: fucks up with certain pools
     public static JsonObject mergeLootTables(ResourceLocation... rl) {
         JsonObject mergedLootTable = new JsonObject();
         JsonArray mergedPools = new JsonArray();  // To hold merged pools
