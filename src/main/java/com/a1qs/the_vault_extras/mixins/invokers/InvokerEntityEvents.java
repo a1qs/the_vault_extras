@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @Mixin(value = EntityEvents.class, remap = false)
 public interface InvokerEntityEvents {
-    @Invoker("addSubFighterDrops")
+    @Invoker("addScavengerDrops")
     static boolean addScavengerDrops(World world, Entity killed, VaultRaid vault, Collection<ItemEntity> drops) {
         throw new AssertionError();
     }
