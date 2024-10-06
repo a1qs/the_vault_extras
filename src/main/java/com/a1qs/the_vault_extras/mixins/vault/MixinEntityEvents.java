@@ -52,7 +52,7 @@ public class MixinEntityEvents {
     private static boolean addShardDrops(World world, Entity killed, ServerPlayerEntity killer, VaultRaid vault, Collection<ItemEntity> drops) {
         List<TalentNode<SoulShardTalent>> shardNodes = PlayerTalentsData.get(killer.getServerWorld()).getTalents(killer).getLearnedNodes(SoulShardTalent.class);
 
-        int shardCount = ModConfigs.SOUL_SHARD.getRandomShards(killed.getType());
+        int shardCount = ModConfigs.SOUL_SHARD.getRandomShards(killed.getType()) * 10;
 
         for (VaultAttributeInfluence influence : vault.getInfluences().getInfluences(VaultAttributeInfluence.class)) {
             if (influence.getType() == VaultAttributeInfluence.Type.SOUL_SHARD_DROPS && !influence.isMultiplicative()) {
