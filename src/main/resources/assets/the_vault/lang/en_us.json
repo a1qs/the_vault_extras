@@ -52,6 +52,8 @@
     "item.the_vault.scavenger_wizard_wand": "§eWizard Wand",
 
     "gamerule.vaultExpMultiplier": "Vault Experience Multiplier",
-    "gamerule.finalVaultAllowParty": "Allow Final Vault Party Members"
+    "gamerule.finalVaultAllowParty": "Allow Final Vault Party Members",
+
+    "biome.the_vault.spoopy": "The Vault"
 
 }
