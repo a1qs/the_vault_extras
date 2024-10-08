@@ -56,14 +56,12 @@ public class AdvancedHammerEnhancement extends PaxelEnhancement {
 
                             try {
                                 BlockHelper.breakBlock(world, player, sidePos, true, true);
-                                BlockHelper.damageMiningItem(heldStack, player, 1);
                             } finally {
                                 BlockDropCaptureHelper.getCapturedStacksAndStop().forEach((entity) -> Block.spawnAsEntity(world, entity.getPosition(), entity.getItem()));
                             }
                         }
                     }
                 }
-
             });
         }
     }
